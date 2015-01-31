@@ -17,40 +17,17 @@ class LoginViewController: UIViewController {
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		
-	}/*
-	override func viewDidLayoutSubviews()
-	{
-		super.viewDidLayoutSubviews()
-		let blur = UIVisualEffectView(effect: UIBlurEffect(style: .Dark))
-		blur.frame = useEmail.frame
-		blur.frame.size.width = useEmail.frame.size.width + 20
-		blur.center.x -= 10
-		blur.layer.cornerRadius = 15.0
-		blur.clipsToBounds = true
-		background.addSubview(blur)
-		let vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: UIBlurEffect(style: .Dark)))
-		vibrancyView.frame.size = useEmail.frame.size
-		vibrancyView.frame.origin = CGPointZero
-		//vibrancyView.frame.size = blur.frame.size
-		//useEmail.center = blur.center
-		let someLabel = UILabel()
-		someLabel.text = "Some Email"
-		//useEmail.center = vibrancyView.contentView.center
-		vibrancyView.contentView.addSubview(someLabel)
-		blur.contentView.addSubview(vibrancyView)
-		
-		//background.bringSubviewToFront(useEmail)
-		/*let vibrancyView = UIVisualEffectView(effect: UIVibrancyEffect(forBlurEffect: UIBlurEffect(style: .Dark)))
-		vibrancyView.frame.size = blur.frame.size
-		useEmail.removeFromSuperview()
-		let useEmailButton = UIButton(frame: CGRect(origin: CGPointZero, size: blur.frame.size))
-		useEmailButton.setTitle("Use Email", forState: .Normal)
-		useEmailButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-		//useEmail.frame.origin = CGPointZero
-		vibrancyView.contentView.addSubview(useEmailButton)
-		blur.contentView.addSubview(vibrancyView)*/
-	}*/
+		if (PFUser.currentUser() != nil)
+		{
+			let installation = PFInstallation.currentInstallation()
+			if installation["user"] == nil
+			{
+				installation["user"] = PFUser.currentUser()
+				installation.saveInBackgroundWithBlock(nil)
+			}
+			println("User is logged in")
+		}
+	}
 	override func didReceiveMemoryWarning()
 	{
 		super.didReceiveMemoryWarning()
@@ -78,7 +55,10 @@ class LoginViewController: UIViewController {
 						{
 							user["email"] = email
 						}
+						let currentInstallation = PFInstallation.currentInstallation()
+						currentInstallation["user"] = user
 						user.saveInBackgroundWithBlock(nil)
+						currentInstallation.saveInBackgroundWithBlock(nil)
 					}
 				})
 			}

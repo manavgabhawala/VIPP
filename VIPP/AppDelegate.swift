@@ -20,7 +20,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		UIApplication.sharedApplication().setStatusBarStyle(.LightContent, animated: true)
 		Parse.enableLocalDatastore()
 		Parse.setApplicationId("OtIEGP5KKeYGnXvjIUKlqT3NSgQA3Sk043bEUCoC", clientKey: "ztvCIMnziOvdzCm2JxZj5hzMRN8TBq1lypC0cn8y")
+		let userNotificationTypes = (UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound)
+		let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+		application.registerUserNotificationSettings(settings)
+		application.registerForRemoteNotifications()
 		PFFacebookUtils.initializeFacebook()
+		
 		return true
 	}
 
@@ -45,6 +50,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+	}
+	func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData)
+	{
+		let currentInstallation = PFInstallation.currentInstallation()
+		currentInstallation.setDeviceTokenFromData(deviceToken)
+		currentInstallation.channels = ["global"]
+		if let user = PFUser.currentUser()
+		{
+			currentInstallation["user"] = user
+		}
+		currentInstallation.saveInBackgroundWithBlock(nil)
+	}
+	func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
+	{
+		PFPush.handlePush(userInfo)
 	}
 	func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool
 	{

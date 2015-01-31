@@ -35,6 +35,8 @@
 		829DC1B31A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */; };
 		829DC1B51A7B442600CD6187 /* VIPP_ALL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */; };
 		829DC1B61A7B442600CD6187 /* VIPP_ALL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */; };
+		82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
+		82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +79,7 @@
 		829DC1AD1A7B407B00CD6187 /* VIPPTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VIPPTests-Bridging-Header.h"; path = "../VIPP/VIPPTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VIPP_ALL.storyboard; sourceTree = "<group>"; };
+		82AC16FF1A7C749D0065387F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +145,7 @@
 			children = (
 				829DC1631A7B3E1F00CD6187 /* AppDelegate.swift */,
 				829DC1651A7B3E1F00CD6187 /* LoginViewController.swift */,
+				82AC16FF1A7C749D0065387F /* SignUpViewController.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
 				829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
@@ -308,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC1661A7B3E1F00CD6187 /* LoginViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
 			);
@@ -317,6 +322,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
