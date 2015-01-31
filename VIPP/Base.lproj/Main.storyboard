@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -15,11 +15,108 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="V94-Kc-49Q">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt4-Vv-NwK">
+                                <rect key="frame" x="150" y="463" width="300" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="rmf-O6-1C9"/>
+                                    <constraint firstAttribute="height" constant="37" id="vEq-MA-boT"/>
+                                </constraints>
+                                <state key="normal" image="FBLogin">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="facebookLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SJX-cH-z2G"/>
+                                </connections>
+                            </button>
+                            <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q2W-cl-27V">
+                                <rect key="frame" x="250" y="516" width="100" height="30"/>
+                                <view key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="wSZ-bP-qog">
+                                    <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XOH-nS-TgO">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ZHq-8K-PYC">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="828-i0-5op">
+                                                        <rect key="frame" x="0.0" y="0.0" width="100" height="30"/>
+                                                        <state key="normal">
+                                                            <attributedString key="attributedTitle">
+                                                                <fragment content="USE EMAIL">
+                                                                    <attributes>
+                                                                        <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                        <font key="NSFont" size="16" name="AvenirNext-Medium"/>
+                                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                                    </attributes>
+                                                                </fragment>
+                                                            </attributedString>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="emailLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tNj-Df-JaQ"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="828-i0-5op" firstAttribute="leading" secondItem="ZHq-8K-PYC" secondAttribute="leading" id="HjP-Gs-rIa"/>
+                                                    <constraint firstAttribute="trailing" secondItem="828-i0-5op" secondAttribute="trailing" id="TRI-dL-TPz"/>
+                                                    <constraint firstItem="828-i0-5op" firstAttribute="top" secondItem="ZHq-8K-PYC" secondAttribute="top" id="W3i-eH-9g6"/>
+                                                    <constraint firstAttribute="bottom" secondItem="828-i0-5op" secondAttribute="bottom" id="gOE-yd-H1o"/>
+                                                </constraints>
+                                            </view>
+                                            <vibrancyEffect>
+                                                <blurEffect style="dark"/>
+                                            </vibrancyEffect>
+                                        </visualEffectView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="XOH-nS-TgO" firstAttribute="leading" secondItem="wSZ-bP-qog" secondAttribute="leading" id="A1G-ZN-MnI"/>
+                                        <constraint firstItem="XOH-nS-TgO" firstAttribute="top" secondItem="wSZ-bP-qog" secondAttribute="top" id="Kmw-q2-P2k"/>
+                                        <constraint firstAttribute="trailing" secondItem="XOH-nS-TgO" secondAttribute="trailing" id="gnQ-bC-i1L"/>
+                                        <constraint firstAttribute="bottom" secondItem="XOH-nS-TgO" secondAttribute="bottom" id="pnL-5M-bW1"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dGx-a3-RLq"/>
+                                    <constraint firstAttribute="width" constant="100" id="uCT-WQ-Xpl"/>
+                                </constraints>
+                                <blurEffect style="dark"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="15"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </visualEffectView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="q2W-cl-27V" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="16" id="5mP-CH-drl"/>
+                            <constraint firstAttribute="centerX" secondItem="q2W-cl-27V" secondAttribute="centerX" id="9Lt-3q-YJq"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="100" id="9eI-ee-e20"/>
+                            <constraint firstItem="V94-Kc-49Q" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="CtA-on-ybR"/>
+                            <constraint firstAttribute="centerX" secondItem="mt4-Vv-NwK" secondAttribute="centerX" id="H58-c7-1Pr"/>
+                            <constraint firstItem="V94-Kc-49Q" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="K6Y-8v-sZI"/>
+                            <constraint firstItem="V94-Kc-49Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SRi-4c-wnC"/>
+                            <constraint firstAttribute="trailing" secondItem="V94-Kc-49Q" secondAttribute="trailing" id="rSL-bl-41C"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="background" destination="V94-Kc-49Q" id="fMg-DZ-OCZ"/>
+                        <outlet property="useEmail" destination="828-i0-5op" id="dBT-HB-bgN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="575" y="661"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Background" width="640" height="960"/>
+        <image name="FBLogin" width="700" height="86"/>
+    </resources>
 </document>
