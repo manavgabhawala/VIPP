@@ -10,9 +10,6 @@ import UIKit
 
 class LoginViewController: UIViewController {
 	
-	@IBOutlet var background : UIImageView!
-	@IBOutlet var useEmail : UIButton!
-	
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
