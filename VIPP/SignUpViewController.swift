@@ -89,6 +89,7 @@ class SignUpViewController: UIViewController
 			if (user["whenGrowsUp"] == nil)
 			{
 				currentPage = 2;
+				backButton.hidden = true
 				tableView.reloadData()
 			}
 			else
@@ -188,6 +189,7 @@ class SignUpViewController: UIViewController
 		if textFields[TextField.ConfirmPassword.rawValue].text != textFields[TextField.Password.rawValue].text
 		{
 			tableCells[1][TextField.ConfirmPassword.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			isValid = false
 		}
 		if (isValid)
 		{
@@ -392,6 +394,8 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 			cell.drawWithPlaceholder(placeholder, delegate: self)
 			thirdCells.append(cell)
 		}
+		(thirdCells.first as SurveyCell).top = true
+		(thirdCells.last as SurveyCell).bottom = true
 		tableCells.append(thirdCells)
 		tableView.reloadData()
 	}

@@ -21,11 +21,11 @@ extension UITableViewCell
 	public override func layoutSubviews()
 	{
 		super.layoutSubviews()
-		if ((self as? RoundedTableCells) != nil)
+		if (self is RoundedTableCells)
 		{
 			if((self as RoundedTableCells).top && (self as RoundedTableCells).bottom)
 			{
-				layer.cornerRadius = 10
+				layer.cornerRadius = 3
 				layer.masksToBounds = true
 			}
 			else if ((self as RoundedTableCells).top)
@@ -130,6 +130,8 @@ class SurveyCell : UITableViewCell, RoundedTableCells
 	*/
 	func drawWithPlaceholder(placeholder: String, delegate: UITextFieldDelegate)
 	{
-		
+		//TODO: IMPLEMENT THIS FUNCTION
+		textField.placeholder = placeholder
+		textField.delegate = delegate
 	}
 }
