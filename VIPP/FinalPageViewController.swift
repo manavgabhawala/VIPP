@@ -8,6 +8,7 @@
 
 import Foundation
 
-class FinalPageViewController: UIViewController{
+class FinalPageViewController: UIViewController
+{
 
 }

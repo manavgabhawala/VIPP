@@ -146,6 +146,60 @@ extension String
 	}
 	func isValidEmail() -> Bool
 	{
-		return false
+		if (self.isEmpty)
+		{
+			return false;
+		}
+		let regex = NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$", options: .CaseInsensitive, error: nil)
+		return regex?.firstMatchInString(self, options: nil, range: NSMakeRange(0, countElements(self))) != nil
+		/*
+		let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
+		
+		var emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+		return emailTest?.evaluateWithObject(self)*/
 	}
+}
+func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Double?, longitude: Double?)
+{
+	if (zip == nil || city.isEmpty || state.isEmpty || zip! < 10000 || zip! >= 100000)
+	{
+		return (nil, nil)
+	}
+	let string = "https://maps.googleapis.com/maps/api/geocode/json?components=country:US|locality:\(city)|adminstrative_area:\(state)|postal_code:\(zip!)"
+	//let URL = NSURL(scheme: "https", host: "maps.googleapis.com", path: "maps/api/geocode/json")
+	let components = NSURLComponents()
+	components.scheme = "https"
+	components.host = "maps.googleapis.com"
+	components.path = "/maps/api/geocode/json"
+	components.query = "components=country:US|locality:\(city)|adminstrative_area:\(state)|postal_code:\(zip!)"
+	let URL = components.URL!
+	
+	let request = NSURLRequest(URL: URL)
+	var response : NSURLResponse?
+	var error : NSError?
+	if let data = NSURLConnection.sendSynchronousRequest(request, returningResponse: &response, error: &error)
+	{
+		if (error == nil && response != nil)
+		{
+			let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as NSDictionary
+			if dictionary.objectForKey("status") as String == "OK"
+			{
+				if let array = dictionary.objectForKey("results") as? [NSDictionary]
+				{
+					let internalDictionary = array.first!
+					if let mostInternalDictionary = internalDictionary.objectForKey("geometry")?.objectForKey("location") as? NSDictionary
+					{
+						let latitude = mostInternalDictionary.objectForKey("lat") as Double
+						let longitude = mostInternalDictionary.objectForKey("lng") as Double
+						return (latitude, longitude)
+					}
+				}
+			}
+		}
+		else
+		{
+			//TODO: Show UIAlertController
+		}
+	}
+	return (nil, nil)
 }

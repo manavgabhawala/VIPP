@@ -10,19 +10,27 @@ import UIKit
 
 class LoginViewController: UIViewController {
 	
+	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		if (PFUser.currentUser() != nil)
+		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()
 			if installation["user"] == nil
 			{
-				installation["user"] = PFUser.currentUser()
-				installation.saveInBackgroundWithBlock(nil)
+				installation["user"] = user
+				installation.saveEventually(nil)
 			}
-			println("User is logged in")
+			if (user["isValidVIPP"] as? Bool != nil && user["isValidVIPP"] as Bool)
+			{
+				//TODO: give access to entire app
+			}
+			else
+			{
+				self.performSegueWithIdentifier("signUpDisplay", sender: self)
+			}
 		}
 	}
 	override func didReceiveMemoryWarning()
@@ -30,7 +38,14 @@ class LoginViewController: UIViewController {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-	@IBAction func facebookLogin(sender: UIButton)
+	
+	//MARK: - Actions
+	/**
+	This funcion is called if the facebook login button is pressed.
+	
+	:param: _ The UIButton that represents Facebook Login. Anonymous variable because it is unused.
+	*/
+	@IBAction func facebookLogin(_: UIButton)
 	{
 		// When your user logs in, immediately get and store its Facebook ID
 		PFFacebookUtils.logInWithPermissions(["public_profile", "email", "user_birthday", "user_friends"], block: {(user, error) in
@@ -56,12 +71,19 @@ class LoginViewController: UIViewController {
 						currentInstallation["user"] = user
 						user.saveInBackgroundWithBlock(nil)
 						currentInstallation.saveInBackgroundWithBlock(nil)
+						self.performSegueWithIdentifier("signUpDisplay", sender: self)
 					}
 				})
 			}
 		})
 	}
-	@IBAction func emailLogin(sender: UIButton)
+	
+	/**
+	This funcion is called if the use email button is pressed.
+	
+	:param: _ The UIButton that represents Use Email. Anonymous variable because it is unused.
+	*/
+	@IBAction func emailLogin(_: UIButton)
 	{
 		
 	}

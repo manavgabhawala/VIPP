@@ -25,7 +25,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		application.registerUserNotificationSettings(settings)
 		application.registerForRemoteNotifications()
 		PFFacebookUtils.initializeFacebook()
-		
+		if let user = PFUser.currentUser()
+		{
+			let installation = PFInstallation.currentInstallation()
+			if installation["user"] == nil
+			{
+				installation["user"] = user
+				installation.saveEventually(nil)
+			}
+		}
 		return true
 	}
 
