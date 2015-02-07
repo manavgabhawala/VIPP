@@ -10,5 +10,9 @@ import Foundation
 
 class FinalPageViewController: UIViewController
 {
-
+	override func viewDidLoad()
+	{
+		super.viewDidLoad()
+		UIApplication.sharedApplication().statusBarStyle = .Default
+	}
 }

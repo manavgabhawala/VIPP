@@ -21,6 +21,12 @@ class InitialViewController: UIViewController {
 	{
 		super.viewWillAppear(animated)
 		UIApplication.sharedApplication().statusBarStyle = .LightContent
+	}
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
+		PFUser.logOut()
+		
 		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()
@@ -35,7 +41,20 @@ class InitialViewController: UIViewController {
 			}
 			else
 			{
-				performSegueWithIdentifier("signUpDisplay", sender: self)
+				if (user["whenGrowsUp"] != nil)
+				{
+					let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as FinalPageViewController
+					finalPage.modalPresentationStyle = .FullScreen
+					finalPage.modalTransitionStyle = .FlipHorizontal
+					presentViewController(finalPage, animated: true, completion: nil)
+				}
+				else
+				{
+					let signUp = storyboard!.instantiateViewControllerWithIdentifier("SignUpViewController") as SignUpViewController
+					signUp.modalPresentationStyle = .FullScreen
+					signUp.modalTransitionStyle = .FlipHorizontal
+					presentViewController(signUp, animated: true, completion: nil)
+				}
 			}
 		}
 	}

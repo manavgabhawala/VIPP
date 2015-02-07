@@ -162,6 +162,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -170,7 +171,7 @@
         <!--Sign Up View Controller-->
         <scene sceneID="t4d-rf-6Zf">
             <objects>
-                <viewController storyboardIdentifier="SignUpViewController" id="lyf-Cz-aag" customClass="SignUpViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignUpViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lyf-Cz-aag" customClass="SignUpViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QqX-0P-FMU"/>
                         <viewControllerLayoutGuide type="bottom" id="60x-N6-c3O"/>
@@ -595,6 +596,7 @@
                             <constraint firstItem="5iE-9u-7Pb" firstAttribute="top" secondItem="Xp0-i9-tWh" secondAttribute="bottom" id="zfH-d8-ApF"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="backButton" destination="ZY7-Hf-gg1" id="kEr-g4-xJp"/>
                         <outlet property="tableView" destination="iD5-xP-yR4" id="C3t-9Y-e3e"/>
@@ -624,7 +626,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Oan-dc-ULK">
-                                        <rect key="frame" x="260.5" y="8" width="80" height="56"/>
+                                        <rect key="frame" x="260" y="8" width="80" height="56"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="OtR-ZO-7hd"/>
                                             <constraint firstAttribute="height" constant="56" id="et4-8q-ryT"/>
@@ -668,13 +670,20 @@
                                 <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite your friends to get your first night out on us. Once they sign up, you will all be granted one free night on us" textAlignment="center" lineBreakMode="headTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="BEl-CI-Eeg">
-                                <rect key="frame" x="150" y="319" width="300" height="68"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="headTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="BEl-CI-Eeg">
+                                <rect key="frame" x="150" y="319" width="300" height="82"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="XPs-dq-hWr"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
-                                <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Invite your friends to get your first night out on us. Once they sign up, you will all be granted one free night on us">
+                                        <attributes>
+                                            <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="17" name="STHeitiSC-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.2"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -696,6 +705,7 @@
                             <constraint firstItem="vow-1P-DR3" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="xqA-Ee-n3a"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y67-Tt-kg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -704,7 +714,7 @@
         <!--Login View Controller-->
         <scene sceneID="H6Y-R5-0D9">
             <objects>
-                <viewController storyboardIdentifier="LoginViewController" id="7zc-S2-VBD" customClass="LoginViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7zc-S2-VBD" customClass="LoginViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="u3a-w8-zNL"/>
                         <viewControllerLayoutGuide type="bottom" id="W02-k6-fAt"/>
@@ -948,8 +958,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="2EF-EL-1sp" secondAttribute="trailing" constant="-16" id="xm9-Jt-9SN"/>
                         </constraints>
                     </view>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="HUo-YL-wuU" id="pnI-FU-4yZ"/>
+                        <segue destination="JBN-05-7HP" kind="presentation" identifier="thankYouLogin" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="P7r-EU-7r2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zdv-NI-Kdb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -964,4 +976,7 @@
         <image name="Grey Back" width="834" height="560"/>
         <image name="Logo" width="300" height="167"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="P7r-EU-7r2"/>
+    </inferredMetricsTieBreakers>
 </document>

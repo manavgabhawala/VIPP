@@ -84,7 +84,14 @@ class LoginViewController: UIViewController
 			PFUser.logInWithUsernameInBackground(email, password: password, block: {(user, error) in
 				if (user != nil && error == nil)
 				{
-					//TODO: User has logged in
+					if (user["isValidVIPP"] != nil && user["isValidVIPP"] as Bool)
+					{
+						//TODO: User has logged in - Full Access
+					}
+					else
+					{
+						self.performSegueWithIdentifier("thankYouLogin", sender: self)
+					}
 				}
 				else
 				{

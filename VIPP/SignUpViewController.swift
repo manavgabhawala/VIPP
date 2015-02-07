@@ -86,9 +86,12 @@ class SignUpViewController: UIViewController
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		tableView.tableFooterView = view
+	}
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
 		if let user  = PFUser.currentUser()
 		{
-			println("User exists")
 			if (user["whenGrowsUp"] == nil)
 			{
 				currentPage = 1
@@ -100,8 +103,10 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				println("Showing thank you")
-				performSegueWithIdentifier("thankYou", sender: self)
+				let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as FinalPageViewController
+				finalPage.modalPresentationStyle = .FullScreen
+				finalPage.modalTransitionStyle = .FlipHorizontal
+				presentViewController(finalPage, animated: false, completion: nil)
 			}
 		}
 	}
