@@ -46,6 +46,7 @@
 		82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
 		82E2A55B1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
 		82E2A55C1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
+		82E2A55D1A86BF2B004C4795 /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -162,13 +163,13 @@
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
 				829DC1651A7B3E1F00CD6187 /* InitialViewController.swift */,
 				82AC16FF1A7C749D0065387F /* SignUpViewController.swift */,
+				15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */,
 				82E2A5571A869E8E004C4795 /* LoginViewController.swift */,
 				829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
 				82E2A55A1A86AF70004C4795 /* DatePicker.swift */,
 				829DC1611A7B3E1F00CD6187 /* Supporting Files */,
-				15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */,
 			);
 			path = VIPP;
 			sourceTree = "<group>";
@@ -351,6 +352,7 @@
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
+				82E2A55D1A86BF2B004C4795 /* FinalPageViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

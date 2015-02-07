@@ -15,7 +15,12 @@ class InitialViewController: UIViewController {
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		PFUser.logOut()
+		
+	}
+	override func viewWillAppear(animated: Bool)
+	{
+		super.viewWillAppear(animated)
+		UIApplication.sharedApplication().statusBarStyle = .LightContent
 		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()
@@ -30,7 +35,7 @@ class InitialViewController: UIViewController {
 			}
 			else
 			{
-				self.performSegueWithIdentifier("signUpDisplay", sender: self)
+				performSegueWithIdentifier("signUpDisplay", sender: self)
 			}
 		}
 	}

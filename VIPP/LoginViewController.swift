@@ -18,6 +18,7 @@ class LoginViewController: UIViewController
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
+		UIApplication.sharedApplication().statusBarStyle = .Default
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		tableView.tableFooterView = view

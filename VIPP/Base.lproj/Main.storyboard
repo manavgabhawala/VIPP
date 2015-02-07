@@ -106,7 +106,6 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="emailLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KHY-f0-sMI"/>
                                                             <segue destination="7zc-S2-VBD" kind="show" id="IIh-Gp-xlT"/>
                                                         </connections>
                                                     </button>
@@ -599,6 +598,7 @@
                     <connections>
                         <outlet property="backButton" destination="ZY7-Hf-gg1" id="kEr-g4-xJp"/>
                         <outlet property="tableView" destination="iD5-xP-yR4" id="C3t-9Y-e3e"/>
+                        <segue destination="JBN-05-7HP" kind="presentation" identifier="thankYou" modalPresentationStyle="fullScreen" modalTransitionStyle="flipHorizontal" id="Ksh-El-tCn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Yu-h0-5hR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -608,7 +608,7 @@
         <!--Final Page View Controller-->
         <scene sceneID="3bd-Zc-UTR">
             <objects>
-                <viewController storyboardIdentifier="FinalPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JBN-05-7HP" customClass="FinalPageViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="FinalPage" useStoryboardIdentifierAsRestorationIdentifier="YES" id="JBN-05-7HP" customClass="FinalPageViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Qbf-Ag-GtU"/>
                         <viewControllerLayoutGuide type="bottom" id="b7Q-TH-OHC"/>
@@ -617,7 +617,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Grey Back" translatesAutoresizingMaskIntoConstraints="NO" id="vow-1P-DR3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Grey Back" translatesAutoresizingMaskIntoConstraints="NO" id="vow-1P-DR3">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4iv-fJ-XYp">
@@ -681,6 +681,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="pca-kH-Evo" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="8U4-tK-Hmq"/>
+                            <constraint firstItem="b7Q-TH-OHC" firstAttribute="top" secondItem="vow-1P-DR3" secondAttribute="bottom" id="CQL-9N-b0i"/>
                             <constraint firstItem="pca-kH-Evo" firstAttribute="top" secondItem="4iv-fJ-XYp" secondAttribute="bottom" id="DAx-dy-5JY"/>
                             <constraint firstItem="4iv-fJ-XYp" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="DPj-KZ-KFk"/>
                             <constraint firstAttribute="centerX" secondItem="mlp-PI-fFh" secondAttribute="centerX" id="Pat-OT-UHR"/>
@@ -690,6 +691,9 @@
                             <constraint firstAttribute="centerX" secondItem="BEl-CI-Eeg" secondAttribute="centerX" id="gT3-Ae-glz"/>
                             <constraint firstAttribute="centerY" secondItem="mlp-PI-fFh" secondAttribute="centerY" multiplier="1.1" id="gXu-ka-SdL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pca-kH-Evo" secondAttribute="trailing" constant="-16" id="jLd-jQ-wdp"/>
+                            <constraint firstItem="vow-1P-DR3" firstAttribute="top" secondItem="p2D-dt-Kfr" secondAttribute="topMargin" id="lzC-43-egQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="vow-1P-DR3" secondAttribute="trailing" constant="-16" id="pH5-Fa-B4h"/>
+                            <constraint firstItem="vow-1P-DR3" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="xqA-Ee-n3a"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -841,7 +845,7 @@
                                     <constraint firstAttribute="centerX" secondItem="qBH-7m-TRA" secondAttribute="centerX" id="yUH-wL-B3f"/>
                                 </constraints>
                             </view>
-                            <tableView contentMode="scaleToFill" bounces="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-YL-wuU">
+                            <tableView contentMode="scaleToFill" bounces="NO" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="HUo-YL-wuU">
                                 <rect key="frame" x="16" y="136" width="568" height="444"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -853,7 +857,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LVL-jQ-e73">
-                                                    <rect key="frame" x="8" y="12" width="31" height="18"/>
+                                                    <rect key="frame" x="8" y="13" width="31" height="18"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -945,7 +949,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="backButton" destination="Y2p-8s-1yZ" id="s5q-31-MEd"/>
                         <outlet property="tableView" destination="HUo-YL-wuU" id="pnI-FU-4yZ"/>
                     </connections>
                 </viewController>

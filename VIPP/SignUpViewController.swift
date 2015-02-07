@@ -88,6 +88,7 @@ class SignUpViewController: UIViewController
 		tableView.tableFooterView = view
 		if let user  = PFUser.currentUser()
 		{
+			println("User exists")
 			if (user["whenGrowsUp"] == nil)
 			{
 				currentPage = 1
@@ -99,10 +100,8 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				//TODO: Show thank you for application page.
-				currentPage = 2
-				setTextFields()
-				println("FIX ME!!!")
+				println("Showing thank you")
+				performSegueWithIdentifier("thankYou", sender: self)
 			}
 		}
 	}
@@ -301,7 +300,7 @@ class SignUpViewController: UIViewController
 					user.signUpInBackgroundWithBlock({(result, error) in
 						if (result && error == nil)
 						{
-							//TODO: Decide what happens once they sign up.
+							self.performSegueWithIdentifier("thankYou", sender: self)
 						}
 						else
 						{
@@ -327,7 +326,7 @@ class SignUpViewController: UIViewController
 					user.saveInBackgroundWithBlock { (result, error) in
 						if (result && error == nil)
 						{
-							//TODO: Decide what happens once their account is complete.
+							self.performSegueWithIdentifier("thankYou", sender: self)
 						}
 						else
 						{
