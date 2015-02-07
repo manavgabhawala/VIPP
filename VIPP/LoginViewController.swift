@@ -1,90 +1,123 @@
 //
-//  ViewController.swift
+//  LoginViewController.swift
 //  VIPP
 //
-//  Created by Manav Gabhawala on 1/29/15.
+//  Created by Manav Gabhawala on 2/7/15.
 //  Copyright (c) 2015 VIPP. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController
+{
+	@IBOutlet var tableView : UITableView!
+	var tableCells = [UITableViewCell]()
+	var emailTextField : UITextField!
+	var passwordTextField : UITextField!
 	
-	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
-		if let user = PFUser.currentUser()
+		let view = UIView()
+		view.backgroundColor = UIColor.clearColor()
+		tableView.tableFooterView = view
+		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		emailCell.drawWithLabel("Email ID", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
+		emailCell.top = true
+		emailTextField = emailCell.textField
+		
+		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		passwordCell.drawWithLabel("Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
+		passwordCell.textField.secureTextEntry = true
+		passwordCell.textField.font = UIFont.systemFontOfSize(15)
+		passwordCell.textField.returnKeyType = .Done
+		passwordCell.bottom = true
+		passwordTextField = passwordCell.textField
+		
+		tableCells.append(emailCell)
+		tableCells.append(passwordCell)
+	}
+	
+	@IBAction func backButtonPressed(sender: UIButton)
+	{
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+	@IBAction func nextButtonPressed(sender: UIButton)
+	{
+		login()
+	}
+	func login()
+	{
+		let email = emailTextField.text
+		let password = passwordTextField.text
+		var isValid = true
+		if (!email.isValidEmail())
 		{
-			let installation = PFInstallation.currentInstallation()
-			if installation["user"] == nil
-			{
-				installation["user"] = user
-				installation.saveEventually(nil)
-			}
-			if (user["isValidVIPP"] as? Bool != nil && user["isValidVIPP"] as Bool)
-			{
-				//TODO: give access to entire app
-			}
-			else
-			{
-				self.performSegueWithIdentifier("signUpDisplay", sender: self)
-			}
+			tableCells[0].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			isValid = false
+		}
+		if (Array(password).count < 6)
+		{
+			tableCells[1].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			isValid = false
+		}
+		if (isValid)
+		{
+			PFUser.logInWithUsernameInBackground(email, password: password, block: {(user, error) in
+				if (user != nil && error == nil)
+				{
+					//TODO: User has logged in
+				}
+				else
+				{
+					self.tableCells[1].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+				}
+			})
 		}
 	}
-	override func didReceiveMemoryWarning()
+}
+extension LoginViewController : UITableViewDelegate, UITableViewDataSource
+{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{
-		super.didReceiveMemoryWarning()
-		// Dispose of any resources that can be recreated.
+		return 2
 	}
-	
-	//MARK: - Actions
-	/**
-	This funcion is called if the facebook login button is pressed.
-	
-	:param: _ The UIButton that represents Facebook Login. Anonymous variable because it is unused.
-	*/
-	@IBAction func facebookLogin(_: UIButton)
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		// When your user logs in, immediately get and store its Facebook ID
-		PFFacebookUtils.logInWithPermissions(["public_profile", "email", "user_birthday", "user_friends"], block: {(user, error) in
-			if (user != nil && error == nil)
-			{
-				FBRequestConnection.startForMeWithCompletionHandler({(connection, result, error) in
-					if (error == nil)
-					{
-						user["fbId"] = result.objectForKey("id")
-						if let firstName = result.objectForKey("first_name") as? String
-						{
-							user["firstName"] = firstName
-						}
-						if let lastName = result.objectForKey("last_name") as? String
-						{
-							user["lastName"] = lastName
-						}
-						if let email = result.objectForKey("email") as? String
-						{
-							user["email"] = email
-						}
-						let currentInstallation = PFInstallation.currentInstallation()
-						currentInstallation["user"] = user
-						user.saveInBackgroundWithBlock(nil)
-						currentInstallation.saveInBackgroundWithBlock(nil)
-						self.performSegueWithIdentifier("signUpDisplay", sender: self)
-					}
-				})
-			}
-		})
+		if section == 1
+		{
+			return 1
+		}
+		return tableCells.count
 	}
-	
-	/**
-	This funcion is called if the use email button is pressed.
-	
-	:param: _ The UIButton that represents Use Email. Anonymous variable because it is unused.
-	*/
-	@IBAction func emailLogin(_: UIButton)
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		
+		if indexPath.section == 1
+		{
+			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as UITableViewCell
+		}
+		return tableCells[indexPath.row]
+	}
+	func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+	{
+		let view = UIView()
+		view.backgroundColor = UIColor.clearColor()
+		return view
+	}
+}
+extension LoginViewController : UITextFieldDelegate
+{
+	func textFieldShouldReturn(textField: UITextField) -> Bool
+	{
+		textField.resignFirstResponder()
+		if (textField == emailTextField)
+		{
+			passwordTextField.becomeFirstResponder()
+		}
+		else
+		{
+			login()
+		}
+		return true
 	}
 }

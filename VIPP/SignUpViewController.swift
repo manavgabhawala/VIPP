@@ -17,6 +17,7 @@ private struct UserInfo
 	var zipCode = 0
 	var state = ""
 	var latitude = 0.0
+	var birthday = NSDate(timeIntervalSinceNow: 0)
 	var longitude = 0.0
 	var email = ""
 	var password = ""
@@ -83,13 +84,15 @@ class SignUpViewController: UIViewController
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		tableView.tableFooterView = view
-		
 		if let user  = PFUser.currentUser()
 		{
 			if (user["whenGrowsUp"] == nil)
 			{
-				currentPage = 2;
-				backButton.hidden = true
+				currentPage = 1
+				setTextFields()
+				textFields[TextField.FirstName.rawValue].text = user["firstName"] as String
+				textFields[TextField.LastName.rawValue].text = user["lastName"] as String
+				backButton.enabled = false
 				tableView.reloadData()
 			}
 			else
@@ -103,6 +106,24 @@ class SignUpViewController: UIViewController
 		super.didReceiveMemoryWarning()
 	}
 	
+	//MARK: - Helper Functions
+	func setTextFields()
+	{
+		assert(currentPage >= 0 && currentPage < tableCells.count)
+		textFields.removeAll(keepCapacity: false)
+		let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as SignUpTableCell).textField }
+		var addressTextFields = [UITextField]()
+		let _ : [Void] = tableCells[currentPage].filter{ $0 is AddressCell }.map {
+			let cell = ($0 as AddressCell)
+			addressTextFields.append(cell.cityField)
+			addressTextFields.append(cell.stateField)
+			addressTextFields.append(cell.zipCodeField)
+		}
+		let surveyTextFields = tableCells[currentPage].filter{ $0 is SurveyCell }.map { ($0 as SurveyCell).textField }
+		signUpTextFields.map { self.textFields.append($0) }
+		addressTextFields.map { self.textFields.append($0) }
+		surveyTextFields.map { self.textFields.append($0) }
+	}
 	//MARK: - Data Validation
 	/**
 	This function validates the current screen cells depedning on the current page number
@@ -134,31 +155,31 @@ class SignUpViewController: UIViewController
 	{
 		assert(currentPage == 0, "Current page must be 0 to be able to validate first cells")
 		var isValid = true
-		if (textFields[TextField.FirstName.rawValue].text.isEmpty)
+		if (!textFields[TextField.EmailID.rawValue].text.isValidEmail())
 		{
-			tableCells[0][TextField.FirstName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.EmailID.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
-		if (textFields[TextField.LastName.rawValue].text.isEmpty)
+		if Array(textFields[TextField.Mobile.rawValue].text.returnActualNumber()).count < 10
 		{
-			tableCells[0][TextField.LastName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Mobile.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
-		let addressTuple = verifyAddress(city: textFields[TextField.City.rawValue].text, state: textFields[TextField.State.rawValue].text, zip: textFields[TextField.Zip.rawValue].text.toInt())
-		if (addressTuple.latitude == nil && addressTuple.longitude == nil)
+		if Array(textFields[TextField.Password.rawValue].text).count < 6
 		{
-			tableCells[0].filter{ $0 is AddressCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Password.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			isValid = false
+		}
+		if textFields[TextField.ConfirmPassword.rawValue].text != textFields[TextField.Password.rawValue].text
+		{
+			tableCells[currentPage][TextField.ConfirmPassword.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
 		{
-			userData.firstName = textFields[TextField.FirstName.rawValue].text
-			userData.lastName = textFields[TextField.LastName.rawValue].text
-			userData.city = textFields[TextField.City.rawValue].text
-			userData.state = textFields[TextField.State.rawValue].text
-			userData.zipCode = textFields[TextField.Zip.rawValue].text.toInt()!
-			userData.latitude = addressTuple.latitude!
-			userData.longitude = addressTuple.longitude!
+			userData.email = textFields[TextField.EmailID.rawValue].text
+			userData.password = textFields[TextField.Password.rawValue].text
+			userData.mobile = textFields[TextField.Mobile.rawValue].text.returnActualNumber().toInt()!
 		}
 		return isValid
 	}
@@ -171,31 +192,33 @@ class SignUpViewController: UIViewController
 	{
 		assert(currentPage == 1, "Current page must be 1 to be able to validate second cells")
 		var isValid = true
-		if (!textFields[TextField.EmailID.rawValue].text.isValidEmail())
+		if (textFields[TextField.FirstName.rawValue].text.isEmpty)
 		{
-			tableCells[1][TextField.EmailID.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.FirstName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
-		if Array(textFields[TextField.Mobile.rawValue].text.returnActualNumber()).count < 10
+		if (textFields[TextField.LastName.rawValue].text.isEmpty)
 		{
-			tableCells[1][TextField.Mobile.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.LastName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
-		if Array(textFields[TextField.Password.rawValue].text).count < 6
+		let addressTuple = verifyAddress(city: textFields[TextField.City.rawValue].text, state: textFields[TextField.State.rawValue].text, zip: textFields[TextField.Zip.rawValue].text.toInt())
+		if (addressTuple.latitude == nil && addressTuple.longitude == nil)
 		{
-			tableCells[1][TextField.Password.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
-			isValid = false
-		}
-		if textFields[TextField.ConfirmPassword.rawValue].text != textFields[TextField.Password.rawValue].text
-		{
-			tableCells[1][TextField.ConfirmPassword.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage].filter{ $0 is AddressCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
 		{
-			userData.email = textFields[TextField.EmailID.rawValue].text
-			userData.password = textFields[TextField.Password.rawValue].text
-			userData.mobile = textFields[TextField.Mobile.rawValue].text.returnActualNumber().toInt()!
+			userData.firstName = textFields[TextField.FirstName.rawValue].text
+			userData.lastName = textFields[TextField.LastName.rawValue].text
+			userData.city = textFields[TextField.City.rawValue].text
+			userData.state = textFields[TextField.State.rawValue].text
+			userData.zipCode = textFields[TextField.Zip.rawValue].text.toInt()!
+			userData.latitude = addressTuple.latitude!
+			userData.longitude = addressTuple.longitude!
+			let date = (tableCells[currentPage].filter { $0 is DateCell }.first as DateCell).datePicker.date
+			userData.birthday = date
 		}
 		return isValid
 	}
@@ -210,17 +233,17 @@ class SignUpViewController: UIViewController
 		var isValid = true
 		if (textFields[TextField.Future.rawValue].text.isEmpty)
 		{
-			tableCells[1][TextField.Future.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Future.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (textFields[TextField.GuysGirls.rawValue].text.isEmpty)
 		{
-			tableCells[1][TextField.GuysGirls.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.GuysGirls.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (textFields[TextField.Venues.rawValue].text.isEmpty)
 		{
-			tableCells[1][TextField.Venues.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Venues.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
@@ -231,33 +254,22 @@ class SignUpViewController: UIViewController
 		}
 		return isValid
 	}
+	
 	//MARK: - Actions
 	/**
 	This function is called when the next button is pressed
 	
 	:param: _ The UIButton that represents next. Anonymous variable because it is unused.
 	*/
-	@IBAction func nextButton(_: UIButton)
+	@IBAction func nextButtonPressed(_: UIButton)
 	{
 		let maxPage = tableCells.count
 		if (validateCells())
 		{
 			if (currentPage + 1 < maxPage)
 			{
-				textFields.removeAll(keepCapacity: false)
 				++currentPage
-				let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as SignUpTableCell).textField }
-				var addressTextFields = [UITextField]()
-				let _ : [Void] = tableCells[currentPage].filter{ $0 is AddressCell }.map {
-					let cell = ($0 as AddressCell)
-					addressTextFields.append(cell.cityField)
-					addressTextFields.append(cell.stateField)
-					addressTextFields.append(cell.zipCodeField)
-				}
-				let surveyTextFields = tableCells[currentPage].filter{ $0 is SurveyCell }.map { ($0 as SurveyCell).textField }
-				signUpTextFields.map { self.textFields.append($0) }
-				addressTextFields.map { self.textFields.append($0) }
-				surveyTextFields.map { self.textFields.append($0) }
+				setTextFields()
 				tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
 			}
 			else
@@ -268,11 +280,14 @@ class SignUpViewController: UIViewController
 					user.username = userData.email
 					user.password = userData.password
 					user.email = userData.email
+					user["firstName"] = userData.firstName
+					user["lastName"] = userData.lastName
 					user["phoneNumber"] = userData.mobile
 					user["geoLocation"] = PFGeoPoint(latitude: userData.latitude, longitude: userData.longitude)
 					user["city"] = userData.city
 					user["state"] = userData.state
 					user["zip"] = userData.zipCode
+					user["birthday"] = userData.birthday
 					user["whenGrowsUp"] = userData.future
 					user["favoriteVenues"] = userData.venues
 					user["nightLifeHabits"] = userData.guysGirls
@@ -291,11 +306,28 @@ class SignUpViewController: UIViewController
 				else
 				{
 					let user = PFUser.currentUser()
+					user["firstName"] = userData.firstName
+					user["lastName"] = userData.lastName
+					user["phoneNumber"] = userData.mobile
+					user["geoLocation"] = PFGeoPoint(latitude: userData.latitude, longitude: userData.longitude)
+					user["city"] = userData.city
+					user["state"] = userData.state
+					user["zip"] = userData.zipCode
+					user["birthday"] = userData.birthday
 					user["whenGrowsUp"] = userData.future
-					user["favoriteClubs"] = userData.venues
+					user["favoriteVenues"] = userData.venues
 					user["nightLifeHabits"] = userData.guysGirls
 					user["validVIPP"] = false
-					//TODO: Decide what happens once their account is complete.
+					user.saveInBackgroundWithBlock { (result, error) in
+						if (result && error == nil)
+						{
+							//TODO: Decide what happens once their account is complete.
+						}
+						else
+						{
+							//TODO: Show error message for signing up.
+						}
+					}
 				}
 			}
 		}
@@ -313,21 +345,13 @@ class SignUpViewController: UIViewController
 			dismissViewControllerAnimated(true, completion: nil)
 			return
 		}
-		textFields.removeAll(keepCapacity: false)
 		--currentPage
-		let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as SignUpTableCell).textField }
-		var addressTextFields = [UITextField]()
-		let _ : [Void] = tableCells[currentPage].filter{ $0 is AddressCell }.map {
-			let cell = ($0 as AddressCell)
-			addressTextFields.append(cell.cityField)
-			addressTextFields.append(cell.stateField)
-			addressTextFields.append(cell.zipCodeField)
-		}
-		let surveyTextFields = tableCells[currentPage].filter{ $0 is SurveyCell }.map { ($0 as SurveyCell).textField }
-		signUpTextFields.map { self.textFields.append($0) }
-		addressTextFields.map { self.textFields.append($0) }
-		surveyTextFields.map { self.textFields.append($0) }
+		setTextFields()
 		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+		if (currentPage == 1 && PFUser.currentUser() != nil)
+		{
+			backButton.enabled = false
+		}
 	}
 }
 //MARK: - Table View Stuff
@@ -339,54 +363,53 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 	func createAllCells()
 	{
 		tableCells.removeAll(keepCapacity: false)
-		let placeholders = ["Name", "Name"]
-		let labels = ["First", "Last"]
 		var firstCells = [UITableViewCell]()
-		for (i, placeholder) in enumerate(placeholders)
-		{
-			let cell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
-			cell.drawWithLabel(labels[i], andPlaceholder: placeholder, keyboardType: .NamePhonePad, delegate: self)
-			textFields.append(cell.textField)
-			firstCells.append(cell)
-		}
-		(firstCells.first? as SignUpTableCell).top = true
-		let cell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
-		cell.cityField.delegate = self
-		cell.stateField.delegate = self
-		cell.zipCodeField.delegate = self
-		textFields.append(cell.cityField)
-		textFields.append(cell.stateField)
-		textFields.append(cell.zipCodeField)
-		cell.bottom = true
-		firstCells.append(cell)
-		tableCells.append(firstCells)
-		
-		var secondCells = [UITableViewCell]()
 		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		emailCell.drawWithLabel("Email ID", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
-		secondCells.append(emailCell)
+		firstCells.append(emailCell)
 		emailCell.top = true
 		
 		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		phoneCell.drawWithLabel("Mobile", andPlaceholder: "(XXX) XXX-XXXX", keyboardType: .PhonePad, delegate: self)
 		phoneCell.textField.addTarget(self, action: "phoneNumberTextField:", forControlEvents: .EditingChanged)
-		secondCells.append(phoneCell)
+		firstCells.append(phoneCell)
 		
 		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		passwordCell.drawWithLabel("Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		passwordCell.textField.secureTextEntry = true
 		passwordCell.textField.font = UIFont.systemFontOfSize(15)
-		secondCells.append(passwordCell)
+		firstCells.append(passwordCell)
 		
 		let confirmPasswordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		confirmPasswordCell.drawWithLabel("Confirm Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		confirmPasswordCell.textField.secureTextEntry = true
 		confirmPasswordCell.textField.font = UIFont.systemFontOfSize(15)
 		confirmPasswordCell.bottom = true
-		secondCells.append(confirmPasswordCell)
-		tableCells.append(secondCells)
+		firstCells.append(confirmPasswordCell)
+		tableCells.append(firstCells)
 		
-		let placeholderSurvey = ["When I grow up I want to be (or already am)...", "Will you be going out with guys or girls?", "Favorite Venues?"]
+		let placeholders = ["Name", "Name"]
+		let labels = ["First", "Last"]
+		var secondCells = [UITableViewCell]()
+		for (i, placeholder) in enumerate(placeholders)
+		{
+			let cell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+			cell.drawWithLabel(labels[i], andPlaceholder: placeholder, keyboardType: .NamePhonePad, delegate: self)
+			secondCells.append(cell)
+		}
+		(secondCells.first? as SignUpTableCell).top = true
+		let cell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
+		cell.cityField.delegate = self
+		cell.stateField.delegate = self
+		cell.zipCodeField.delegate = self
+		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as DateCell
+		birthdayCell.datePicker.maximumDate = NSDate(timeIntervalSinceNow: 0)
+		cell.bottom = true
+		secondCells.append(cell)
+		tableCells.append(firstCells)
+		
+		
+		let placeholderSurvey = ["When I grow up I want to be (or am)?", "Will you be going out with guys or girls?", "Favorite Venues?"]
 		var thirdCells = [UITableViewCell]()
 		for (i, placeholder) in enumerate(placeholderSurvey)
 		{
@@ -397,6 +420,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		(thirdCells.first as SurveyCell).top = true
 		(thirdCells.last as SurveyCell).bottom = true
 		tableCells.append(thirdCells)
+		setTextFields()
 		tableView.reloadData()
 	}
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -439,6 +463,7 @@ extension SignUpViewController : UITextFieldDelegate
 		}
 		return true
 	}
+	
 	/**
 	A function callback for everytime the phone number text field is edited so that it can update the phone number to the correct format.
 	

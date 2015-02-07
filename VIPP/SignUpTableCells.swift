@@ -135,3 +135,9 @@ class SurveyCell : UITableViewCell, RoundedTableCells
 		textField.delegate = delegate
 	}
 }
+
+class DateCell: UITableViewCell, RoundedTableCells
+{
+	var top = false, bottom = false
+	@IBOutlet var datePicker : UIDatePicker!
+}
