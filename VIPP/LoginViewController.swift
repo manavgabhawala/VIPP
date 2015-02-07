@@ -14,7 +14,7 @@ class LoginViewController: UIViewController
 	var tableCells = [UITableViewCell]()
 	var emailTextField : UITextField!
 	var passwordTextField : UITextField!
-	
+	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -37,15 +37,32 @@ class LoginViewController: UIViewController
 		tableCells.append(emailCell)
 		tableCells.append(passwordCell)
 	}
+	override func didReceiveMemoryWarning()
+	{
+		super.didReceiveMemoryWarning()
+	}
+	//MARK: - Actions
+	/**
+	This function is called when the cancel button is pressed
 	
-	@IBAction func backButtonPressed(sender: UIButton)
+	:param: _ The UIButton that represents cancel. Anonymous variable because it is unused.
+	*/
+	@IBAction func cancelButtonPressed(_: UIButton)
 	{
 		dismissViewControllerAnimated(true, completion: nil)
 	}
-	@IBAction func nextButtonPressed(sender: UIButton)
+	/**
+	This function is called when the done button is pressed
+	
+	:param: _ The UIButton that represents done. Anonymous variable because it is unused.
+	*/
+	@IBAction func doneButtonPressed(_: UIButton)
 	{
 		login()
 	}
+	/**
+	Logs the user in if no errors found. Else shakes text fields where errors were found
+	*/
 	func login()
 	{
 		let email = emailTextField.text

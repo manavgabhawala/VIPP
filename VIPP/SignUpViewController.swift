@@ -80,6 +80,8 @@ class SignUpViewController: UIViewController
 	{
 		super.viewDidLoad()
 		UIApplication.sharedApplication().statusBarStyle = .Default
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardShown:", name: "UIKeyboardWillShowNotification", object: nil)
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardHidden:", name: "UIKeyboardWillHideNotification", object: nil)
 		createAllCells()
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
@@ -92,12 +94,15 @@ class SignUpViewController: UIViewController
 				setTextFields()
 				textFields[TextField.FirstName.rawValue].text = user["firstName"] as String
 				textFields[TextField.LastName.rawValue].text = user["lastName"] as String
-				backButton.enabled = false
+				backButton.hidden = true
 				tableView.reloadData()
 			}
 			else
 			{
 				//TODO: Show thank you for application page.
+				currentPage = 2
+				setTextFields()
+				println("FIX ME!!!")
 			}
 		}
 	}
@@ -124,6 +129,7 @@ class SignUpViewController: UIViewController
 		addressTextFields.map { self.textFields.append($0) }
 		surveyTextFields.map { self.textFields.append($0) }
 	}
+	
 	//MARK: - Data Validation
 	/**
 	This function validates the current screen cells depedning on the current page number
@@ -330,6 +336,11 @@ class SignUpViewController: UIViewController
 					}
 				}
 			}
+			backButton.hidden = false
+			if (currentPage == 1 && PFUser.currentUser() != nil)
+			{
+				backButton.hidden = true
+			}
 		}
 	}
 	
@@ -348,9 +359,10 @@ class SignUpViewController: UIViewController
 		--currentPage
 		setTextFields()
 		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+		backButton.hidden = false
 		if (currentPage == 1 && PFUser.currentUser() != nil)
 		{
-			backButton.enabled = false
+			backButton.hidden = true
 		}
 	}
 }
@@ -367,25 +379,22 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		emailCell.drawWithLabel("Email ID", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
 		firstCells.append(emailCell)
-		emailCell.top = true
-		
 		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		phoneCell.drawWithLabel("Mobile", andPlaceholder: "(XXX) XXX-XXXX", keyboardType: .PhonePad, delegate: self)
 		phoneCell.textField.addTarget(self, action: "phoneNumberTextField:", forControlEvents: .EditingChanged)
 		firstCells.append(phoneCell)
-		
 		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		passwordCell.drawWithLabel("Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		passwordCell.textField.secureTextEntry = true
 		passwordCell.textField.font = UIFont.systemFontOfSize(15)
 		firstCells.append(passwordCell)
-		
 		let confirmPasswordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		confirmPasswordCell.drawWithLabel("Confirm Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		confirmPasswordCell.textField.secureTextEntry = true
 		confirmPasswordCell.textField.font = UIFont.systemFontOfSize(15)
-		confirmPasswordCell.bottom = true
 		firstCells.append(confirmPasswordCell)
+		(firstCells.first as RoundedTableCells).top = true
+		(firstCells.last as RoundedTableCells).bottom = true
 		tableCells.append(firstCells)
 		
 		let placeholders = ["Name", "Name"]
@@ -398,16 +407,17 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 			secondCells.append(cell)
 		}
 		(secondCells.first? as SignUpTableCell).top = true
-		let cell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
-		cell.cityField.delegate = self
-		cell.stateField.delegate = self
-		cell.zipCodeField.delegate = self
+		let addressCell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
+		addressCell.cityField.delegate = self
+		addressCell.stateField.delegate = self
+		addressCell.zipCodeField.delegate = self
+		secondCells.append(addressCell)
 		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as DateCell
-		birthdayCell.datePicker.maximumDate = NSDate(timeIntervalSinceNow: 0)
-		cell.bottom = true
-		secondCells.append(cell)
-		tableCells.append(firstCells)
-		
+		birthdayCell.draw("Birthday", maxDate: NSDate(timeIntervalSinceNow: 0))
+		secondCells.append(birthdayCell)
+		(secondCells.first as RoundedTableCells).top = true
+		(secondCells.last as RoundedTableCells).bottom = true
+		tableCells.append(secondCells)
 		
 		let placeholderSurvey = ["When I grow up I want to be (or am)?", "Will you be going out with guys or girls?", "Favorite Venues?"]
 		var thirdCells = [UITableViewCell]()
@@ -417,8 +427,8 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 			cell.drawWithPlaceholder(placeholder, delegate: self)
 			thirdCells.append(cell)
 		}
-		(thirdCells.first as SurveyCell).top = true
-		(thirdCells.last as SurveyCell).bottom = true
+		(thirdCells.first as RoundedTableCells).top = true
+		(thirdCells.last as RoundedTableCells).bottom = true
 		tableCells.append(thirdCells)
 		setTextFields()
 		tableView.reloadData()
@@ -472,5 +482,50 @@ extension SignUpViewController : UITextFieldDelegate
 	func phoneNumberTextField(sender: UITextField)
 	{
 		sender.text.makeMaskedPhoneText()
+	}
+	
+	/**
+	A registered notification callback for when the keyboard is shown because the user tapped on a textfield.
+	
+	:param: notification The notification that the keyboard is now shown.
+	:discussion: This function deals with creating an offset for the scroll view whenever the keyboard is shown so that the view does not think that it has the entire screen to draw in rather it has the screen minus the height of the keyboard.
+	*/
+	func keyboardShown (notification: NSNotification)
+	{
+		var info = notification.userInfo!
+		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue().size
+		{
+			var contentInsets = UIEdgeInsetsMake(0.0, 0.0, keyboardSize.height, 0.0)
+			tableView.contentInset = contentInsets
+			tableView.scrollIndicatorInsets = contentInsets
+			var rect = self.view.frame
+			rect.size.height -= keyboardSize.height
+			var activeField = UIView()
+			for textField in textFields
+			{
+				if textField.isFirstResponder()
+				{
+					activeField = textField
+					break
+				}
+			}
+			if (!rect.contains(activeField.frame.origin))
+			{
+				tableView.scrollRectToVisible(activeField.frame, animated: true)
+			}
+		}
+	}
+	
+	/**
+	A registered notification callback for when the keyboard is shown because the textfields lost responder.
+	
+	:param: notification The notification that the keyboard is now hidden.
+	:discussion: This function deals with removing the offset created for the scroll view whenever the keyboard is hidden so that now the view knows that it has the entire screen to draw on again.
+	*/
+	func keyboardHidden (notification: NSNotification)
+	{
+		var contentInsets = UIEdgeInsetsZero
+		tableView.contentInset = contentInsets
+		tableView.scrollIndicatorInsets = contentInsets
 	}
 }

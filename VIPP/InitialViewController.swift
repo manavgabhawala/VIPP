@@ -15,6 +15,7 @@ class InitialViewController: UIViewController {
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
+		PFUser.logOut()
 		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()
@@ -78,13 +79,4 @@ class InitialViewController: UIViewController {
 		})
 	}
 	
-	/**
-	This funcion is called if the use email button is pressed.
-	
-	:param: _ The UIButton that represents Use Email. Anonymous variable because it is unused.
-	*/
-	@IBAction func emailLogin(_: UIButton)
-	{
-		
-	}
 }

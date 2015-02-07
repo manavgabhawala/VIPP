@@ -196,10 +196,6 @@ func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Doub
 				}
 			}
 		}
-		else
-		{
-			//TODO: Show UIAlertController
-		}
 	}
 	return (nil, nil)
 }

@@ -44,6 +44,8 @@
 		82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
 		82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
 		82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
+		82E2A55B1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
+		82E2A55C1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,7 @@
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
 		82C7B3F11A7F13400088EC2B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		82E2A5571A869E8E004C4795 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		82E2A55A1A86AF70004C4795 /* DatePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +166,7 @@
 				829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
+				82E2A55A1A86AF70004C4795 /* DatePicker.swift */,
 				829DC1611A7B3E1F00CD6187 /* Supporting Files */,
 				15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */,
 			);
@@ -333,6 +337,7 @@
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				15E8B9071A8340FF004E1366 /* FinalPageViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
+				82E2A55B1A86AF70004C4795 /* DatePicker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */,
+				82E2A55C1A86AF70004C4795 /* DatePicker.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,

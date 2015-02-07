@@ -10,8 +10,8 @@ import UIKit
 
 @objc protocol RoundedTableCells
 {
-	var bottom : Bool { get }
-	var top : Bool { get }
+	var bottom : Bool { set get }
+	var top : Bool { set get }
 }
 extension UITableViewCell
 {
@@ -42,7 +42,14 @@ extension UITableViewCell
 				layer.mask = shape
 				layer.masksToBounds = true
 			}
+			if !(self as RoundedTableCells).bottom
+			{
+				let mySeparator = UIView(frame: CGRect(x: contentView.frame.size.width * 0.025, y: contentView.frame.size.height - 1, width: contentView.frame.size.width * 0.95, height: 1))
+				mySeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.8)
+				contentView.addSubview(mySeparator)
+			}
 		}
+		layoutIfNeeded()
 	}
 }
 class SignUpTableCell: UITableViewCell, RoundedTableCells
@@ -136,8 +143,16 @@ class SurveyCell : UITableViewCell, RoundedTableCells
 	}
 }
 
-class DateCell: UITableViewCell, RoundedTableCells
+class DateCell: UITableViewCell, RoundedTableCells, UIPickerViewDelegate
 {
 	var top = false, bottom = false
-	@IBOutlet var datePicker : UIDatePicker!
+	@IBOutlet var datePicker : DatePicker!
+	@IBOutlet var label : UILabel!
+	func draw(labelText: String, maxDate: NSDate)
+	{
+		datePicker.maximumDate = maxDate
+		label.text = labelText
+		datePicker.backgroundColor = UIColor.clearColor()
+		datePicker.setup()
+	}
 }

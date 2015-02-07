@@ -53,7 +53,6 @@
                                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
                                                         <connections>
-                                                            <action selector="emailLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tNj-Df-JaQ"/>
                                                             <segue destination="lyf-Cz-aag" kind="show" identifier="signUpDisplay" id="yC3-jW-tSR"/>
                                                         </connections>
                                                     </button>
@@ -334,7 +333,7 @@
                                     <constraint firstAttribute="height" constant="64" id="yTw-F0-mUz"/>
                                 </constraints>
                             </view>
-                            <tableView contentMode="scaleToFill" bounces="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-xP-yR4">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" bouncesZoom="NO" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="40" sectionFooterHeight="75" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-xP-yR4">
                                 <rect key="frame" x="16" y="136" width="568" height="444"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="separatorColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -346,7 +345,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKg-Xr-BGv">
-                                                    <rect key="frame" x="8" y="12" width="31" height="18"/>
+                                                    <rect key="frame" x="8" y="13" width="31" height="18"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -376,6 +375,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
                                             <outlet property="label" destination="cKg-Xr-BGv" id="CQK-D5-ojO"/>
@@ -388,7 +388,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="30V-9T-wHO">
-                                                    <rect key="frame" x="8" y="12" width="34" height="18"/>
+                                                    <rect key="frame" x="8" y="13" width="34" height="18"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -412,7 +412,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTL-vi-52o">
-                                                    <rect key="frame" x="465" y="12" width="25" height="18"/>
+                                                    <rect key="frame" x="465" y="13" width="25" height="18"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -462,6 +462,7 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
                                             <outlet property="cityField" destination="3uq-vY-8MY" id="fdp-NC-pbw"/>
@@ -497,18 +498,19 @@
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
                                             <outlet property="textField" destination="tSJ-6p-vB9" id="LL0-he-Jrw"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="DateCell" rowHeight="162" id="4lE-uc-7xz" customClass="DateCell" customModule="VIPP" customModuleProvider="target">
+                                    <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="DateCell" rowHeight="180" id="4lE-uc-7xz" customClass="DateCell" customModule="VIPP" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4lE-uc-7xz" id="2Hy-K5-bQv">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-dE-CUa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="568" height="162"/>
+                                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" minuteInterval="1" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vAR-dE-CUa" customClass="DatePicker" customModule="VIPP" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="13" width="552" height="162"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="-504903599.85202402">
                                                         <!--1985-01-01 05:00:00 +0000-->
                                                     </date>
@@ -524,17 +526,19 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vAR-dE-CUa" firstAttribute="leading" secondItem="2Hy-K5-bQv" secondAttribute="leadingMargin" constant="-8" id="1y8-zl-jGq"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vAR-dE-CUa" secondAttribute="trailing" constant="-8" id="7uv-UT-W53"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="vAR-dE-CUa" secondAttribute="bottom" constant="-8" id="Dr5-ow-C2w"/>
                                                 <constraint firstItem="jTp-Um-2h7" firstAttribute="top" secondItem="2Hy-K5-bQv" secondAttribute="topMargin" id="GGs-mI-iD0"/>
-                                                <constraint firstItem="vAR-dE-CUa" firstAttribute="top" secondItem="2Hy-K5-bQv" secondAttribute="topMargin" constant="-8" id="U3M-XG-sCp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vAR-dE-CUa" secondAttribute="trailing" id="SfZ-uf-Dy4"/>
+                                                <constraint firstItem="vAR-dE-CUa" firstAttribute="top" secondItem="2Hy-K5-bQv" secondAttribute="topMargin" constant="8" id="ZR7-Nn-3dU"/>
                                                 <constraint firstItem="jTp-Um-2h7" firstAttribute="leading" secondItem="2Hy-K5-bQv" secondAttribute="leadingMargin" id="dTV-Ss-6fn"/>
+                                                <constraint firstItem="vAR-dE-CUa" firstAttribute="leading" secondItem="2Hy-K5-bQv" secondAttribute="leadingMargin" id="khg-e0-8qM"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="vAR-dE-CUa" secondAttribute="bottom" id="yur-Fi-IWF"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <inset key="separatorInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
                                         <connections>
                                             <outlet property="datePicker" destination="vAR-dE-CUa" id="4EM-q1-Wm8"/>
+                                            <outlet property="label" destination="jTp-Um-2h7" id="WId-Nw-bWm"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell multipleTouchEnabled="YES" contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="termsLabel" rowHeight="60" id="YP2-Jc-y9L">
@@ -808,7 +812,7 @@
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="nextButtonPressed:" destination="7zc-S2-VBD" eventType="touchUpInside" id="gSp-0X-FkF"/>
+                                            <action selector="doneButtonPressed:" destination="7zc-S2-VBD" eventType="touchUpInside" id="kAL-kv-C5l"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y2p-8s-1yZ">
@@ -818,7 +822,7 @@
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonPressed:" destination="7zc-S2-VBD" eventType="touchUpInside" id="BmP-PQ-d8J"/>
+                                            <action selector="cancelButtonPressed:" destination="7zc-S2-VBD" eventType="touchUpInside" id="vK1-dA-ktD"/>
                                         </connections>
                                     </button>
                                 </subviews>
