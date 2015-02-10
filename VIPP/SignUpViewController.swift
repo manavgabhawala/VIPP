@@ -120,6 +120,9 @@ class SignUpViewController: UIViewController
 	func setTextFields()
 	{
 		assert(currentPage >= 0 && currentPage < tableCells.count)
+		let manager = NSFileManager()
+		let somethigngEl = 1
+		
 		textFields.removeAll(keepCapacity: false)
 		let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as SignUpTableCell).textField }
 		var addressTextFields = [UITextField]()

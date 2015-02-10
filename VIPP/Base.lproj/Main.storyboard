@@ -179,16 +179,22 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="7" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-M2-RK4">
+                                <rect key="frame" x="249" y="555" width="103" height="37"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.90980392156862744" green="0.90980392156862744" blue="0.90980392156862744" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="6sK-Rn-wSk" firstAttribute="top" secondItem="IAT-M2-RK4" secondAttribute="bottom" constant="8" symbolic="YES" id="6At-y1-CUr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xeP-2n-w9p" secondAttribute="trailing" constant="-16" id="PEt-jY-7DP"/>
+                            <constraint firstAttribute="centerX" secondItem="IAT-M2-RK4" secondAttribute="centerX" id="bUd-B7-XBQ"/>
                             <constraint firstItem="xeP-2n-w9p" firstAttribute="centerY" secondItem="eBa-ij-9fF" secondAttribute="centerY" multiplier="1.5" id="pbm-a1-9mv"/>
                             <constraint firstItem="6sK-Rn-wSk" firstAttribute="top" secondItem="xeP-2n-w9p" secondAttribute="bottom" id="qVF-Vt-R1P"/>
                             <constraint firstItem="xeP-2n-w9p" firstAttribute="leading" secondItem="eBa-ij-9fF" secondAttribute="leadingMargin" constant="-16" id="ulx-d2-U2r"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="pageControl" destination="IAT-M2-RK4" id="ivI-Wb-CHj"/>
                         <outlet property="pagingContainerView" destination="xeP-2n-w9p" id="RrL-0N-Op6"/>
                     </connections>
                 </viewController>
@@ -199,7 +205,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
         <!--Image View Controller-->
         <scene sceneID="yFi-81-Rue">
             <objects>
-                <viewController storyboardIdentifier="ImageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vkv-vQ-sWn" customClass="ImageViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ImageViewController" modalTransitionStyle="crossDissolve" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vkv-vQ-sWn" customClass="ImageViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9H5-6S-nQJ"/>
                         <viewControllerLayoutGuide type="bottom" id="cOu-iG-f8Z"/>

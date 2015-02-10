@@ -9,9 +9,11 @@
 import Foundation
 import UIKit
 
+
 class InformationViewController: UIViewController
 {
 	@IBOutlet var pagingContainerView : UIView!
+	@IBOutlet var pageControl : UIPageControl!
 	var images = [UIImage]()
 	let pagingController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
 	override func viewDidLoad()
@@ -21,6 +23,7 @@ class InformationViewController: UIViewController
 		{
 			images.append(UIImage(named: "\(i).png")!)
 		}
+		pageControl.numberOfPages = numberOfImages
 		//addChildViewController(pagingController)
 		pagingController.delegate = self
 		pagingController.dataSource = self
@@ -41,6 +44,7 @@ class InformationViewController: UIViewController
 		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as ImageViewController
 		viewController.view.tag = index
 		viewController.imageView.image = images[index]
+		viewController.view.frame.size = pagingContainerView.frame.size
 		return viewController
 	}
 }
@@ -56,6 +60,14 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 		let index = viewController.view.tag + 1
 		return viewControllerForIndex(index)
 	}
+	func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool)
+	{
+		if (completed)
+		{
+			pageControl.currentPage = (pageViewController.viewControllers.first! as UIViewController).view.tag
+		}
+	}
+	/*
 	func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
 	{
 		return images.count
@@ -64,59 +76,5 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 	func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
 	{
 		return (pageViewController.viewControllers.first! as UIViewController).view.tag
-	}
+	}*/
 }
-/*
-extension InformationViewController : UIScrollViewDelegate
-{
-	func scrollViewDidScroll(scrollView: UIScrollView)
-	{
-		loadVisiblePages()
-	}
-	func loadPage(page: Int)
-	{
-		if (page < 0 || page >= pageControl.numberOfPages)
-		{
-			return
-		}
-		var frame = scrollView.bounds
-		frame.origin.x = frame.size.width * CGFloat(page)
-		frame.origin.y = 0.0
-		images[page].frame = frame
-		scrollView.addSubview(images[page])
-	}
-	func purgePage(page: Int)
-	{
-		if page < 0 || page >= pageControl.numberOfPages
-		{
-			return
-		}
-		images[page].removeFromSuperview()
-	}
-	func loadVisiblePages()
-	{
-		let pageWidth = scrollView.frame.width
-		let page = Int(floor(scrollView.contentOffset.x * 2 + pageWidth) / (pageWidth * 2))
-		pageControl.currentPage = page
-		let firstPage = page - 2
-		let lastPage = page + 2
-		if (firstPage > 0)
-		{
-			for i in 0..<firstPage
-			{
-				purgePage(i)
-			}
-		}
-		for i in firstPage...lastPage
-		{
-			loadPage(i)
-		}
-		if (lastPage < pageControl.numberOfPages)
-		{
-			for i in lastPage..<pageControl.numberOfPages
-			{
-				purgePage(i)
-			}
-		}
-	}
-}*/
