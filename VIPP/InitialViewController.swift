@@ -43,7 +43,7 @@ class InitialViewController: UIViewController {
 			{
 				if (user["whenGrowsUp"] != nil)
 				{
-					let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as FinalPageViewController
+					let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as ThankYouViewController
 					finalPage.modalPresentationStyle = .FullScreen
 					finalPage.modalTransitionStyle = .FlipHorizontal
 					presentViewController(finalPage, animated: true, completion: nil)

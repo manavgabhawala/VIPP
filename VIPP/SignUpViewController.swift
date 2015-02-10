@@ -103,7 +103,7 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as FinalPageViewController
+				let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as ThankYouViewController
 				finalPage.modalPresentationStyle = .FullScreen
 				finalPage.modalTransitionStyle = .FlipHorizontal
 				presentViewController(finalPage, animated: false, completion: nil)
@@ -281,6 +281,7 @@ class SignUpViewController: UIViewController
 				++currentPage
 				setTextFields()
 				tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+				tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
 			}
 			else
 			{
@@ -363,6 +364,7 @@ class SignUpViewController: UIViewController
 		--currentPage
 		setTextFields()
 		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+		tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Automatic)
 		backButton.hidden = false
 		if (currentPage == 1 && PFUser.currentUser() != nil)
 		{
@@ -381,7 +383,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		tableCells.removeAll(keepCapacity: false)
 		var firstCells = [UITableViewCell]()
 		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
-		emailCell.drawWithLabel("Email ID", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
+		emailCell.drawWithLabel("Email", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
 		firstCells.append(emailCell)
 		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		phoneCell.drawWithLabel("Mobile", andPlaceholder: "(XXX) XXX-XXXX", keyboardType: .PhonePad, delegate: self)
@@ -453,6 +455,10 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 	{
 		if indexPath.section == 1
 		{
+			if (currentPage == 0)
+			{
+				return tableView.dequeueReusableCellWithIdentifier("loginCell") as UITableViewCell
+			}
 			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as UITableViewCell
 		}
 		return tableCells[currentPage][indexPath.row]
@@ -462,6 +468,17 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		return view
+	}
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+	{
+		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		if (currentPage == 0)
+		{
+			if (indexPath.section == 1)
+			{
+				performSegueWithIdentifier("loginSegue", sender: self)
+			}
+		}
 	}
 }
 //MARK: - TextField Stuff

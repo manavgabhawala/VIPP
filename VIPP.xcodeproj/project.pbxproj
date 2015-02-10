@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		15E8B9071A8340FF004E1366 /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */; };
+		15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */; };
 		820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DC1651A7B3E1F00CD6187 /* InitialViewController.swift */; };
+		82153BC31A89A17C00C0C8FE /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82153BC21A89A17C00C0C8FE /* TermsAndConditionViewController.swift */; };
+		82153BC41A89A17E00C0C8FE /* TermsAndConditionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82153BC21A89A17C00C0C8FE /* TermsAndConditionViewController.swift */; };
+		82153BC61A89AA2600C0C8FE /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82153BC51A89AA2600C0C8FE /* MessageUI.framework */; };
 		8220B46F1A7C775A00E53553 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220B46D1A7C775A00E53553 /* Bolts.framework */; };
 		8220B4701A7C775A00E53553 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220B46D1A7C775A00E53553 /* Bolts.framework */; };
 		8220B4711A7C775A00E53553 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220B46E1A7C775A00E53553 /* Parse.framework */; };
@@ -46,7 +49,7 @@
 		82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
 		82E2A55B1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
 		82E2A55C1A86AF70004C4795 /* DatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A55A1A86AF70004C4795 /* DatePicker.swift */; };
-		82E2A55D1A86BF2B004C4795 /* FinalPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */; };
+		82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FinalPageViewController.swift; sourceTree = "<group>"; };
+		15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
+		82153BC21A89A17C00C0C8FE /* TermsAndConditionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsAndConditionViewController.swift; sourceTree = "<group>"; };
+		82153BC51A89AA2600C0C8FE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		8220B46D1A7C775A00E53553 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8220B46E1A7C775A00E53553 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		829DC15E1A7B3E1F00CD6187 /* VIPP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VIPP.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82153BC61A89AA2600C0C8FE /* MessageUI.framework in Frameworks */,
 				829DC1A81A7B3EF600CD6187 /* libsqlite3.dylib in Frameworks */,
 				829DC1B21A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */,
 				829DC1A61A7B3EEE00CD6187 /* libz.dylib in Frameworks */,
@@ -161,9 +167,10 @@
 				829DC1631A7B3E1F00CD6187 /* AppDelegate.swift */,
 				82C7B3F11A7F13400088EC2B /* Extensions.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
+				82153BC21A89A17C00C0C8FE /* TermsAndConditionViewController.swift */,
 				829DC1651A7B3E1F00CD6187 /* InitialViewController.swift */,
 				82AC16FF1A7C749D0065387F /* SignUpViewController.swift */,
-				15E8B9061A8340FF004E1366 /* FinalPageViewController.swift */,
+				15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */,
 				82E2A5571A869E8E004C4795 /* LoginViewController.swift */,
 				829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
@@ -204,6 +211,7 @@
 		829DC18C1A7B3E7100CD6187 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82153BC51A89AA2600C0C8FE /* MessageUI.framework */,
 				829DC1A71A7B3EF600CD6187 /* libsqlite3.dylib */,
 				829DC1A51A7B3EEE00CD6187 /* libz.dylib */,
 				8220B46D1A7C775A00E53553 /* Bolts.framework */,
@@ -332,11 +340,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */,
+				82153BC31A89A17C00C0C8FE /* TermsAndConditionViewController.swift in Sources */,
 				82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */,
 				82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC1661A7B3E1F00CD6187 /* InitialViewController.swift in Sources */,
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
-				15E8B9071A8340FF004E1366 /* FinalPageViewController.swift in Sources */,
+				15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
 				82E2A55B1A86AF70004C4795 /* DatePicker.swift in Sources */,
 			);
@@ -347,12 +356,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */,
+				82153BC41A89A17E00C0C8FE /* TermsAndConditionViewController.swift in Sources */,
 				82E2A55C1A86AF70004C4795 /* DatePicker.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
-				82E2A55D1A86BF2B004C4795 /* FinalPageViewController.swift in Sources */,
+				82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
