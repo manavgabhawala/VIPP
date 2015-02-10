@@ -74,6 +74,7 @@ class SignUpViewController: UIViewController
 	
 	var currentPage = 0
 	private var userData = UserInfo()
+	var birthdayDetailLabel : UILabel?
 	
 	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
@@ -156,6 +157,7 @@ class SignUpViewController: UIViewController
 		}
 		return false
 	}
+	
 	/**
 	This function validates the first page cells. currentPageNumber must equal 0.
 	
@@ -227,8 +229,9 @@ class SignUpViewController: UIViewController
 			userData.zipCode = textFields[TextField.Zip.rawValue].text.toInt()!
 			userData.latitude = addressTuple.latitude!
 			userData.longitude = addressTuple.longitude!
-			let date = (tableCells[currentPage].filter { $0 is DateCell }.first as DateCell).datePicker.date
-			userData.birthday = date
+			let dateFormatter = NSDateFormatter()
+			dateFormatter.dateStyle = .MediumStyle
+			userData.birthday = dateFormatter.dateFromString(birthdayDetailLabel!.text!)!
 		}
 		return isValid
 	}
@@ -384,6 +387,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		var firstCells = [UITableViewCell]()
 		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		emailCell.drawWithLabel("Email", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
+		emailCell.textField.autocapitalizationType = .None
 		firstCells.append(emailCell)
 		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
 		phoneCell.drawWithLabel("Mobile", andPlaceholder: "(XXX) XXX-XXXX", keyboardType: .PhonePad, delegate: self)
@@ -413,14 +417,18 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 			secondCells.append(cell)
 		}
 		(secondCells.first? as SignUpTableCell).top = true
+		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateDisplay") as UIRoundedTableViewCell
+		birthdayCell.mainLabel.text = "Birthday"
+		birthdayCell.dateLabel.text = "1 Jan, 1985"
+		birthdayDetailLabel = birthdayCell.dateLabel
+		secondCells.append(birthdayCell)
+		
 		let addressCell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
 		addressCell.cityField.delegate = self
 		addressCell.stateField.delegate = self
 		addressCell.zipCodeField.delegate = self
 		secondCells.append(addressCell)
-		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as DateCell
-		birthdayCell.draw("Birthday", maxDate: NSDate(timeIntervalSinceNow: 0))
-		secondCells.append(birthdayCell)
+		
 		(secondCells.first as RoundedTableCells).top = true
 		(secondCells.last as RoundedTableCells).bottom = true
 		tableCells.append(secondCells)
@@ -472,11 +480,35 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 	{
 		tableView.deselectRowAtIndexPath(indexPath, animated: true)
+		textFields.map { $0.resignFirstResponder() }
 		if (currentPage == 0)
 		{
 			if (indexPath.section == 1)
 			{
 				performSegueWithIdentifier("loginSegue", sender: self)
+			}
+		}
+		if (tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "DateDisplay")
+		{
+			let dateFormatter = NSDateFormatter()
+			dateFormatter.dateStyle = .MediumStyle
+			let newIndexPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+			if (tableView.cellForRowAtIndexPath(newIndexPath) is DateCell)
+			{
+				tableCells[currentPage].removeAtIndex(indexPath.row + 1)
+				tableView.deleteRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left)
+			}
+			else
+			{
+				let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as DateCell
+				birthdayCell.draw("Birthday", maxDate: NSDate(timeIntervalSinceNow: 0))
+				if let date = dateFormatter.dateFromString(birthdayDetailLabel!.text!)
+				{
+					birthdayCell.datePicker.setDate(date, animated: true)
+				}
+				birthdayCell.datePicker.addTarget(self, action: "datePicked:", forControlEvents: .ValueChanged)
+				tableCells[currentPage].insert(birthdayCell, atIndex: indexPath.row + 1)
+				tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Left)
 			}
 		}
 	}
@@ -491,6 +523,10 @@ extension SignUpViewController : UITextFieldDelegate
 		if (textFields.count > index + 1)
 		{
 			textFields[index+1].becomeFirstResponder()
+		}
+		else
+		{
+			nextButtonPressed(UIButton())
 		}
 		return true
 	}
@@ -548,5 +584,22 @@ extension SignUpViewController : UITextFieldDelegate
 		var contentInsets = UIEdgeInsetsZero
 		tableView.contentInset = contentInsets
 		tableView.scrollIndicatorInsets = contentInsets
+	}
+}
+extension SignUpViewController
+{
+	/**
+	This is a callback for whenever the date picker changes it's date.
+	
+	:param: datePicker The date picker whose date changed
+	*/
+	func datePicked(datePicker: DatePicker)
+	{
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateStyle = .MediumStyle
+		if (birthdayDetailLabel != nil)
+		{
+			birthdayDetailLabel?.text = dateFormatter.stringFromDate(datePicker.date)
+		}
 	}
 }

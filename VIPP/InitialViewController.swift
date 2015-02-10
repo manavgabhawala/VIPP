@@ -24,9 +24,7 @@ class InitialViewController: UIViewController {
 	}
 	override func viewDidAppear(animated: Bool)
 	{
-		super.viewDidAppear(animated)
-		PFUser.logOut()
-		
+		super.viewDidAppear(animated)		
 		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()

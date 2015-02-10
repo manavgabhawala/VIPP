@@ -53,6 +53,15 @@ extension UITableViewCell
 		layoutIfNeeded()
 	}
 }
+
+class UIRoundedTableViewCell : UITableViewCell, RoundedTableCells
+{
+	var bottom = false
+	var top = false
+	@IBOutlet var mainLabel : UILabel!
+	@IBOutlet var dateLabel : UILabel!
+}
+
 class SignUpTableCell: UITableViewCell, RoundedTableCells
 {
 	@IBOutlet var textField : UITextField!
@@ -148,11 +157,10 @@ class DateCell: UITableViewCell, RoundedTableCells, UIPickerViewDelegate
 {
 	var top = false, bottom = false
 	@IBOutlet var datePicker : DatePicker!
-	@IBOutlet var label : UILabel!
+	
 	func draw(labelText: String, maxDate: NSDate)
 	{
 		datePicker.maximumDate = maxDate
-		label.text = labelText
 		datePicker.backgroundColor = UIColor.clearColor()
 		datePicker.setup()
 	}

@@ -23,7 +23,7 @@ class LoginViewController: UIViewController
 		view.backgroundColor = UIColor.clearColor()
 		tableView.tableFooterView = view
 		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
-		emailCell.drawWithLabel("Email ID", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
+		emailCell.drawWithLabel("Email", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
 		emailCell.top = true
 		emailTextField = emailCell.textField
 		
