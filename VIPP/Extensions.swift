@@ -159,6 +159,51 @@ extension String
 		return emailTest?.evaluateWithObject(self)*/
 	}
 }
+@objc protocol RoundedTableCells
+{
+	var bottom : Bool { set get }
+	var top : Bool { set get }
+}
+extension UITableViewCell
+{
+	/**
+	This function is used to make the table view have rounded corners.
+	*/
+	public override func layoutSubviews()
+	{
+		super.layoutSubviews()
+		if (self is RoundedTableCells)
+		{
+			let radius : CGFloat = 5.0
+			if((self as RoundedTableCells).top && (self as RoundedTableCells).bottom)
+			{
+				layer.cornerRadius = radius
+				layer.masksToBounds = true
+			}
+			else if ((self as RoundedTableCells).top)
+			{
+				let shape = CAShapeLayer()
+				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .TopLeft | .TopRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
+				layer.mask = shape
+				layer.masksToBounds = true
+			}
+			else if ((self as RoundedTableCells).bottom)
+			{
+				let shape = CAShapeLayer()
+				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .BottomLeft | .BottomRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
+				layer.mask = shape
+				layer.masksToBounds = true
+			}
+			if !(self as RoundedTableCells).bottom
+			{
+				let mySeparator = UIView(frame: CGRect(x: contentView.frame.size.width * 0.025, y: contentView.frame.size.height - 1, width: contentView.frame.size.width * 0.95, height: 1))
+				mySeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
+				contentView.addSubview(mySeparator)
+			}
+		}
+		layoutIfNeeded()
+	}
+}
 func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Double?, longitude: Double?)
 {
 	if (zip == nil || city.isEmpty || state.isEmpty || zip! < 10000 || zip! >= 100000)
@@ -198,4 +243,65 @@ func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Doub
 		}
 	}
 	return (nil, nil)
+}
+
+extension UIView
+{
+	func didAddSubview(subview: UIView)
+	{
+		NSNotificationCenter.defaultCenter().postNotificationName("kNotification_UIView_didAddSubview", object: self)
+	}
+}
+class DatePicker : UIDatePicker
+{
+	let font = UIFont(name: "Heiti SC", size: 18)
+	override func didAddSubview(subview: UIView)
+	{
+		super.didAddSubview(subview)
+	}
+	func setup()
+	{
+		NSNotificationCenter.defaultCenter().addObserver(self, selector: "subviewsUpdated:", name: "kNotification_UIView_didAddSubview", object: nil)
+	}
+	deinit
+	{
+		NSNotificationCenter.defaultCenter().removeObserver(self)
+	}
+	func updateLabels(var view: UIView)
+	{
+		let label = UILabel()
+		let _ : [Void] = view.subviews.map {
+			if $0 is UILabel
+			{
+				($0 as UILabel).font = self.font
+			}
+			else
+			{
+				self.updateLabels($0 as UIView)
+			}
+		}
+	}
+	func isSubview(view: UIView?) -> Bool
+	{
+		if (view == nil)
+		{
+			return false
+		}
+		if (view!.superview == self)
+		{
+			return true
+		}
+		return isSubview(view!.superview)
+	}
+	func subviewsUpdated(notification: NSNotification)
+	{
+		if (notification.object == nil)
+		{
+			return
+		}
+		if ((notification.object!.isKindOfClass(NSClassFromString("UIPickerTableView"))) && isSubview((notification.object as UIView)))
+		{
+			updateLabels(notification.object as UIView)
+		}
+	}
 }

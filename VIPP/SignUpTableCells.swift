@@ -8,51 +8,7 @@
 
 import UIKit
 
-@objc protocol RoundedTableCells
-{
-	var bottom : Bool { set get }
-	var top : Bool { set get }
-}
-extension UITableViewCell
-{
-	/**
-	This function is used to make the table view have rounded corners.
-	*/
-	public override func layoutSubviews()
-	{
-		super.layoutSubviews()
-		if (self is RoundedTableCells)
-		{
-			let radius : CGFloat = 5.0
-			if((self as RoundedTableCells).top && (self as RoundedTableCells).bottom)
-			{
-				layer.cornerRadius = radius
-				layer.masksToBounds = true
-			}
-			else if ((self as RoundedTableCells).top)
-			{
-				let shape = CAShapeLayer()
-				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .TopLeft | .TopRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
-				layer.mask = shape
-				layer.masksToBounds = true
-			}
-			else if ((self as RoundedTableCells).bottom)
-			{
-				let shape = CAShapeLayer()
-				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .BottomLeft | .BottomRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
-				layer.mask = shape
-				layer.masksToBounds = true
-			}
-			if !(self as RoundedTableCells).bottom
-			{
-				let mySeparator = UIView(frame: CGRect(x: contentView.frame.size.width * 0.025, y: contentView.frame.size.height - 1, width: contentView.frame.size.width * 0.95, height: 1))
-				mySeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
-				contentView.addSubview(mySeparator)
-			}
-		}
-		layoutIfNeeded()
-	}
-}
+
 
 class UIRoundedTableViewCell : UITableViewCell, RoundedTableCells
 {
