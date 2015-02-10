@@ -20,7 +20,7 @@ class ThankYouViewController: UIViewController
 	}
 	@IBAction func facebookShare(_: UIButton)
 	{
-		let facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
+		let facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
 		facebookSheet.setInitialText("Some random text here!")
 		presentViewController(facebookSheet, animated: true, completion: nil)
 	}
@@ -34,13 +34,26 @@ class ThankYouViewController: UIViewController
 	{
 		let emailController = MFMailComposeViewController()
 		emailController.setMessageBody("Some random text here!", isHTML: false)
+		emailController.mailComposeDelegate = self
 		emailController.setSubject("Vipp! The next cool thing is here")
 		presentViewController(emailController, animated: true, completion: nil)
 	}
 	@IBAction func textShare(_: UIButton)
 	{
 		let messageController = MFMessageComposeViewController()
+		messageController.messageComposeDelegate = self
 		messageController.body = "Some random text here!"
 		presentViewController(messageController, animated: true, completion: nil)
+	}
+}
+extension ThankYouViewController : MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate
+{
+	func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult)
+	{
+		controller.dismissViewControllerAnimated(true, completion: nil)
+	}
+	func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!)
+	{
+		controller.dismissViewControllerAnimated(true, completion: nil)
 	}
 }

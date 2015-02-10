@@ -899,7 +899,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for applying to VIPP!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-PI-fFh">
-                                <rect key="frame" x="169" y="262" width="263.5" height="20"/>
+                                <rect key="frame" x="169" y="262" width="264" height="20"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
                                 <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -920,8 +920,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLc-3e-gXk">
-                                <rect key="frame" x="150" y="448" width="68" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mLc-3e-gXk">
+                                <rect key="frame" x="16" y="448" width="68" height="30"/>
                                 <state key="normal" title="Facebook">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -929,8 +929,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="facebookShare:" destination="JBN-05-7HP" eventType="touchUpInside" id="bee-Zd-p3u"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-86-WLM">
-                                <rect key="frame" x="251" y="448" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ap5-86-WLM">
+                                <rect key="frame" x="92" y="448" width="46" height="30"/>
                                 <state key="normal" title="Twitter">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -938,17 +938,8 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="twitterShare:" destination="JBN-05-7HP" eventType="touchUpInside" id="7N3-5V-gg4"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RH8-dN-2wu">
-                                <rect key="frame" x="404" y="448" width="38" height="30"/>
-                                <state key="normal" title="Email">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="emailShare:" destination="JBN-05-7HP" eventType="touchUpInside" id="VMe-ZE-MFo"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuK-Jj-nuE">
-                                <rect key="frame" x="328" y="448" width="62" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuK-Jj-nuE">
+                                <rect key="frame" x="146" y="448" width="62" height="30"/>
                                 <state key="normal" title="Message">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -956,21 +947,38 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                     <action selector="textShare:" destination="JBN-05-7HP" eventType="touchUpInside" id="g3R-fi-vLp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RH8-dN-2wu">
+                                <rect key="frame" x="216" y="448" width="38" height="30"/>
+                                <state key="normal" title="Email">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="emailShare:" destination="JBN-05-7HP" eventType="touchUpInside" id="VMe-ZE-MFo"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="CuK-Jj-nuE" firstAttribute="baseline" secondItem="ap5-86-WLM" secondAttribute="baseline" id="516-ia-Tux"/>
                             <constraint firstItem="pca-kH-Evo" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="8U4-tK-Hmq"/>
                             <constraint firstItem="b7Q-TH-OHC" firstAttribute="top" secondItem="vow-1P-DR3" secondAttribute="bottom" id="CQL-9N-b0i"/>
                             <constraint firstItem="pca-kH-Evo" firstAttribute="top" secondItem="4iv-fJ-XYp" secondAttribute="bottom" id="DAx-dy-5JY"/>
                             <constraint firstItem="4iv-fJ-XYp" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="DPj-KZ-KFk"/>
+                            <constraint firstItem="RH8-dN-2wu" firstAttribute="leading" secondItem="CuK-Jj-nuE" secondAttribute="trailing" constant="8" symbolic="YES" id="Eb9-Nr-6lK"/>
+                            <constraint firstItem="mLc-3e-gXk" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" id="IOR-N7-Sfe"/>
                             <constraint firstAttribute="centerX" secondItem="mlp-PI-fFh" secondAttribute="centerX" id="Pat-OT-UHR"/>
                             <constraint firstItem="BEl-CI-Eeg" firstAttribute="top" secondItem="mlp-PI-fFh" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="RJw-iJ-WTp"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4iv-fJ-XYp" secondAttribute="trailing" constant="-16" id="SHj-hv-Vab"/>
+                            <constraint firstItem="b7Q-TH-OHC" firstAttribute="top" secondItem="mLc-3e-gXk" secondAttribute="bottom" constant="122" id="SJj-0i-l7v"/>
+                            <constraint firstItem="CuK-Jj-nuE" firstAttribute="leading" secondItem="ap5-86-WLM" secondAttribute="trailing" constant="8" symbolic="YES" id="U3n-53-15A"/>
                             <constraint firstItem="4iv-fJ-XYp" firstAttribute="top" secondItem="p2D-dt-Kfr" secondAttribute="topMargin" id="bsE-sR-gIa"/>
+                            <constraint firstItem="ap5-86-WLM" firstAttribute="leading" secondItem="mLc-3e-gXk" secondAttribute="trailing" constant="8" symbolic="YES" id="dgw-FN-vOb"/>
                             <constraint firstAttribute="centerX" secondItem="BEl-CI-Eeg" secondAttribute="centerX" id="gT3-Ae-glz"/>
                             <constraint firstAttribute="centerY" secondItem="mlp-PI-fFh" secondAttribute="centerY" multiplier="1.1" id="gXu-ka-SdL"/>
+                            <constraint firstItem="RH8-dN-2wu" firstAttribute="baseline" secondItem="CuK-Jj-nuE" secondAttribute="baseline" id="irW-Na-Xua"/>
                             <constraint firstAttribute="trailingMargin" secondItem="pca-kH-Evo" secondAttribute="trailing" constant="-16" id="jLd-jQ-wdp"/>
                             <constraint firstItem="vow-1P-DR3" firstAttribute="top" secondItem="p2D-dt-Kfr" secondAttribute="topMargin" id="lzC-43-egQ"/>
+                            <constraint firstItem="ap5-86-WLM" firstAttribute="baseline" secondItem="mLc-3e-gXk" secondAttribute="baseline" id="ns0-AX-1UL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="vow-1P-DR3" secondAttribute="trailing" constant="-16" id="pH5-Fa-B4h"/>
                             <constraint firstItem="vow-1P-DR3" firstAttribute="leading" secondItem="p2D-dt-Kfr" secondAttribute="leadingMargin" constant="-16" id="xqA-Ee-n3a"/>
                         </constraints>
