@@ -159,6 +159,10 @@ extension String
 		return emailTest?.evaluateWithObject(self)*/
 	}
 }
+
+/**
+*  This protocol must be used by any cell that is a part of a table with rounded corners.
+*/
 @objc protocol RoundedTableCells
 {
 	var bottom : Bool { set get }

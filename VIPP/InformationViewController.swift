@@ -109,7 +109,6 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 		{
 			pagingController.setViewControllers([viewControllerForIndex(pageControl.currentPage)!], direction: .Forward, animated: true, completion: nil)
 		}
-		//TODO: Implement Me
 	}
 }
 //MARK: - TableViewController

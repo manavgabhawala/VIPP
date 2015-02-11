@@ -35,7 +35,7 @@ class InitialViewController: UIViewController {
 			}
 			if (user["isValidVIPP"] != nil && user["isValidVIPP"] as Bool)
 			{
-				//TODO: give access to entire app
+				//TODO: Give Full Access
 			}
 			else
 			{

@@ -316,7 +316,13 @@ class SignUpViewController: UIViewController
 						}
 						else
 						{
-							//TODO: Show error message for signing up.
+							let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+							if let message = error.userInfo?["error"] as? String
+							{
+								alertController.message = message
+							}
+							alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+							self.presentViewController(alertController, animated: true, completion: nil)
 						}
 					})
 				}
@@ -342,7 +348,13 @@ class SignUpViewController: UIViewController
 						}
 						else
 						{
-							//TODO: Show error message for signing up.
+							let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+							if let message = error.userInfo?["error"] as? String
+							{
+								alertController.message = message
+							}
+							alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+							self.presentViewController(alertController, animated: true, completion: nil)
 						}
 					}
 				}

@@ -42,7 +42,6 @@ class SignUpTableCell: UITableViewCell, RoundedTableCells
 		textField.borderStyle = UITextBorderStyle.None
 		textField.delegate = delegate
 		textField.returnKeyType = UIReturnKeyType.Next
-		//TODO: Other view customizations.
 	}
 }
 
@@ -103,7 +102,6 @@ class SurveyCell : UITableViewCell, RoundedTableCells
 	*/
 	func drawWithPlaceholder(placeholder: String, delegate: UITextFieldDelegate)
 	{
-		//TODO: IMPLEMENT THIS FUNCTION
 		textField.placeholder = placeholder
 		textField.delegate = delegate
 	}

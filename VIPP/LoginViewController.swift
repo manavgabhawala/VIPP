@@ -86,7 +86,7 @@ class LoginViewController: UIViewController
 				{
 					if (user["isValidVIPP"] != nil && user["isValidVIPP"] as Bool)
 					{
-						//TODO: User has logged in - Full Access
+						//TODO: Give Full Access
 					}
 					else
 					{
