@@ -34,10 +34,7 @@ class InformationViewController: UIViewController
 		pagingContainerView.sendSubviewToBack(pagingController.view)
 		tableView.delegate = self
 		tableView.dataSource = self
-		if (tableView.contentSize.height < tableView.frame.height + 40)
-		{
-			tableView.scrollEnabled = false
-		}
+		
 		let headers = ["INVITE FRIENDS", "VIPP WILL PICK YOU UP", "VIPP WILL GET YOU IN"]
 		let subtitles = ["INVITE YOUR FRIENDS TO JOIN VIPP AND CREATE YOUR GROUP TO GO OUT WITH.", "TOWN CAR OR ESCALADE?\nYOU CHOOSE.", "SHOW THE BOUNCER YOUR VIPP TICKET\nFOLLOW YOUR VIPP REPRESENTTIVE\nFREE BOTTLES INCLUDED."]
 		let imagesForTable = [UIImage(named: "friends.png")!, UIImage(named: "ride.png")!, UIImage(named: "ropes.png")!]
@@ -55,6 +52,10 @@ class InformationViewController: UIViewController
 	override func viewDidLayoutSubviews()
 	{
 		pagingController.view.frame.size = pagingContainerView.frame.size
+		if (tableView.contentSize.height < tableView.frame.height)
+		{
+			tableView.scrollEnabled = false
+		}
 	}
 	//MARK: - Actions
 	@IBAction func closeButton(_ : UIButton)
