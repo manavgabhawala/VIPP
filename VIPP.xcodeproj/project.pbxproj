@@ -350,7 +350,7 @@
 				TargetAttributes = {
 					829DC15D1A7B3E1F00CD6187 = {
 						CreatedOnToolsVersion = 6.2;
-						DevelopmentTeam = Y7CAGCHT9U;
+						DevelopmentTeam = W9Z47XM4PT;
 						SystemCapabilities = {
 							com.apple.InAppPurchase = {
 								enabled = 0;
@@ -359,6 +359,7 @@
 					};
 					829DC1721A7B3E1F00CD6187 = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = W9Z47XM4PT;
 						TestTargetID = 829DC15D1A7B3E1F00CD6187;
 					};
 				};
