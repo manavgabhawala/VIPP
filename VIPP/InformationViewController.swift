@@ -14,8 +14,11 @@ class InformationViewController: UIViewController
 {
 	@IBOutlet var pagingContainerView : UIView!
 	@IBOutlet var pageControl : UIPageControl!
+	@IBOutlet var tableView : UITableView!
 	var images = [UIImage]()
 	let pagingController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+	var cells = [InformationTableViewCell]()
+	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		let numberOfImages = 7
@@ -24,22 +27,53 @@ class InformationViewController: UIViewController
 			images.append(UIImage(named: "\(i).png")!)
 		}
 		pageControl.numberOfPages = numberOfImages
-		//addChildViewController(pagingController)
 		pagingController.delegate = self
 		pagingController.dataSource = self
 		pagingController.setViewControllers([viewControllerForIndex(0)!], direction: .Forward, animated: true, completion: nil)
 		pagingContainerView.addSubview(pagingController.view)
 		pagingContainerView.sendSubviewToBack(pagingController.view)
+		tableView.delegate = self
+		tableView.dataSource = self
+		if (tableView.contentSize.height < tableView.frame.height + 40)
+		{
+			tableView.scrollEnabled = false
+		}
+		let headers = ["INVITE FRIENDS", "VIPP WILL PICK YOU UP", "VIPP WILL GET YOU IN"]
+		let subtitles = ["INVITE YOUR FRIENDS TO JOIN VIPP AND CREATE YOUR GROUP TO GO OUT WITH.", "TOWN CAR OR ESCALADE?\nYOU CHOOSE.", "SHOW THE BOUNCER YOUR VIPP TICKET\nFOLLOW YOUR VIPP REPRESENTTIVE\nFREE BOTTLES INCLUDED."]
+		let imagesForTable = [UIImage(named: "friends.png")!, UIImage(named: "ride.png")!, UIImage(named: "ropes.png")!]
+		for (i, image) in enumerate(imagesForTable)
+		{
+			let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as InformationTableViewCell
+			cell.numberLabel.text = "\(i+1)"
+			cell.headingLabel.text = headers[i]
+			cell.subtitleLabel.text = subtitles[i]
+			cell.imageDisplay.image = image
+			cell.background.hidden = (i + 1) % 2 == 0
+			cells.append(cell)
+		}
 	}
 	override func viewDidLayoutSubviews()
 	{
 		pagingController.view.frame.size = pagingContainerView.frame.size
 	}
+	//MARK: - Actions
+	@IBAction func closeButton(_ : UIButton)
+	{
+		dismissViewControllerAnimated(true, completion: nil)
+	}
+}
+//MARK: - Paging View Controller
+extension InformationViewController : UIPageViewControllerDelegate, UIPageViewControllerDataSource
+{
 	func viewControllerForIndex(index: Int) -> UIViewController?
 	{
-		if (index < 0 || index >= images.count)
+		if (index < 0)
 		{
-			return nil
+			return viewControllerForIndex(images.count - 1)
+		}
+		if (index >= images.count)
+		{
+			return viewControllerForIndex(0)
 		}
 		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as ImageViewController
 		viewController.view.tag = index
@@ -47,9 +81,6 @@ class InformationViewController: UIViewController
 		viewController.view.frame.size = pagingContainerView.frame.size
 		return viewController
 	}
-}
-extension InformationViewController : UIPageViewControllerDelegate, UIPageViewControllerDataSource
-{
 	func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
 	{
 		let index = viewController.view.tag - 1
@@ -67,14 +98,42 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 			pageControl.currentPage = (pageViewController.viewControllers.first! as UIViewController).view.tag
 		}
 	}
-	/*
-	func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int
+	@IBAction func pageControlValueChange(pageControl: UIPageControl)
 	{
-		return images.count
+		let currentIndex = (pagingController.viewControllers.first as UIViewController).view.tag
+		if (pageControl.currentPage < currentIndex)
+		{
+			pagingController.setViewControllers([viewControllerForIndex(pageControl.currentPage)!], direction: .Reverse, animated: true, completion: nil)
+		}
+		else
+		{
+			pagingController.setViewControllers([viewControllerForIndex(pageControl.currentPage)!], direction: .Forward, animated: true, completion: nil)
+		}
+		//TODO: Implement Me
 	}
-	
-	func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int
+}
+//MARK: - TableViewController
+extension InformationViewController : UITableViewDelegate, UITableViewDataSource
+{
+	func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{
-		return (pageViewController.viewControllers.first! as UIViewController).view.tag
-	}*/
+		return 1
+	}
+	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+	{
+		return cells.count
+	}
+	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
+	{
+		return cells[indexPath.row]
+	}
+}
+
+class InformationTableViewCell : UITableViewCell
+{
+	@IBOutlet var numberLabel : UILabel!
+	@IBOutlet var headingLabel : UILabel!
+	@IBOutlet var subtitleLabel : UILabel!
+	@IBOutlet var imageDisplay : UIImageView!
+	@IBOutlet var background : UIImageView!
 }
