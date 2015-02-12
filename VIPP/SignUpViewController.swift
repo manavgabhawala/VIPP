@@ -223,6 +223,14 @@ class SignUpViewController: UIViewController
 			tableCells[currentPage].filter{ $0 is AddressCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateStyle = .MediumStyle
+		if ((birthdayDetailLabel?.text?) == nil || birthdayDetailLabel!.text!.isEmpty || dateFormatter.dateFromString(birthdayDetailLabel!.text!) == nil)
+		{
+			
+			tableCells[currentPage].filter {$0 is UIRoundedTableViewCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			isValid = false
+		}
 		if (isValid)
 		{
 			userData.firstName = textFields[TextField.FirstName.rawValue].text
@@ -232,8 +240,6 @@ class SignUpViewController: UIViewController
 			userData.zipCode = textFields[TextField.Zip.rawValue].text.toInt()!
 			userData.latitude = addressTuple.latitude!
 			userData.longitude = addressTuple.longitude!
-			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateStyle = .MediumStyle
 			userData.birthday = dateFormatter.dateFromString(birthdayDetailLabel!.text!)!
 		}
 		return isValid
@@ -291,73 +297,83 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				if (PFUser.currentUser() == nil)
-				{
-					let user = PFUser()
-					user.username = userData.email
-					user.password = userData.password
-					user.email = userData.email
-					user["firstName"] = userData.firstName
-					user["lastName"] = userData.lastName
-					user["phoneNumber"] = userData.mobile
-					user["geoLocation"] = PFGeoPoint(latitude: userData.latitude, longitude: userData.longitude)
-					user["city"] = userData.city
-					user["state"] = userData.state
-					user["zip"] = userData.zipCode
-					user["birthday"] = userData.birthday
-					user["whenGrowsUp"] = userData.future
-					user["favoriteVenues"] = userData.venues
-					user["nightLifeHabits"] = userData.guysGirls
-					user["validVIPP"] = false
-					user.signUpInBackgroundWithBlock({(result, error) in
-						if (result && error == nil)
-						{
-							self.performSegueWithIdentifier("thankYou", sender: self)
-						}
-						else
-						{
-							let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
-							if let message = error.userInfo?["error"] as? String
+				let message = "Placeholder text here"
+				
+				let alertController = UIAlertController(title: "Terms and Conditions", message: message, preferredStyle: .Alert)
+				let textView = UITextView(frame: CGRect(origin: CGPoint(x: 0, y: 40), size: CGSize(width: alertController.view.frame.width, height: 150)))
+				//textView.text = message
+				//alertController.view.addSubview(textView)
+				alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+				alertController.addAction(UIAlertAction(title: "I Agree", style: .Default, handler: {(controller) in
+					if (PFUser.currentUser() == nil)
+					{
+						let user = PFUser()
+						user.username = self.userData.email
+						user.password = self.userData.password
+						user.email = self.userData.email
+						user["firstName"] = self.userData.firstName
+						user["lastName"] = self.userData.lastName
+						user["phoneNumber"] = self.userData.mobile
+						user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
+						user["city"] = self.userData.city
+						user["state"] = self.userData.state
+						user["zip"] = self.userData.zipCode
+						user["birthday"] = self.userData.birthday
+						user["whenGrowsUp"] = self.userData.future
+						user["favoriteVenues"] = self.userData.venues
+						user["nightLifeHabits"] = self.userData.guysGirls
+						user["validVIPP"] = false
+						user.signUpInBackgroundWithBlock({(result, error) in
+							if (result && error == nil)
 							{
-								alertController.message = message
+								self.performSegueWithIdentifier("thankYou", sender: self)
 							}
-							alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-							self.presentViewController(alertController, animated: true, completion: nil)
-						}
-					})
-				}
-				else
-				{
-					let user = PFUser.currentUser()
-					user["firstName"] = userData.firstName
-					user["lastName"] = userData.lastName
-					user["phoneNumber"] = userData.mobile
-					user["geoLocation"] = PFGeoPoint(latitude: userData.latitude, longitude: userData.longitude)
-					user["city"] = userData.city
-					user["state"] = userData.state
-					user["zip"] = userData.zipCode
-					user["birthday"] = userData.birthday
-					user["whenGrowsUp"] = userData.future
-					user["favoriteVenues"] = userData.venues
-					user["nightLifeHabits"] = userData.guysGirls
-					user["validVIPP"] = false
-					user.saveInBackgroundWithBlock { (result, error) in
-						if (result && error == nil)
-						{
-							self.performSegueWithIdentifier("thankYou", sender: self)
-						}
-						else
-						{
-							let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
-							if let message = error.userInfo?["error"] as? String
+							else
 							{
-								alertController.message = message
+								let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+								if let message = error.userInfo?["error"] as? String
+								{
+									alertController.message = message
+								}
+								alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+								self.presentViewController(alertController, animated: true, completion: nil)
 							}
-							alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-							self.presentViewController(alertController, animated: true, completion: nil)
+						})
+					}
+					else
+					{
+						let user = PFUser.currentUser()
+						user["firstName"] = self.userData.firstName
+						user["lastName"] = self.userData.lastName
+						user["phoneNumber"] = self.userData.mobile
+						user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
+						user["city"] = self.userData.city
+						user["state"] = self.userData.state
+						user["zip"] = self.userData.zipCode
+						user["birthday"] = self.userData.birthday
+						user["whenGrowsUp"] = self.userData.future
+						user["favoriteVenues"] = self.userData.venues
+						user["nightLifeHabits"] = self.userData.guysGirls
+						user["validVIPP"] = false
+						user.saveInBackgroundWithBlock { (result, error) in
+							if (result && error == nil)
+							{
+								self.performSegueWithIdentifier("thankYou", sender: self)
+							}
+							else
+							{
+								let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+								if let message = error.userInfo?["error"] as? String
+								{
+									alertController.message = message
+								}
+								alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+								self.presentViewController(alertController, animated: true, completion: nil)
+							}
 						}
 					}
-				}
+				}))
+				presentViewController(alertController, animated: true, completion: nil)
 			}
 			backButton.hidden = false
 			if (currentPage == 1 && PFUser.currentUser() != nil)
@@ -434,7 +450,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		(secondCells.first? as SignUpTableCell).top = true
 		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateDisplay") as UIRoundedTableViewCell
 		birthdayCell.mainLabel.text = "Birthday"
-		birthdayCell.dateLabel.text = "1 Jan, 1985"
+		birthdayCell.dateLabel.text = "Jan 1, 1985"
 		birthdayDetailLabel = birthdayCell.dateLabel
 		secondCells.append(birthdayCell)
 		
@@ -448,7 +464,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		(secondCells.last as RoundedTableCells).bottom = true
 		tableCells.append(secondCells)
 		
-		let placeholderSurvey = ["When I grow up I want to be (or am)?", "Will you be going out with guys or girls?", "Favorite Venues?"]
+		let placeholderSurvey = ["Profession?", "Will you be going out with guys or girls?", "Favorite Venues?"]
 		var thirdCells = [UITableViewCell]()
 		for (i, placeholder) in enumerate(placeholderSurvey)
 		{

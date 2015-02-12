@@ -36,7 +36,7 @@ class InformationViewController: UIViewController
 		tableView.dataSource = self
 		
 		let headers = ["INVITE FRIENDS", "VIPP WILL PICK YOU UP", "VIPP WILL GET YOU IN"]
-		let subtitles = ["INVITE YOUR FRIENDS TO JOIN VIPP AND CREATE YOUR GROUP TO GO OUT WITH.", "TOWN CAR OR ESCALADE?\nYOU CHOOSE.", "SHOW THE BOUNCER YOUR VIPP TICKET\nFOLLOW YOUR VIPP REPRESENTTIVE\nFREE BOTTLES INCLUDED."]
+		let subtitles = ["INVITE YOUR FRIENDS TO JOIN VIPP AND CREATE YOUR GROUP TO GO OUT WITH.", "TOWN CAR OR ESCALADE?\nYOU CHOOSE.", "SHOW THE BOUNCER YOUR VIPP TICKET\nFOLLOW YOUR VIPP REPRESENTATIVE\nFREE BOTTLES INCLUDED."]
 		let imagesForTable = [UIImage(named: "friends.png")!, UIImage(named: "ride.png")!, UIImage(named: "ropes.png")!]
 		for (i, image) in enumerate(imagesForTable)
 		{
@@ -125,7 +125,12 @@ extension InformationViewController : UITableViewDelegate, UITableViewDataSource
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		return cells[indexPath.row]
+		let cell = cells[indexPath.row]
+		return cell
+	}
+	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+	{
+		return (tableView.frame.height - 15) / CGFloat(cells.count)
 	}
 }
 

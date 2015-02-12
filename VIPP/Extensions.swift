@@ -152,11 +152,24 @@ extension String
 		}
 		let regex = NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$", options: .CaseInsensitive, error: nil)
 		return regex?.firstMatchInString(self, options: nil, range: NSMakeRange(0, countElements(self))) != nil
-		/*
-		let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,4}"
-		
-		var emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-		return emailTest?.evaluateWithObject(self)*/
+	}
+	/**
+	This function generates a random alphanumeric code and returns it.
+	
+	:param: len The length of the rand string to create
+	
+	:returns: The generated alphanumeric code generated.
+	*/
+	static func randomStringWithLength (len : Int) -> String
+	{
+		let letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+		var randomString = ""
+		for i in 0..<len
+		{
+			var randIndex : Int = Int(arc4random_uniform(UInt32(Array(letters).count)))
+			randomString += "\(Array(letters)[randIndex])"
+		}
+		return randomString
 	}
 }
 

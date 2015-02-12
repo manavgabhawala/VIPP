@@ -15,7 +15,7 @@ class InitialViewController: UIViewController {
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		
+		PFUser.logOut()
 	}
 	override func viewWillAppear(animated: Bool)
 	{

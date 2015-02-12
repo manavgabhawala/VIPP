@@ -187,11 +187,11 @@
 		822990961A8ADB4900082E06 /* Signup Stuff */ = {
 			isa = PBXGroup;
 			children = (
-				82153BC71A89DDCB00C0C8FE /* InformationViewController.swift */,
 				829DC1651A7B3E1F00CD6187 /* InitialViewController.swift */,
-				15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */,
 				82AC16FF1A7C749D0065387F /* SignUpViewController.swift */,
 				82E2A5571A869E8E004C4795 /* LoginViewController.swift */,
+				15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */,
+				82153BC71A89DDCB00C0C8FE /* InformationViewController.swift */,
 			);
 			name = "Signup Stuff";
 			sourceTree = "<group>";
@@ -576,7 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ff66a0fe-a4dd-4725-8a7d-8f019334e308";
 				SWIFT_OBJC_BRIDGING_HEADER = "VIPP/VIPP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,7 +590,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -600,7 +600,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "ec6103be-6b07-473d-87db-4f89808a2345";
 				SWIFT_OBJC_BRIDGING_HEADER = "VIPP/VIPP-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
