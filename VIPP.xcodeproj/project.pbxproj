@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */; };
+		820525BC1A8D350700A42167 /* Launch Image.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820525BB1A8D350700A42167 /* Launch Image.storyboard */; };
+		820525BD1A8D350700A42167 /* Launch Image.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 820525BB1A8D350700A42167 /* Launch Image.storyboard */; };
 		820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 829DC1651A7B3E1F00CD6187 /* InitialViewController.swift */; };
 		82153BC31A89A17C00C0C8FE /* OtherViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */; };
 		82153BC41A89A17E00C0C8FE /* OtherViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */; };
@@ -62,7 +64,6 @@
 		829DC1A81A7B3EF600CD6187 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1A71A7B3EF600CD6187 /* libsqlite3.dylib */; };
 		829DC1B21A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */; };
 		829DC1B31A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */; };
-		829DC1B61A7B442600CD6187 /* VIPP_ALL.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */; };
 		82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
 		82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
 		82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */; };
@@ -86,6 +87,7 @@
 
 /* Begin PBXFileReference section */
 		15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThankYouViewController.swift; sourceTree = "<group>"; };
+		820525BB1A8D350700A42167 /* Launch Image.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = "Launch Image.storyboard"; path = "../Launch Image.storyboard"; sourceTree = "<group>"; };
 		82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OtherViewControllers.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		82153BC51A89AA2600C0C8FE /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		82153BC71A89DDCB00C0C8FE /* InformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InformationViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +130,6 @@
 		829DC1AC1A7B407B00CD6187 /* VIPP-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VIPP-Bridging-Header.h"; sourceTree = "<group>"; };
 		829DC1AD1A7B407B00CD6187 /* VIPPTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VIPPTests-Bridging-Header.h"; path = "../VIPP/VIPPTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VIPP_ALL.storyboard; sourceTree = "<group>"; };
 		82AC16FF1A7C749D0065387F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
 		82C7B3F11A7F13400088EC2B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -192,6 +193,7 @@
 				82E2A5571A869E8E004C4795 /* LoginViewController.swift */,
 				15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */,
 				82153BC71A89DDCB00C0C8FE /* InformationViewController.swift */,
+				820525BB1A8D350700A42167 /* Launch Image.storyboard */,
 			);
 			name = "Signup Stuff";
 			sourceTree = "<group>";
@@ -240,7 +242,6 @@
 				82C7B3F11A7F13400088EC2B /* Extensions.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
 				822990961A8ADB4900082E06 /* Signup Stuff */,
-				829DC1B41A7B442600CD6187 /* VIPP_ALL.storyboard */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
 				822990951A8ADB4000082E06 /* Views */,
 				829DC1611A7B3E1F00CD6187 /* Supporting Files */,
@@ -396,6 +397,7 @@
 				8290BEB91A89DF2A008A29EC /* 2.png in Resources */,
 				82421E021A8AC783005BA5F3 /* ride.png in Resources */,
 				8290BEBB1A89DF2A008A29EC /* 3.png in Resources */,
+				820525BC1A8D350700A42167 /* Launch Image.storyboard in Resources */,
 				8290BEBF1A89DF2A008A29EC /* 5.png in Resources */,
 				82421E011A8AC783005BA5F3 /* friends.png in Resources */,
 				82421E031A8AC783005BA5F3 /* ropes.png in Resources */,
@@ -414,11 +416,11 @@
 				8290BEBC1A89DF2A008A29EC /* 3.png in Resources */,
 				8290BEB81A89DF2A008A29EC /* 1.png in Resources */,
 				8290BEB61A89DF2A008A29EC /* 0.png in Resources */,
+				820525BD1A8D350700A42167 /* Launch Image.storyboard in Resources */,
 				8290BEC01A89DF2A008A29EC /* 5.png in Resources */,
 				8290BEBA1A89DF2A008A29EC /* 2.png in Resources */,
 				822990941A8AC8A500082E06 /* pattern.png in Resources */,
 				8290BEC21A89DF2A008A29EC /* 6.png in Resources */,
-				829DC1B61A7B442600CD6187 /* VIPP_ALL.storyboard in Resources */,
 				82421E061A8AC789005BA5F3 /* ropes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -563,7 +565,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -587,7 +588,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";

@@ -19,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="V94-Kc-49Q">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background 0" translatesAutoresizingMaskIntoConstraints="NO" id="V94-Kc-49Q">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mt4-Vv-NwK">
@@ -98,9 +98,14 @@
                                     <segue destination="Ql2-d1-KjL" kind="presentation" id="Vc3-j8-PIa"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo with Caption" translatesAutoresizingMaskIntoConstraints="NO" id="ufI-1N-7wm">
+                                <rect key="frame" x="210" y="246" width="180" height="108"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerY" secondItem="ufI-1N-7wm" secondAttribute="centerY" id="0oX-Qs-ebs"/>
                             <constraint firstItem="q2W-cl-27V" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="16" id="5mP-CH-drl"/>
                             <constraint firstAttribute="centerX" secondItem="q2W-cl-27V" secondAttribute="centerX" id="9Lt-3q-YJq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="100" id="9eI-ee-e20"/>
@@ -111,9 +116,13 @@
                             <constraint firstItem="V94-Kc-49Q" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="SRi-4c-wnC"/>
                             <constraint firstItem="hBT-Ul-uHj" firstAttribute="top" secondItem="q2W-cl-27V" secondAttribute="bottom" constant="16" id="YoX-6e-4x4"/>
                             <constraint firstAttribute="trailing" secondItem="V94-Kc-49Q" secondAttribute="trailing" id="rSL-bl-41C"/>
+                            <constraint firstAttribute="centerX" secondItem="ufI-1N-7wm" secondAttribute="centerX" id="ze7-6q-fHc"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <connections>
+                        <outlet property="backgroundView" destination="V94-Kc-49Q" id="TtG-zw-pXo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -211,7 +220,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wUB-dT-VnV">
                                                     <rect key="frame" x="36" y="25" width="46" height="17"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OmJ-MG-bZE">
@@ -226,7 +235,7 @@ Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed 
 Some text here
 Some other stuff</string>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                     <variation key="heightClass=compact-widthClass=compact" ambiguous="YES" misplaced="YES">
                                                         <rect key="frame" x="46" y="33" width="253" height="36"/>
@@ -1556,7 +1565,7 @@ Some other stuff</string>
         </scene>
     </scenes>
     <resources>
-        <image name="Background" width="640" height="960"/>
+        <image name="Background 0" width="640" height="960"/>
         <image name="Banner" width="1777" height="262"/>
         <image name="Email-Share" width="50" height="50"/>
         <image name="Envelope" width="337" height="152"/>
@@ -1564,14 +1573,15 @@ Some other stuff</string>
         <image name="FBLogin" width="700" height="86"/>
         <image name="Grey Back" width="834" height="560"/>
         <image name="Logo" width="300" height="167"/>
+        <image name="Logo with Caption" width="180" height="108"/>
         <image name="Text-Share" width="50" height="50"/>
         <image name="Twitter-Share" width="50" height="50"/>
         <image name="Up Arrow" width="393" height="74"/>
         <image name="pattern.png" width="720" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="vN5-j7-QOO"/>
         <segue reference="P7r-EU-7r2"/>
-        <segue reference="l9h-Op-m36"/>
+        <segue reference="Vc3-j8-PIa"/>
+        <segue reference="vN5-j7-QOO"/>
     </inferredMetricsTieBreakers>
 </document>

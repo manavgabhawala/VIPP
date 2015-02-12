@@ -10,12 +10,15 @@ import UIKit
 
 class InitialViewController: UIViewController {
 	
+	@IBOutlet var backgroundView : UIImageView!
+	var currentImageIndex = 2
+	let numberOfImages = 3
+	var timer : NSTimer!
 	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
-		PFUser.logOut()
 	}
 	override func viewWillAppear(animated: Bool)
 	{
@@ -24,7 +27,9 @@ class InitialViewController: UIViewController {
 	}
 	override func viewDidAppear(animated: Bool)
 	{
-		super.viewDidAppear(animated)		
+		super.viewDidAppear(animated)
+		backgroundView.image = UIImage(named: "Background \(currentImageIndex)")
+		timer = NSTimer.scheduledTimerWithTimeInterval(5, target: self, selector: "timerFired:", userInfo: nil, repeats: true)
 		if let user = PFUser.currentUser()
 		{
 			let installation = PFInstallation.currentInstallation()
@@ -55,6 +60,11 @@ class InitialViewController: UIViewController {
 				}
 			}
 		}
+	}
+	override func viewDidDisappear(animated: Bool)
+	{
+		super.viewDidDisappear(animated)
+		timer.invalidate()
 	}
 	override func didReceiveMemoryWarning()
 	{
@@ -100,5 +110,23 @@ class InitialViewController: UIViewController {
 			}
 		})
 	}
-	
+	func timerFired(_ : NSTimer)
+	{
+		var newIndex = currentImageIndex
+		while (newIndex == currentImageIndex)
+		{
+			newIndex = Int(arc4random_uniform(UInt32(numberOfImages)))
+		}
+		currentImageIndex = newIndex
+		
+		UIView.animateWithDuration(0.35, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+			self.backgroundView.alpha = 0.0
+			}, completion: { (completed) in
+				self.backgroundView.image = UIImage(named: "Background \(newIndex)")
+				UIView.animateWithDuration(1.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0, options: .CurveEaseInOut, animations: {
+					self.backgroundView.alpha = 1.0
+					self.view.sendSubviewToBack(self.backgroundView)
+					}, completion: nil)
+			})
+	}
 }
