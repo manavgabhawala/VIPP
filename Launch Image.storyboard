@@ -2,7 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fhH-ns-V4H">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -21,7 +23,11 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo with Caption" translatesAutoresizingMaskIntoConstraints="NO" id="yML-Ic-mii">
-                                <rect key="frame" x="210" y="246" width="180" height="108"/>
+                                <rect key="frame" x="175" y="165" width="250" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="yML-Ic-mii" secondAttribute="height" multiplier="5:3" id="FVL-mj-c1m"/>
+                                    <constraint firstAttribute="width" constant="250" id="Qu5-EF-fwk"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -29,7 +35,7 @@
                             <constraint firstAttribute="trailingMargin" secondItem="Zlr-hm-abS" secondAttribute="trailing" constant="-16" id="8sg-7w-E0I"/>
                             <constraint firstItem="3ZT-YE-8Yu" firstAttribute="top" secondItem="Zlr-hm-abS" secondAttribute="bottom" id="PmX-HG-BH5"/>
                             <constraint firstItem="Zlr-hm-abS" firstAttribute="leading" secondItem="Ia7-w7-fFf" secondAttribute="leadingMargin" constant="-16" id="Tdi-QD-9GI"/>
-                            <constraint firstAttribute="centerY" secondItem="yML-Ic-mii" secondAttribute="centerY" id="f6S-tQ-teE"/>
+                            <constraint firstItem="yML-Ic-mii" firstAttribute="centerY" secondItem="Ia7-w7-fFf" secondAttribute="centerY" multiplier="0.8" id="f6S-tQ-teE"/>
                             <constraint firstItem="Zlr-hm-abS" firstAttribute="top" secondItem="Ia7-w7-fFf" secondAttribute="topMargin" id="sB0-eF-Nvp"/>
                             <constraint firstAttribute="centerX" secondItem="yML-Ic-mii" secondAttribute="centerX" id="xtO-mf-esU"/>
                         </constraints>

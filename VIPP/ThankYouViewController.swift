@@ -13,6 +13,8 @@ import MessageUI
 
 class ThankYouViewController: UIViewController
 {
+	let socialText = "Some random text here"
+	let subjectText = "Vipp - The Next Cool Thing"
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -21,28 +23,28 @@ class ThankYouViewController: UIViewController
 	@IBAction func facebookShare(_: UIButton)
 	{
 		let facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-		facebookSheet.setInitialText("Some random text here!")
+		facebookSheet.setInitialText(socialText)
 		presentViewController(facebookSheet, animated: true, completion: nil)
 	}
 	@IBAction func twitterShare(_: UIButton)
 	{
 		let tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-		tweetSheet.setInitialText("Some random text here!")
+		tweetSheet.setInitialText(socialText)
 		presentViewController(tweetSheet, animated: true, completion: nil)
 	}
 	@IBAction func emailShare(_: UIButton)
 	{
 		let emailController = MFMailComposeViewController()
-		emailController.setMessageBody("Some random text here!", isHTML: false)
+		emailController.setMessageBody(socialText, isHTML: false)
 		emailController.mailComposeDelegate = self
-		emailController.setSubject("Vipp! The next cool thing is here")
+		emailController.setSubject(subjectText)
 		presentViewController(emailController, animated: true, completion: nil)
 	}
 	@IBAction func textShare(_: UIButton)
 	{
 		let messageController = MFMessageComposeViewController()
 		messageController.messageComposeDelegate = self
-		messageController.body = "Some random text here!"
+		messageController.body = socialText
 		presentViewController(messageController, animated: true, completion: nil)
 	}
 }

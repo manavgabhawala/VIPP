@@ -171,6 +171,24 @@ extension String
 		}
 		return randomString
 	}
+	/**
+	Capitalizes a string using sentence case.
+	
+	:returns: A sentence cased copy of self.
+	*/
+	func sentenceCapitalizedString() -> String
+	{
+		var formattedString = ""
+		let range = Range(start: self.startIndex, end: self.endIndex)
+		self.enumerateSubstringsInRange(range, options: .BySentences, {(sentence, sentenceRange, enclosingRange, stop) in
+			formattedString += sentence.stringByReplacingCharactersInRange(Range(start: self.startIndex, end: advance(self.startIndex, 1)), withString: sentence[0].uppercaseString)
+		})
+		if (formattedString[countElements(formattedString) - 1] != ".")
+		{
+			formattedString += "."
+		}
+		return formattedString
+	}
 }
 
 /**

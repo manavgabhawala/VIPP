@@ -297,83 +297,11 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				let message = "Placeholder text here"
-				
-				let alertController = UIAlertController(title: "Terms and Conditions", message: message, preferredStyle: .Alert)
-				let textView = UITextView(frame: CGRect(origin: CGPoint(x: 0, y: 40), size: CGSize(width: alertController.view.frame.width, height: 150)))
-				//textView.text = message
-				//alertController.view.addSubview(textView)
-				alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-				alertController.addAction(UIAlertAction(title: "I Agree", style: .Default, handler: {(controller) in
-					if (PFUser.currentUser() == nil)
-					{
-						let user = PFUser()
-						user.username = self.userData.email
-						user.password = self.userData.password
-						user.email = self.userData.email
-						user["firstName"] = self.userData.firstName
-						user["lastName"] = self.userData.lastName
-						user["phoneNumber"] = self.userData.mobile
-						user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
-						user["city"] = self.userData.city
-						user["state"] = self.userData.state
-						user["zip"] = self.userData.zipCode
-						user["birthday"] = self.userData.birthday
-						user["whenGrowsUp"] = self.userData.future
-						user["favoriteVenues"] = self.userData.venues
-						user["nightLifeHabits"] = self.userData.guysGirls
-						user["validVIPP"] = false
-						user.signUpInBackgroundWithBlock({(result, error) in
-							if (result && error == nil)
-							{
-								self.performSegueWithIdentifier("thankYou", sender: self)
-							}
-							else
-							{
-								let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
-								if let message = error.userInfo?["error"] as? String
-								{
-									alertController.message = message
-								}
-								alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-								self.presentViewController(alertController, animated: true, completion: nil)
-							}
-						})
-					}
-					else
-					{
-						let user = PFUser.currentUser()
-						user["firstName"] = self.userData.firstName
-						user["lastName"] = self.userData.lastName
-						user["phoneNumber"] = self.userData.mobile
-						user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
-						user["city"] = self.userData.city
-						user["state"] = self.userData.state
-						user["zip"] = self.userData.zipCode
-						user["birthday"] = self.userData.birthday
-						user["whenGrowsUp"] = self.userData.future
-						user["favoriteVenues"] = self.userData.venues
-						user["nightLifeHabits"] = self.userData.guysGirls
-						user["validVIPP"] = false
-						user.saveInBackgroundWithBlock { (result, error) in
-							if (result && error == nil)
-							{
-								self.performSegueWithIdentifier("thankYou", sender: self)
-							}
-							else
-							{
-								let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
-								if let message = error.userInfo?["error"] as? String
-								{
-									alertController.message = message
-								}
-								alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
-								self.presentViewController(alertController, animated: true, completion: nil)
-							}
-						}
-					}
-				}))
-				presentViewController(alertController, animated: true, completion: nil)
+				let termsAndConditions = storyboard!.instantiateViewControllerWithIdentifier("TermsAndConditions") as UINavigationController
+				(termsAndConditions.viewControllers.first as TermsAndConditionsViewController).delegate = self
+				termsAndConditions.modalPresentationStyle = .FullScreen
+				termsAndConditions.modalTransitionStyle = .CoverVertical
+				presentViewController(termsAndConditions, animated: true, completion: nil)
 			}
 			backButton.hidden = false
 			if (currentPage == 1 && PFUser.currentUser() != nil)
@@ -631,6 +559,79 @@ extension SignUpViewController
 		if (birthdayDetailLabel != nil)
 		{
 			birthdayDetailLabel?.text = dateFormatter.stringFromDate(datePicker.date)
+		}
+	}
+}
+extension SignUpViewController : TermsAndConditionsViewControllerDelegate
+{
+	func agreesToTerms()
+	{
+		if (PFUser.currentUser() == nil)
+		{
+			let user = PFUser()
+			user.username = self.userData.email
+			user.password = self.userData.password
+			user.email = self.userData.email
+			user["firstName"] = self.userData.firstName
+			user["lastName"] = self.userData.lastName
+			user["phoneNumber"] = self.userData.mobile
+			user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
+			user["city"] = self.userData.city
+			user["state"] = self.userData.state
+			user["zip"] = self.userData.zipCode
+			user["birthday"] = self.userData.birthday
+			user["whenGrowsUp"] = self.userData.future
+			user["favoriteVenues"] = self.userData.venues
+			user["nightLifeHabits"] = self.userData.guysGirls
+			user["validVIPP"] = false
+			user.signUpInBackgroundWithBlock({(result, error) in
+				if (result && error == nil)
+				{
+					self.performSegueWithIdentifier("thankYou", sender: self)
+				}
+				else
+				{
+					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+					if let message = error.userInfo?["error"] as? String
+					{
+						alertController.message = message.sentenceCapitalizedString()
+					}
+					alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+					self.presentViewController(alertController, animated: true, completion: nil)
+				}
+			})
+		}
+		else
+		{
+			let user = PFUser.currentUser()
+			user["firstName"] = self.userData.firstName
+			user["lastName"] = self.userData.lastName
+			user["phoneNumber"] = self.userData.mobile
+			user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
+			user["city"] = self.userData.city
+			user["state"] = self.userData.state
+			user["zip"] = self.userData.zipCode
+			user["birthday"] = self.userData.birthday
+			user["whenGrowsUp"] = self.userData.future
+			user["favoriteVenues"] = self.userData.venues
+			user["nightLifeHabits"] = self.userData.guysGirls
+			user["validVIPP"] = false
+			user.saveInBackgroundWithBlock { (result, error) in
+				if (result && error == nil)
+				{
+					self.performSegueWithIdentifier("thankYou", sender: self)
+				}
+				else
+				{
+					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+					if let message = error.userInfo?["error"] as? String
+					{
+						alertController.message = message
+					}
+					alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+					self.presentViewController(alertController, animated: true, completion: nil)
+				}
+			}
 		}
 	}
 }

@@ -98,14 +98,18 @@
                                     <segue destination="Ql2-d1-KjL" kind="presentation" id="Vc3-j8-PIa"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo with Caption" translatesAutoresizingMaskIntoConstraints="NO" id="ufI-1N-7wm">
-                                <rect key="frame" x="210" y="246" width="180" height="108"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo with Caption" translatesAutoresizingMaskIntoConstraints="NO" id="ufI-1N-7wm">
+                                <rect key="frame" x="175" y="165" width="250" height="150"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ufI-1N-7wm" secondAttribute="height" multiplier="5:3" id="Og5-r9-2ae"/>
+                                    <constraint firstAttribute="width" constant="250" id="xIj-Gd-nvl"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="ufI-1N-7wm" secondAttribute="centerY" id="0oX-Qs-ebs"/>
+                            <constraint firstItem="ufI-1N-7wm" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="0.8" id="0oX-Qs-ebs"/>
                             <constraint firstItem="q2W-cl-27V" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="16" id="5mP-CH-drl"/>
                             <constraint firstAttribute="centerX" secondItem="q2W-cl-27V" secondAttribute="centerX" id="9Lt-3q-YJq"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="mt4-Vv-NwK" secondAttribute="bottom" constant="100" id="9eI-ee-e20"/>
@@ -128,10 +132,10 @@
             </objects>
             <point key="canvasLocation" x="239" y="621"/>
         </scene>
-        <!--Terms And Conditions View Controller-->
+        <!--Terms And Conditions-->
         <scene sceneID="lQk-nH-pUx">
             <objects>
-                <viewController id="wJM-Rr-k9g" customClass="TermsAndConditionsViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wJM-Rr-k9g" customClass="TermsAndConditionsViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="F7C-9B-pE9"/>
                         <viewControllerLayoutGuide type="bottom" id="L71-72-rH4"/>
@@ -140,38 +144,1032 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Taa-M3-Zt2">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u43-pt-MjD">
+                                <rect key="frame" x="0.0" y="64" width="600" height="492"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">In using this mobile application you are deemed to have read and agreed to the following terms and conditions:
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The following terminology applies to these Terms and Conditions, Privacy Statement and Disclaimer Notice and any or all Agreements: "Client", “You” and “Your” refers to you, the person accessing this website and accepting the Company’s terms and conditions. "The Company", “Ourselves”, “We” and "Us", refers to our Company. “Party”, “Parties”, or “Us”, refers to both the Client and ourselves, or either the Client or ourselves. All terms refer to the offer, acceptance and consideration of payment necessary to undertake the process of our assistance to the Client in the most appropriate manner, whether by formal meetings of a fixed duration, or any other means, for the express purpose of meeting the Client’s needs in respect of provision of the Company’s stated services/products, in accordance with and subject to, prevailing United States Law. Any use of the above terminology or other words in the singular, plural, capitalization and/or he/she or they, are taken as interchangeable and therefore as referring to same.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="8" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Privacy Statement
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">We are committed to protecting your privacy. Authorized employees within the company on a need to know basis only use any information collected from individual customers. We constantly review our systems and data to ensure the best possible service to our customers. Parliament has created specific offenses for unauthorized actions against computer systems and data. We will investigate any such actions with a view to prosecuting and/or taking civil proceedings to recover damages against those responsible.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Confidentiality
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">We are registered under the Data Protection Act 1998 and as such, any information concerning the Client and their respective Client Records may be passed to third parties. However, Client records are regarded as confidential and therefore will not be divulged to any third party, other than [our venue(s) and] if legally required to do so to the appropriate authorities. Clients have the right to request sight of, and copies of any and all Client Records we keep, on the proviso that we are given reasonable notice of such a request. Clients are requested to retain copies of any literature issued in relation to the provision of our services. Where appropriate, we shall issue Client’s with appropriate written information, handouts or copies of records as part of an agreed contract, for the benefit of both parties. 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">We will not sell, share, or rent your personal information to any third party or use your e-mail address for unsolicited mail. Any emails sent by this Company will only be in connection with the provision of agreed services and products.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Medium"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Disclaimer
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">User Conduct/Liability
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">By agreeing to these Terms and Conditions, all users hereby agree to conduct themselves by the rules and regulations of our venues. Our venues maintain the right to exercise the following regulations in accordance with nation law, stated below but not limit to:
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="i.">
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Requiring patrons to present valid identification prior to being granted access to the venue
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="ii.">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Denying access to anyone who fails to present the valid identification as deemed by venue staff
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="iii.">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Denying access to anyone deemed by venue staff to be “unfit” for access to the venue event
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">VIPP, LLC is not responsible for the acceptance into venues of any patrons who may be under the age of 21. VIPP, LLC is not responsible for any damage which may be caused by patrons to our venues or any damage to other patrons or persons alike. The responsibility for such events lies with the person at cause. 
+VIPP, LLC maintains the right to accept or deny any applicant to our program. VIPP, LLC maintains the right to change the acceptance status of any patron at any time without explicit notification. VIPP, LLC is not liable for any conduct between patrons and third party services.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Exclusions and Limitations
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The information on this mobile application is provided on an "as is" basis. To the fullest extent permitted by law, this Company:
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="•">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">excludes all representations and warranties relating to this website and its contents or which is or may be provided by any affiliates or any other third party, including in relation to any inaccuracies or omissions in this website and/or the Company’s literature; and 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="•">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+CQ
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="12" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">excludes all liability for damages arising out of or in connection with your use of this website. This includes, without limitation, direct loss, loss of business or profits (whether or not the loss of such profits was foreseeable, arose in the normal course of things or you have advised this Company of the possibility of such potential loss), damage caused to your computer, computer software, systems and programs and the data thereon or any other direct or indirect, consequential and incidental damages. 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" headIndent="36" defaultTabInterval="36">
+                                                <tabStops>
+                                                    <textTab alignment="left" location="18"/>
+                                                    <textTab alignment="natural" location="36"/>
+                                                    <textTab alignment="left" location="56"/>
+                                                    <textTab alignment="left" location="84"/>
+                                                    <textTab alignment="left" location="112"/>
+                                                    <textTab alignment="left" location="140"/>
+                                                    <textTab alignment="left" location="168"/>
+                                                    <textTab alignment="left" location="196"/>
+                                                    <textTab alignment="left" location="224"/>
+                                                    <textTab alignment="left" location="252"/>
+                                                    <textTab alignment="left" location="280"/>
+                                                    <textTab alignment="left" location="308"/>
+                                                    <textTab alignment="left" location="336"/>
+                                                </tabStops>
+                                            </paragraphStyle>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">This Company does not however exclude liability for death or personal injury caused by its negligence. The above exclusions and limitations apply only to the extent permitted by law. None of your statutory rights as a consumer are affected.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Availability
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Unless otherwise stated, the services featured on this website are only available within the United States, or in relation to postings from the United States. All advertising is intended solely for the United States market. You are solely responsible for evaluating the fitness for a particular purpose of any downloads, programs and text available through this site. Redistribution or republication of any part of this site or its content is prohibited, including such by framing or other similar or any other means, without the express written consent of the Company. The Company does not warrant that the service from this site will be uninterrupted, timely or error free, although it is provided to the best ability. By using this service you thereby indemnify this Company, its employees, agents and affiliates against any loss or damage, in whatever manner, howsoever caused.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="8" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Links from this Application
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">We do not monitor or review the content of other party’s websites which are linked to from this website. Opinions expressed or material appearing on such websites are not necessarily shared or endorsed by us and should not be regarded as the publisher of such opinions or material. Please be aware that we are not responsible for the privacy practices, or content, of these sites. We encourage our users to be aware when they leave our site &amp; to read the privacy statements of these sites. You should evaluate the security and trustworthiness of any other site connected to this site or accessed through this site yourself, before disclosing any personal information to them. This Company will not accept any responsibility for any loss or damage in whatever manner, howsoever caused, resulting from your disclosure to third parties of personal information.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="8" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Copyright Notice
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Copyright and other relevant intellectual property rights exists on all text relating to the Company’s services and the full content of this website.
+VIPP’s logo is a pending registered trademark of VIPP, LLC in the United States and other countries. The brand names and specific services of VIPP, LLC featured on this mobile application are pending trademark. 
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Communication
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="If you have any comments or concerns, please do not hesitate to forward them to ">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="support@getvipp.com">
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <url key="NSLink" string="mailto:support@getvipp.com"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">. We pride ourselves on our customer communication and we will do our best to accommodate your concerns.
+This company is registered in the United States of America, EIN: 32-0457465, registered office 623 Oxford Road, Ann Arbor, MI, 41804.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="8" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Force Majeure
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Neither party shall be liable to the other for any failure to perform any obligation under any Agreement which is due to an event beyond the control of such party including but not limited to any Act of God, terrorism, war, Political insurgence, insurrection, riot, civil unrest, act of civil or military authority, uprising, earthquake, flood or any other natural or man made eventuality outside of our control, which causes the termination of an agreement or contract entered into, nor which could have been reasonably foreseen. Any Party affected by such event shall forthwith inform the other Party of the same and shall use all reasonable endeavors to comply with the terms and conditions of any Agreement contained herein.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Waiver
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Failure of either Party to insist upon strict performance of any provision of this or any Agreement or the failure of either Party to exercise any right or remedy to which it, he or they are entitled hereunder shall not constitute a waiver thereof and shall not cause a diminution of the obligations under this or any Agreement. No waiver of any of the provisions of this or any Agreement shall be effective unless it is expressly stated to be such and signed by both Parties.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">General
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="Arial-BoldMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The laws of the United States of America govern these terms and conditions. By accessing this mobile application [and using our services] you consent to these terms and conditions and to the exclusive jurisdiction of the American courts in all disputes arising out of such access. If any of these terms are deemed invalid or unenforceable for any reason (including, but not limited to the exclusions and limitations set out above), then the invalid or unenforceable provision will be severed from these terms and the remaining terms will continue to apply. Failure of the Company to enforce any of the provisions set out in these Terms and Conditions and any Agreement, or failure to exercise any option to terminate, shall not be construed as waiver of such provisions and shall not affect the validity of these Terms and Conditions or of any Agreement or any part thereof, or the right thereafter to enforce each and every provision. These Terms and Conditions shall not be amended, modified, varied or supplemented except in writing and signed by duly authorized representatives of the Company.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
+Cg
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="8" name="ArialMT"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Notification of Changes
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="11" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">The Company reserves the right to change these conditions from time to time as it sees fit and your continued use of the site will signify your acceptance of any adjustment to these terms. If there are any changes to our privacy policy, we will announce that these changes have been made on our home page and on other key pages on our site. If there are any changes in how we use our site customers’ Personally Identifiable Information, notification by e-mail or postal mail will be made to those affected by this change. Any changes to our privacy policy will be posted on our web site 30 days prior to these changes taking place. You are therefore advised to re-read this statement on a regular basis
 
-Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Light"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" paragraphSpacing="3" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">These terms and conditions form part of the Agreement between the Client and ourselves. Your accessing of this mobile application and/or undertaking of a booking or Agreement indicates your understanding, agreement to and acceptance, of the Disclaimer Notice and the full Terms and Conditions contained herein. Your statutory Consumer Rights are unaffected.
+</string>
+                                        <attributes>
+                                            <font key="NSFont" size="10" name="HelveticaNeue-Medium"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="justified" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
+© VIPP, LLC. 2015 All Rights Reserved</string>
+                                        <attributes>
+                                            <font key="NSFont" size="9" name="HelveticaNeue-Bold"/>
+                                            <real key="NSKern" value="0.0"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="leftToRight" defaultTabInterval="36"/>
+                                            <color key="NSStrokeColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="Taa-M3-Zt2" secondAttribute="trailing" constant="-16" id="1or-e3-akV"/>
-                            <constraint firstItem="L71-72-rH4" firstAttribute="top" secondItem="Taa-M3-Zt2" secondAttribute="bottom" id="9S0-3v-gDd"/>
-                            <constraint firstItem="Taa-M3-Zt2" firstAttribute="top" secondItem="h5a-tk-cCb" secondAttribute="topMargin" id="O81-rF-8Lx"/>
-                            <constraint firstItem="Taa-M3-Zt2" firstAttribute="leading" secondItem="h5a-tk-cCb" secondAttribute="leadingMargin" constant="-16" id="g8J-SD-4Ap"/>
+                            <constraint firstItem="L71-72-rH4" firstAttribute="top" secondItem="u43-pt-MjD" secondAttribute="bottom" id="Dxn-Ec-E5j"/>
+                            <constraint firstItem="u43-pt-MjD" firstAttribute="leading" secondItem="h5a-tk-cCb" secondAttribute="leadingMargin" constant="-16" id="k9U-ej-h7v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="u43-pt-MjD" secondAttribute="trailing" constant="-16" id="kRJ-VZ-9L7"/>
+                            <constraint firstItem="u43-pt-MjD" firstAttribute="top" secondItem="F7C-9B-pE9" secondAttribute="bottom" id="snV-vx-ioI"/>
                         </constraints>
                     </view>
                     <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="S0h-Dh-EMj"/>
-                        <barButtonItem style="done" systemItem="done" id="Buw-x9-fbT">
+                        <barButtonItem enabled="NO" systemItem="cancel" id="bis-ea-OjP">
                             <connections>
-                                <action selector="dismissAction:" destination="wJM-Rr-k9g" id="NJ4-6D-Qxt"/>
+                                <action selector="cancelButtonPressed:" destination="wJM-Rr-k9g" id="7iY-nY-kiJ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="S0h-Dh-EMj"/>
+                        <barButtonItem title="Done" style="done" id="Buw-x9-fbT">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="wJM-Rr-k9g" id="4zx-pQ-A9p"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
-                    <navigationItem key="navigationItem" id="p8E-qF-AYK"/>
+                    <navigationItem key="navigationItem" title="Terms And Conditions" id="p8E-qF-AYK"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="cancelButton" destination="bis-ea-OjP" id="PvV-bl-spe"/>
+                        <outlet property="doneButton" destination="Buw-x9-fbT" id="uRs-Fg-Tei"/>
+                        <outlet property="textView" destination="u43-pt-MjD" id="9dS-Jd-KVC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Aik-gS-9xt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1641" y="-622"/>
+            <point key="canvasLocation" x="1637" y="-520"/>
         </scene>
         <!--Information View Controller-->
         <scene sceneID="Xdb-7V-w0c">
@@ -1545,8 +2543,9 @@ Some other stuff</string>
         <!--Navigation Controller-->
         <scene sceneID="wdI-EI-M2s">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" toolbarHidden="NO" id="g7N-GR-UcP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TermsAndConditions" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" toolbarHidden="NO" id="g7N-GR-UcP" sceneMemberID="viewController">
                     <toolbarItems/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="f0a-SN-Gfm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

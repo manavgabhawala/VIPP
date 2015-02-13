@@ -9,11 +9,42 @@
 import Foundation
 import UIKit
 
+protocol TermsAndConditionsViewControllerDelegate
+{
+	func agreesToTerms()
+}
+
 class TermsAndConditionsViewController : UIViewController
 {
-	@IBAction func dismissAction(_: UIButton)
+	@IBOutlet var doneButton : UIBarButtonItem!
+	@IBOutlet var cancelButton : UIBarButtonItem!
+	@IBOutlet var textView : UITextView!
+	var finalTerms = false
+	var delegate : TermsAndConditionsViewControllerDelegate?
+	override func viewDidLoad()
+	{
+		if delegate != nil
+		{
+			cancelButton.enabled = true
+			doneButton.title = "I Agree"
+		}
+	}
+	override func viewDidAppear(animated: Bool)
+	{
+		textView.setContentOffset(CGPoint(x: 0, y: -textView.contentInset.top), animated: true)
+	}
+	func dismissAction()
 	{
 		dismissViewControllerAnimated(true, completion: nil)
+	}
+	@IBAction func doneButtonPressed(_ : UIBarButtonItem)
+	{
+		delegate?.agreesToTerms()
+		dismissAction()
+	}
+	@IBAction func cancelButtonPressed(_ : UIBarButtonItem)
+	{
+		dismissAction()
 	}
 }
 
