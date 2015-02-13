@@ -13,8 +13,6 @@ import MessageUI
 
 class ThankYouViewController: UIViewController
 {
-	let socialText = "Some random text here"
-	let subjectText = "Vipp - The Next Cool Thing"
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
@@ -23,28 +21,28 @@ class ThankYouViewController: UIViewController
 	@IBAction func facebookShare(_: UIButton)
 	{
 		let facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
-		facebookSheet.setInitialText(socialText)
+		facebookSheet.setInitialText("I'll be attending elite nightlife venues with Vipp (facebook.com/getvipp) – sign up here to join me: http://getvipp.com")
 		presentViewController(facebookSheet, animated: true, completion: nil)
 	}
 	@IBAction func twitterShare(_: UIButton)
 	{
 		let tweetSheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
-		tweetSheet.setInitialText(socialText)
+		tweetSheet.setInitialText("I'll be attending elite nightlife venues with @getvipp – want to join? http://getvipp.com")
 		presentViewController(tweetSheet, animated: true, completion: nil)
 	}
 	@IBAction func emailShare(_: UIButton)
 	{
 		let emailController = MFMailComposeViewController()
-		emailController.setMessageBody(socialText, isHTML: false)
+		emailController.setMessageBody("Download this to get into top nightlife venues with me! http://getvipp.com", isHTML: false)
 		emailController.mailComposeDelegate = self
-		emailController.setSubject(subjectText)
+		emailController.setSubject("Check out this Vipp app")
 		presentViewController(emailController, animated: true, completion: nil)
 	}
 	@IBAction func textShare(_: UIButton)
 	{
 		let messageController = MFMessageComposeViewController()
 		messageController.messageComposeDelegate = self
-		messageController.body = socialText
+		messageController.body = "Check out this Vipp app – Download this to get into top nightlife venues with me! http://getvipp.com"
 		presentViewController(messageController, animated: true, completion: nil)
 	}
 }
