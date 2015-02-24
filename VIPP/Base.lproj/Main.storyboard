@@ -1805,7 +1805,7 @@ Some other stuff</string>
                                                             <fragment content="By creating a VIPP account you agree to the Terms and Conditions and Privacy Policy">
                                                                 <attributes>
                                                                     <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
-                                                                    <font key="NSFont" size="14" name="STHeitiSC-Medium"/>
+                                                                    <font key="NSFont" size="13" name="STHeitiSC-Medium"/>
                                                                     <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.5"/>
                                                                 </attributes>
                                                             </fragment>
@@ -2572,15 +2572,15 @@ Some other stuff</string>
         <image name="FBLogin" width="700" height="86"/>
         <image name="Grey Back" width="834" height="560"/>
         <image name="Logo" width="300" height="167"/>
-        <image name="Logo with Caption" width="180" height="108"/>
+        <image name="Logo with Caption" width="360" height="216"/>
         <image name="Text-Share" width="50" height="50"/>
         <image name="Twitter-Share" width="50" height="50"/>
         <image name="Up Arrow" width="393" height="74"/>
         <image name="pattern.png" width="720" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="P7r-EU-7r2"/>
         <segue reference="Vc3-j8-PIa"/>
-        <segue reference="vN5-j7-QOO"/>
+        <segue reference="z2m-BL-8ja"/>
+        <segue reference="Ksh-El-tCn"/>
     </inferredMetricsTieBreakers>
 </document>

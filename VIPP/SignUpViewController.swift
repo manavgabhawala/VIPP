@@ -25,6 +25,7 @@ private struct UserInfo
 	var future = ""
 	var guysGirls = ""
 	var venues = ""
+	var promoCode : String? = nil
 }
 
 enum TextField
@@ -41,6 +42,7 @@ enum TextField
 	case Future
 	case GuysGirls
 	case Venues
+	case Promo
 	var rawValue : Int!
 	{
 		get
@@ -53,7 +55,7 @@ enum TextField
 					return 1
 				case .City, .Password, .Venues:
 					return 2
-				case .State, .ConfirmPassword:
+				case .State, .ConfirmPassword, .Promo:
 					return 3
 				case .Zip:
 					return 4
@@ -268,11 +270,29 @@ class SignUpViewController: UIViewController
 			tableCells[currentPage][TextField.Venues.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
 			isValid = false
 		}
+		var promoCodeId : String? = nil
+		if (!textFields[TextField.Promo.rawValue].text.isEmpty)
+		{
+			let promo = textFields[TextField.Promo.rawValue].text
+			let query = PFQuery(className: "PromoCodes")
+			query.whereKey("promoId", equalTo: promo)
+			let promoFound = query.findObjects() as [PFObject]
+			if let promoObject = promoFound.first
+			{
+				promoCodeId = promoObject.objectId
+			}
+			else
+			{
+				tableCells[currentPage][TextField.Promo.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+				isValid = false
+			}
+		}
 		if (isValid)
 		{
 			userData.future = textFields[TextField.Future.rawValue].text
 			userData.guysGirls = textFields[TextField.GuysGirls.rawValue].text
 			userData.venues = textFields[TextField.Venues.rawValue].text
+			userData.promoCode = promoCodeId
 		}
 		return isValid
 	}
@@ -392,7 +412,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		(secondCells.last as RoundedTableCells).bottom = true
 		tableCells.append(secondCells)
 		
-		let placeholderSurvey = ["Profession?", "Will you be going out with guys or girls?", "Favorite Venues?"]
+		let placeholderSurvey = ["Profession?", "Will you be going out with guys or girls?", "Favorite Venues?", "Promo Code (Optional)"]
 		var thirdCells = [UITableViewCell]()
 		for (i, placeholder) in enumerate(placeholderSurvey)
 		{
@@ -566,24 +586,36 @@ extension SignUpViewController : TermsAndConditionsViewControllerDelegate
 {
 	func agreesToTerms()
 	{
+		var user: PFUser
+		if let currentUser = PFUser.currentUser()
+		{
+			user = currentUser
+		}
+		else
+		{
+			user = PFUser()
+			user.username = userData.email
+			user.password = userData.password
+			user.email = userData.email
+		}
+		user["firstName"] = userData.firstName
+		user["lastName"] = userData.lastName
+		user["phoneNumber"] = userData.mobile
+		user["geoLocation"] = PFGeoPoint(latitude: userData.latitude, longitude: userData.longitude)
+		user["city"] = userData.city
+		user["state"] = userData.state
+		user["zip"] = userData.zipCode
+		user["birthday"] = userData.birthday
+		user["whenGrowsUp"] = userData.future
+		user["favoriteVenues"] = userData.venues
+		user["nightLifeHabits"] = userData.guysGirls
+		user["validVIPP"] = false
+		if let promo = userData.promoCode
+		{
+			user["promo"] = PFObject(withoutDataWithClassName: "PromoCodes", objectId: promo)
+		}
 		if (PFUser.currentUser() == nil)
 		{
-			let user = PFUser()
-			user.username = self.userData.email
-			user.password = self.userData.password
-			user.email = self.userData.email
-			user["firstName"] = self.userData.firstName
-			user["lastName"] = self.userData.lastName
-			user["phoneNumber"] = self.userData.mobile
-			user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
-			user["city"] = self.userData.city
-			user["state"] = self.userData.state
-			user["zip"] = self.userData.zipCode
-			user["birthday"] = self.userData.birthday
-			user["whenGrowsUp"] = self.userData.future
-			user["favoriteVenues"] = self.userData.venues
-			user["nightLifeHabits"] = self.userData.guysGirls
-			user["validVIPP"] = false
 			user.signUpInBackgroundWithBlock({(result, error) in
 				if (result && error == nil)
 				{
@@ -591,31 +623,18 @@ extension SignUpViewController : TermsAndConditionsViewControllerDelegate
 				}
 				else
 				{
-					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error signing you up. Please check all fields for valid information and that you have a valid internet connection.", preferredStyle: .Alert)
 					if let message = error.userInfo?["error"] as? String
 					{
 						alertController.message = message.sentenceCapitalizedString()
 					}
-					alertController.addAction(UIAlertAction(title: "OK", style: .Cancel, handler: nil))
+					alertController.addAction(UIAlertAction(title: "Okay", style: .Cancel, handler: nil))
 					self.presentViewController(alertController, animated: true, completion: nil)
 				}
 			})
 		}
 		else
 		{
-			let user = PFUser.currentUser()
-			user["firstName"] = self.userData.firstName
-			user["lastName"] = self.userData.lastName
-			user["phoneNumber"] = self.userData.mobile
-			user["geoLocation"] = PFGeoPoint(latitude: self.userData.latitude, longitude: self.userData.longitude)
-			user["city"] = self.userData.city
-			user["state"] = self.userData.state
-			user["zip"] = self.userData.zipCode
-			user["birthday"] = self.userData.birthday
-			user["whenGrowsUp"] = self.userData.future
-			user["favoriteVenues"] = self.userData.venues
-			user["nightLifeHabits"] = self.userData.guysGirls
-			user["validVIPP"] = false
 			user.saveInBackgroundWithBlock { (result, error) in
 				if (result && error == nil)
 				{
@@ -623,7 +642,7 @@ extension SignUpViewController : TermsAndConditionsViewControllerDelegate
 				}
 				else
 				{
-					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have internet access.", preferredStyle: .Alert)
+					let alertController = UIAlertController(title: "Sign Up Error", message: "There was an error saving your data. Please check all fields for valid information and that you have a valid internet connection.", preferredStyle: .Alert)
 					if let message = error.userInfo?["error"] as? String
 					{
 						alertController.message = message
