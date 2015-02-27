@@ -66,10 +66,16 @@
 		829DC1B31A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */; };
 		82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
 		82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
+		82BE9D9C1A9FDDAA0040C573 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */; };
+		82BE9D9D1A9FDDAA0040C573 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */; };
+		82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9E1A9FE2290040C573 /* Club.swift */; };
+		82BE9DA01A9FE2290040C573 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9E1A9FE2290040C573 /* Club.swift */; };
 		82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */; };
 		82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */; };
 		82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
 		82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
+		82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */; };
+		82DBDE701A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */; };
 		82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
 		82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
 		82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E8B9061A8340FF004E1366 /* ThankYouViewController.swift */; };
@@ -131,8 +137,11 @@
 		829DC1AD1A7B407B00CD6187 /* VIPPTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VIPPTests-Bridging-Header.h"; path = "../VIPP/VIPPTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		82AC16FF1A7C749D0065387F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		82BE9D9E1A9FE2290040C573 /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
 		82C7B3F11A7F13400088EC2B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		82E2A5571A869E8E004C4795 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -241,6 +250,9 @@
 				829DC1631A7B3E1F00CD6187 /* AppDelegate.swift */,
 				82C7B3F11A7F13400088EC2B /* Extensions.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
+				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
+				82BE9D9E1A9FE2290040C573 /* Club.swift */,
+				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				822990961A8ADB4900082E06 /* Signup Stuff */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
 				822990951A8ADB4000082E06 /* Views */,
@@ -432,11 +444,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
 				82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */,
+				82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC31A89A17C00C0C8FE /* OtherViewControllers.swift in Sources */,
 				82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */,
 				82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC1661A7B3E1F00CD6187 /* InitialViewController.swift in Sources */,
+				82BE9D9C1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
@@ -448,11 +463,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82DBDE701A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
 				82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */,
+				82BE9DA01A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC41A89A17E00C0C8FE /* OtherViewControllers.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
+				82BE9D9D1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
 				82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
