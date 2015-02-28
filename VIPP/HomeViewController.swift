@@ -57,15 +57,17 @@ class HomeViewController: UIViewController
 			{
 				let location = cell.club.location
 				let name = cell.club.name
+				let uberClient = "DJIZIgHZ1AwWkLERkkNns0t_7QCW_L7"
 				if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
 				{
 					// Do something awesome - the app is installed! Launch App.
-					let URL = NSURL(string: "uber://?action=setPickup&pickup=my_location&&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
+					let URL = NSURL(string: "uber://?client_id=\(uberClient)&action=setPickup&pickup=my_location&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
 					UIApplication.sharedApplication().openURL(URL)
 				}
 				else
 				{
 					// No Uber app! Open Mobile Website.
+					let URL = NSURL(string: "https://m.uber.com/sign-up?client_id=\(uberClient)&pickup=my_location&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")
 					UIApplication.sharedApplication().openURL(NSURL(string: "uber.com")!)
 				}
 			}
