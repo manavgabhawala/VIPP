@@ -44,7 +44,7 @@ class InitialViewController: UIViewController {
 			let validVIPP = user["validVIPP"] as? Bool
 			if validVIPP != nil && validVIPP!
 			{
-				let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as HomeViewController
+				let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
 				homeViewController.modalPresentationStyle = .FullScreen
 				homeViewController.modalTransitionStyle = .CrossDissolve
 				self.presentViewController(homeViewController, animated: true, completion: nil)
@@ -53,14 +53,14 @@ class InitialViewController: UIViewController {
 			{
 				if (user["whenGrowsUp"] != nil)
 				{
-					let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as ThankYouViewController
+					let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as! ThankYouViewController
 					finalPage.modalPresentationStyle = .FullScreen
 					finalPage.modalTransitionStyle = .FlipHorizontal
 					presentViewController(finalPage, animated: true, completion: nil)
 				}
 				else
 				{
-					let signUp = storyboard!.instantiateViewControllerWithIdentifier("SignUpViewController") as SignUpViewController
+					let signUp = storyboard!.instantiateViewControllerWithIdentifier("SignUpViewController") as! SignUpViewController
 					signUp.modalPresentationStyle = .FullScreen
 					signUp.modalTransitionStyle = .FlipHorizontal
 					presentViewController(signUp, animated: true, completion: nil)

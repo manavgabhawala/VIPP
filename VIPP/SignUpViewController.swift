@@ -99,14 +99,14 @@ class SignUpViewController: UIViewController
 			{
 				currentPage = 1
 				setTextFields()
-				textFields[TextField.FirstName.rawValue].text = user["firstName"] as String
-				textFields[TextField.LastName.rawValue].text = user["lastName"] as String
+				textFields[TextField.FirstName.rawValue].text = user["firstName"] as! String
+				textFields[TextField.LastName.rawValue].text = user["lastName"] as! String
 				backButton.hidden = true
 				tableView.reloadData()
 			}
 			else
 			{
-				let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as ThankYouViewController
+				let finalPage = storyboard!.instantiateViewControllerWithIdentifier("FinalPage") as! ThankYouViewController
 				finalPage.modalPresentationStyle = .FullScreen
 				finalPage.modalTransitionStyle = .FlipHorizontal
 				presentViewController(finalPage, animated: false, completion: nil)
@@ -126,15 +126,15 @@ class SignUpViewController: UIViewController
 		let somethigngEl = 1
 		
 		textFields.removeAll(keepCapacity: false)
-		let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as SignUpTableCell).textField }
+		let signUpTextFields = tableCells[currentPage].filter{ $0 is SignUpTableCell }.map { ($0 as! SignUpTableCell).textField }
 		var addressTextFields = [UITextField]()
 		let _ : [Void] = tableCells[currentPage].filter{ $0 is AddressCell }.map {
-			let cell = ($0 as AddressCell)
+			let cell = ($0 as! AddressCell)
 			addressTextFields.append(cell.cityField)
 			addressTextFields.append(cell.stateField)
 			addressTextFields.append(cell.zipCodeField)
 		}
-		let surveyTextFields = tableCells[currentPage].filter{ $0 is SurveyCell }.map { ($0 as SurveyCell).textField }
+		let surveyTextFields = tableCells[currentPage].filter{ $0 is SurveyCell }.map { ($0 as! SurveyCell).textField }
 		signUpTextFields.map { self.textFields.append($0) }
 		addressTextFields.map { self.textFields.append($0) }
 		surveyTextFields.map { self.textFields.append($0) }
@@ -174,22 +174,22 @@ class SignUpViewController: UIViewController
 		var isValid = true
 		if (!textFields[TextField.EmailID.rawValue].text.isValidEmail())
 		{
-			tableCells[currentPage][TextField.EmailID.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.EmailID.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if Array(textFields[TextField.Mobile.rawValue].text.returnActualNumber()).count < 10
 		{
-			tableCells[currentPage][TextField.Mobile.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Mobile.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if Array(textFields[TextField.Password.rawValue].text).count < 6
 		{
-			tableCells[currentPage][TextField.Password.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Password.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if textFields[TextField.ConfirmPassword.rawValue].text != textFields[TextField.Password.rawValue].text
 		{
-			tableCells[currentPage][TextField.ConfirmPassword.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.ConfirmPassword.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
@@ -211,26 +211,26 @@ class SignUpViewController: UIViewController
 		var isValid = true
 		if (textFields[TextField.FirstName.rawValue].text.isEmpty)
 		{
-			tableCells[currentPage][TextField.FirstName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.FirstName.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (textFields[TextField.LastName.rawValue].text.isEmpty)
 		{
-			tableCells[currentPage][TextField.LastName.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.LastName.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		let addressTuple = verifyAddress(city: textFields[TextField.City.rawValue].text, state: textFields[TextField.State.rawValue].text, zip: textFields[TextField.Zip.rawValue].text.toInt())
 		if (addressTuple.latitude == nil && addressTuple.longitude == nil)
 		{
-			tableCells[currentPage].filter{ $0 is AddressCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage].filter{ $0 is AddressCell }.first!.contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.dateStyle = .MediumStyle
-		if ((birthdayDetailLabel?.text?) == nil || birthdayDetailLabel!.text!.isEmpty || dateFormatter.dateFromString(birthdayDetailLabel!.text!) == nil)
+		if ((birthdayDetailLabel?.text) == nil || birthdayDetailLabel!.text!.isEmpty || dateFormatter.dateFromString(birthdayDetailLabel!.text!) == nil)
 		{
 			
-			tableCells[currentPage].filter {$0 is UIRoundedTableViewCell }.first!.contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage].filter {$0 is UIRoundedTableViewCell }.first!.contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
@@ -257,17 +257,17 @@ class SignUpViewController: UIViewController
 		var isValid = true
 		if (textFields[TextField.Future.rawValue].text.isEmpty)
 		{
-			tableCells[currentPage][TextField.Future.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Future.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (textFields[TextField.GuysGirls.rawValue].text.isEmpty)
 		{
-			tableCells[currentPage][TextField.GuysGirls.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.GuysGirls.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (textFields[TextField.Venues.rawValue].text.isEmpty)
 		{
-			tableCells[currentPage][TextField.Venues.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[currentPage][TextField.Venues.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		var promoCodeId : String? = nil
@@ -276,14 +276,14 @@ class SignUpViewController: UIViewController
 			let promo = textFields[TextField.Promo.rawValue].text
 			let query = PFQuery(className: "PromoCodes")
 			query.whereKey("promoId", equalTo: promo)
-			let promoFound = query.findObjects() as [PFObject]
+			let promoFound = query.findObjects() as! [PFObject]
 			if let promoObject = promoFound.first
 			{
 				promoCodeId = promoObject.objectId
 			}
 			else
 			{
-				tableCells[currentPage][TextField.Promo.rawValue].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+				tableCells[currentPage][TextField.Promo.rawValue].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 				isValid = false
 			}
 		}
@@ -317,8 +317,8 @@ class SignUpViewController: UIViewController
 			}
 			else
 			{
-				let termsAndConditions = storyboard!.instantiateViewControllerWithIdentifier("TermsAndConditions") as UINavigationController
-				(termsAndConditions.viewControllers.first as TermsAndConditionsViewController).delegate = self
+				let termsAndConditions = storyboard!.instantiateViewControllerWithIdentifier("TermsAndConditions") as! UINavigationController
+				(termsAndConditions.viewControllers.first as! TermsAndConditionsViewController).delegate = self
 				termsAndConditions.modalPresentationStyle = .FullScreen
 				termsAndConditions.modalTransitionStyle = .CoverVertical
 				presentViewController(termsAndConditions, animated: true, completion: nil)
@@ -364,26 +364,26 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 	{
 		tableCells.removeAll(keepCapacity: false)
 		var firstCells = [UITableViewCell]()
-		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		emailCell.drawWithLabel("Email", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
 		emailCell.textField.autocapitalizationType = .None
 		firstCells.append(emailCell)
-		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let phoneCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		phoneCell.drawWithLabel("Mobile", andPlaceholder: "(XXX) XXX-XXXX", keyboardType: .PhonePad, delegate: self)
 		phoneCell.textField.addTarget(self, action: "phoneNumberTextField:", forControlEvents: .EditingChanged)
 		firstCells.append(phoneCell)
-		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		passwordCell.drawWithLabel("Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		passwordCell.textField.secureTextEntry = true
 		passwordCell.textField.font = UIFont.systemFontOfSize(15)
 		firstCells.append(passwordCell)
-		let confirmPasswordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let confirmPasswordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		confirmPasswordCell.drawWithLabel("Confirm Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		confirmPasswordCell.textField.secureTextEntry = true
 		confirmPasswordCell.textField.font = UIFont.systemFontOfSize(15)
 		firstCells.append(confirmPasswordCell)
-		(firstCells.first as RoundedTableCells).top = true
-		(firstCells.last as RoundedTableCells).bottom = true
+		(firstCells.first as! RoundedTableCells).top = true
+		(firstCells.last as! RoundedTableCells).bottom = true
 		tableCells.append(firstCells)
 		
 		let placeholders = ["Name", "Name"]
@@ -391,37 +391,37 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		var secondCells = [UITableViewCell]()
 		for (i, placeholder) in enumerate(placeholders)
 		{
-			let cell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 			cell.drawWithLabel(labels[i], andPlaceholder: placeholder, keyboardType: .NamePhonePad, delegate: self)
 			secondCells.append(cell)
 		}
-		(secondCells.first? as SignUpTableCell).top = true
-		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateDisplay") as UIRoundedTableViewCell
+		(secondCells.first as! SignUpTableCell).top = true
+		let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateDisplay") as! UIRoundedTableViewCell
 		birthdayCell.mainLabel.text = "Birthday"
 		birthdayCell.dateLabel.text = "Jan 1, 1985"
 		birthdayDetailLabel = birthdayCell.dateLabel
 		secondCells.append(birthdayCell)
 		
-		let addressCell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as AddressCell
+		let addressCell = tableView.dequeueReusableCellWithIdentifier("AddressCell") as! AddressCell
 		addressCell.cityField.delegate = self
 		addressCell.stateField.delegate = self
 		addressCell.zipCodeField.delegate = self
 		secondCells.append(addressCell)
 		
-		(secondCells.first as RoundedTableCells).top = true
-		(secondCells.last as RoundedTableCells).bottom = true
+		(secondCells.first as! RoundedTableCells).top = true
+		(secondCells.last as! RoundedTableCells).bottom = true
 		tableCells.append(secondCells)
 		
 		let placeholderSurvey = ["Profession?", "Will you be going out with guys or girls?", "Favorite Venues?", "Promo Code (Optional)"]
 		var thirdCells = [UITableViewCell]()
 		for (i, placeholder) in enumerate(placeholderSurvey)
 		{
-			let cell = tableView.dequeueReusableCellWithIdentifier("SurveyCell") as SurveyCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("SurveyCell") as! SurveyCell
 			cell.drawWithPlaceholder(placeholder, delegate: self)
 			thirdCells.append(cell)
 		}
-		(thirdCells.first as RoundedTableCells).top = true
-		(thirdCells.last as RoundedTableCells).bottom = true
+		(thirdCells.first as! RoundedTableCells).top = true
+		(thirdCells.last as! RoundedTableCells).bottom = true
 		tableCells.append(thirdCells)
 		setTextFields()
 		tableView.reloadData()
@@ -444,9 +444,9 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		{
 			if (currentPage == 0)
 			{
-				return tableView.dequeueReusableCellWithIdentifier("loginCell") as UITableViewCell
+				return tableView.dequeueReusableCellWithIdentifier("loginCell") as! UITableViewCell
 			}
-			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as UITableViewCell
+			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as! UITableViewCell
 		}
 		return tableCells[currentPage][indexPath.row]
 	}
@@ -455,6 +455,18 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		return view
+	}
+	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+	{
+		if indexPath.section == 1
+		{
+			return 60.0
+		}
+		if let _ = tableCells[currentPage][indexPath.row] as? DateCell
+		{
+			return 178.0
+		}
+		return 44.0
 	}
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 	{
@@ -479,7 +491,7 @@ extension SignUpViewController : UITableViewDataSource, UITableViewDelegate
 			}
 			else
 			{
-				let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as DateCell
+				let birthdayCell = tableView.dequeueReusableCellWithIdentifier("DateCell") as! DateCell
 				birthdayCell.draw("Birthday", maxDate: NSDate(timeIntervalSinceNow: 0))
 				if let date = dateFormatter.dateFromString(birthdayDetailLabel!.text!)
 				{

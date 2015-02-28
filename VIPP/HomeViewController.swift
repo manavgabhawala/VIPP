@@ -78,7 +78,7 @@ class HomeViewController: UIViewController
 		let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "Log Out", style: .Destructive, handler: {(action) in
 			PFUser.logOut()
-			let initialViewController = self.storyboard?.instantiateInitialViewController() as InitialViewController
+			let initialViewController = self.storyboard?.instantiateInitialViewController() as! InitialViewController
 			initialViewController.modalPresentationStyle = .FullScreen
 			initialViewController.modalTransitionStyle = .CrossDissolve
 			self.presentViewController(initialViewController, animated: true, completion: nil)
@@ -101,7 +101,7 @@ extension HomeViewController
 				if (results.count == 0) { return }
 				if let actualResults = results as? [PFObject]
 				{
-					actualResults.map { self.clubs.append(Club(name: $0["name"] as String, url: NSURL(string: $0["logo"] as String), location: $0["geoLocation"] as PFGeoPoint, photos: $0["photos"] as [String])) }
+					actualResults.map { self.clubs.append(Club(name: $0["name"] as! String, url: NSURL(string: $0["logo"] as! String), location: $0["geoLocation"] as! PFGeoPoint, photos: $0["photos"] as! [String])) }
 					self.currentIndex += results.count
 				}
 				self.loadNextClubs()
@@ -148,7 +148,7 @@ extension HomeViewController : UIPageViewControllerDelegate, UIPageViewControlle
 	}
 	func viewControllerWithImage(image: UIImage?, tag: Int) -> ImageViewController
 	{
-		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as ImageViewController
+		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
 		viewController.view.tag = tag
 		viewController.imageView.image = image
 		viewController.view.frame.size = pagingViewContainer.frame.size
@@ -168,12 +168,12 @@ extension HomeViewController : UIPageViewControllerDelegate, UIPageViewControlle
 	{
 		if (completed)
 		{
-			pagingControl.currentPage = (pageViewController.viewControllers.first! as UIViewController).view.tag
+			pagingControl.currentPage = (pageViewController.viewControllers.first! as! UIViewController).view.tag
 		}
 	}
 	@IBAction func pageControlValueChange(pageControl: UIPageControl)
 	{
-		let currentIndex = (pagingController.viewControllers.first as UIViewController).view.tag
+		let currentIndex = (pagingController.viewControllers.first as! UIViewController).view.tag
 		let direction = pageControl.currentPage < currentIndex ? UIPageViewControllerNavigationDirection.Reverse : .Forward
 		pagingController.setViewControllers([viewControllerForIndex(pageControl.currentPage)], direction: direction, animated: true, completion: nil)
 	}
@@ -192,7 +192,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 		let index = (indexPath.section * numberOfClubsPerPage) + indexPath.row
 		if  index < clubs.count
 		{
-			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ClubCell", forIndexPath: indexPath) as ClubCollectionViewCell
+			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ClubCell", forIndexPath: indexPath) as! ClubCollectionViewCell
 			cell.backgroundView = UIImageView(image: UIImage(named: "CellBackground"))
 			cell.backgroundView?.contentMode = .ScaleAspectFill
 			cell.selectedBackgroundView = UIImageView(image: UIImage(named: "CellBackgroundSelected"))
@@ -210,7 +210,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 			}
 			return cell
 		}
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DefaultCell", forIndexPath: indexPath) as UICollectionViewCell
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("DefaultCell", forIndexPath: indexPath) as! UICollectionViewCell
 		cell.backgroundView = UIImageView(image: UIImage(named: "DefaultCell"))
 		cell.backgroundView?.contentMode = .ScaleAspectFill
 		return cell
@@ -270,11 +270,11 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize
 	{
-		let interCellHorizontalSpacing = (collectionViewLayout as UICollectionViewFlowLayout).minimumInteritemSpacing * CGFloat(numberOfColumnsPerPage)
-		let totalWidth = collectionView.frame.width - (collectionViewLayout as UICollectionViewFlowLayout).sectionInset.left - (collectionViewLayout as UICollectionViewFlowLayout).sectionInset.right - interCellHorizontalSpacing
+		let interCellHorizontalSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumInteritemSpacing * CGFloat(numberOfColumnsPerPage)
+		let totalWidth = collectionView.frame.width - (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset.left - (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset.right - interCellHorizontalSpacing
 		
-		let interCellVerticalSpacing = (collectionViewLayout as UICollectionViewFlowLayout).minimumLineSpacing * CGFloat(numberOfRowsPerPage)
-		let totalHeight = collectionView.frame.height - (collectionViewLayout as UICollectionViewFlowLayout).sectionInset.top - (collectionViewLayout as UICollectionViewFlowLayout).sectionInset.bottom - interCellVerticalSpacing
+		let interCellVerticalSpacing = (collectionViewLayout as! UICollectionViewFlowLayout).minimumLineSpacing * CGFloat(numberOfRowsPerPage)
+		let totalHeight = collectionView.frame.height - (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset.top - (collectionViewLayout as! UICollectionViewFlowLayout).sectionInset.bottom - interCellVerticalSpacing
 		
 		return CGSize(width: totalWidth / CGFloat(numberOfColumnsPerPage), height: totalHeight / CGFloat(numberOfRowsPerPage))
 	}

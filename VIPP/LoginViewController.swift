@@ -22,12 +22,12 @@ class LoginViewController: UIViewController
 		let view = UIView()
 		view.backgroundColor = UIColor.clearColor()
 		tableView.tableFooterView = view
-		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let emailCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		emailCell.drawWithLabel("Email", andPlaceholder: "person@email.com", keyboardType: .EmailAddress, delegate: self)
 		emailCell.top = true
 		emailTextField = emailCell.textField
 		
-		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as SignUpTableCell
+		let passwordCell = tableView.dequeueReusableCellWithIdentifier("SignUpTableCell") as! SignUpTableCell
 		passwordCell.drawWithLabel("Password", andPlaceholder: "Min 6 Characters", keyboardType: .Default, delegate: self)
 		passwordCell.textField.secureTextEntry = true
 		passwordCell.textField.font = UIFont.systemFontOfSize(15)
@@ -71,12 +71,12 @@ class LoginViewController: UIViewController
 		var isValid = true
 		if (!email.isValidEmail())
 		{
-			tableCells[0].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[0].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (Array(password).count < 6)
 		{
-			tableCells[1].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+			tableCells[1].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 			isValid = false
 		}
 		if (isValid)
@@ -87,7 +87,7 @@ class LoginViewController: UIViewController
 					let validVIPP = user["validVIPP"] as? Bool
 					if validVIPP != nil && validVIPP!
 					{
-						let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as HomeViewController
+						let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
 						homeViewController.modalPresentationStyle = .FullScreen
 						homeViewController.modalTransitionStyle = .CrossDissolve
 						self.presentViewController(homeViewController, animated: true, completion: nil)
@@ -99,7 +99,7 @@ class LoginViewController: UIViewController
 				}
 				else
 				{
-					self.tableCells[1].contentView.subviews.map { ($0 as UIView).shakeForInvalidInput() }
+					self.tableCells[1].contentView.subviews.map { ($0 as! UIView).shakeForInvalidInput() }
 				}
 			})
 		}
@@ -123,7 +123,7 @@ extension LoginViewController : UITableViewDelegate, UITableViewDataSource
 	{
 		if indexPath.section == 1
 		{
-			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as UITableViewCell
+			return tableView.dequeueReusableCellWithIdentifier("termsLabel") as! UITableViewCell
 		}
 		return tableCells[indexPath.row]
 	}

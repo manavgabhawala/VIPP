@@ -40,7 +40,7 @@ class InformationViewController: UIViewController
 		let imagesForTable = [UIImage(named: "friends.png")!, UIImage(named: "ride.png")!, UIImage(named: "ropes.png")!]
 		for (i, image) in enumerate(imagesForTable)
 		{
-			let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as InformationTableViewCell
+			let cell = tableView.dequeueReusableCellWithIdentifier("TableCell") as! InformationTableViewCell
 			cell.numberLabel.text = "\(i+1)"
 			cell.headingLabel.text = headers[i]
 			cell.subtitleLabel.text = subtitles[i]
@@ -76,7 +76,7 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 		{
 			return viewControllerForIndex(0)
 		}
-		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as ImageViewController
+		let viewController = storyboard!.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
 		viewController.view.tag = index
 		viewController.imageView.image = images[index]
 		viewController.view.frame.size = pagingContainerView.frame.size
@@ -96,12 +96,12 @@ extension InformationViewController : UIPageViewControllerDelegate, UIPageViewCo
 	{
 		if (completed)
 		{
-			pageControl.currentPage = (pageViewController.viewControllers.first! as UIViewController).view.tag
+			pageControl.currentPage = (pageViewController.viewControllers.first! as! UIViewController).view.tag
 		}
 	}
 	@IBAction func pageControlValueChange(pageControl: UIPageControl)
 	{
-		let currentIndex = (pagingController.viewControllers.first as UIViewController).view.tag
+		let currentIndex = (pagingController.viewControllers.first as! UIViewController).view.tag
 		if (pageControl.currentPage < currentIndex)
 		{
 			pagingController.setViewControllers([viewControllerForIndex(pageControl.currentPage)!], direction: .Reverse, animated: true, completion: nil)

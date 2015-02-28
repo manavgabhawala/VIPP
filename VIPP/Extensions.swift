@@ -21,9 +21,9 @@ extension UIView
 		shake(iterations: 7, direction: 1, currentTimes: 0, size: 10, interval: 0.1)
 		if (self is UITextField)
 		{
-			if ((self as UITextField).secureTextEntry)
+			if ((self as! UITextField).secureTextEntry)
 			{
-				(self as UITextField).text = ""
+				(self as! UITextField).text = ""
 			}
 		}
 	}
@@ -78,7 +78,7 @@ extension String
 	*/
 	subscript (i: Int) -> String
 		{
-			if countElements(self) > i
+			if count(self) > i
 			{
 				return String(Array(self)[i])
 			}
@@ -122,26 +122,26 @@ extension String
 		self = self.returnActualNumber()
 		
 		//Formats mobile number with parentheses and spaces
-		if (countElements(self) <= 10)
+		if (count(self) <= 10)
 		{
-			if (countElements(self) > 6)
+			if (count(self) > 6)
 			{
 				self = self.stringByReplacingCharactersInRange(Range<String.Index>(start: self.indexAt(6), end: self.indexAt(6)), withString: "-")
 			}
-			if (countElements(self) > 3)
+			if (count(self) > 3)
 			{
 				self = self.stringByReplacingCharactersInRange(Range<String.Index>(start: self.indexAt(3), end: self.indexAt(3)), withString: ") ")
 			}
-			if (countElements(self) > 0)
+			if (count(self) > 0)
 			{
 				self = self.stringByReplacingCharactersInRange(Range<String.Index>(start: self.indexAt(0), end: self.indexAt(0)), withString: "(")
 			}
 		}
 		else
 		{
-			var remainder = (self as NSString).substringFromIndex(countElements(self) - 10)
+			var remainder = (self as NSString).substringFromIndex(count(self) - 10)
 			remainder.makeMaskedPhoneText()
-			self = "+" + ((self as NSString).substringToIndex(countElements(self) - 10) as String) + " " + (remainder)
+			self = "+" + ((self as NSString).substringToIndex(count(self) - 10) as String) + " " + (remainder)
 		}
 	}
 	func isValidEmail() -> Bool
@@ -151,7 +151,7 @@ extension String
 			return false;
 		}
 		let regex = NSRegularExpression(pattern: "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$", options: .CaseInsensitive, error: nil)
-		return regex?.firstMatchInString(self, options: nil, range: NSMakeRange(0, countElements(self))) != nil
+		return regex?.firstMatchInString(self, options: nil, range: NSMakeRange(0, count(self))) != nil
 	}
 	/**
 	This function generates a random alphanumeric code and returns it.
@@ -183,7 +183,7 @@ extension String
 		self.enumerateSubstringsInRange(range, options: .BySentences, {(sentence, sentenceRange, enclosingRange, stop) in
 			formattedString += sentence.stringByReplacingCharactersInRange(Range(start: self.startIndex, end: advance(self.startIndex, 1)), withString: sentence[0].uppercaseString)
 		})
-		if (formattedString[countElements(formattedString) - 1] != ".")
+		if (formattedString[count(formattedString) - 1] != ".")
 		{
 			formattedString += "."
 		}
@@ -210,26 +210,26 @@ extension UITableViewCell
 		if (self is RoundedTableCells)
 		{
 			let radius : CGFloat = 5.0
-			if((self as RoundedTableCells).top && (self as RoundedTableCells).bottom)
+			if((self as! RoundedTableCells).top && (self as! RoundedTableCells).bottom)
 			{
 				layer.cornerRadius = radius
 				layer.masksToBounds = true
 			}
-			else if ((self as RoundedTableCells).top)
+			else if ((self as! RoundedTableCells).top)
 			{
 				let shape = CAShapeLayer()
 				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .TopLeft | .TopRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
 				layer.mask = shape
 				layer.masksToBounds = true
 			}
-			else if ((self as RoundedTableCells).bottom)
+			else if ((self as! RoundedTableCells).bottom)
 			{
 				let shape = CAShapeLayer()
 				shape.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: bounds.size.width, height: bounds.size.height), byRoundingCorners: .BottomLeft | .BottomRight, cornerRadii: CGSize(width: radius, height: radius)).CGPath
 				layer.mask = shape
 				layer.masksToBounds = true
 			}
-			if !(self as RoundedTableCells).bottom
+			if !(self as! RoundedTableCells).bottom
 			{
 				let mySeparator = UIView(frame: CGRect(x: contentView.frame.size.width * 0.025, y: contentView.frame.size.height - 1, width: contentView.frame.size.width * 0.95, height: 1))
 				mySeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.3)
@@ -261,16 +261,16 @@ func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Doub
 	{
 		if (error == nil && response != nil)
 		{
-			let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as NSDictionary
-			if dictionary.objectForKey("status") as String == "OK"
+			let dictionary = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: &error) as! NSDictionary
+			if dictionary.objectForKey("status") as! String == "OK"
 			{
 				if let array = dictionary.objectForKey("results") as? [NSDictionary]
 				{
 					let internalDictionary = array.first!
 					if let mostInternalDictionary = internalDictionary.objectForKey("geometry")?.objectForKey("location") as? NSDictionary
 					{
-						let latitude = mostInternalDictionary.objectForKey("lat") as Double
-						let longitude = mostInternalDictionary.objectForKey("lng") as Double
+						let latitude = mostInternalDictionary.objectForKey("lat") as! Double
+						let longitude = mostInternalDictionary.objectForKey("lng") as! Double
 						return (latitude, longitude)
 					}
 				}
@@ -280,22 +280,12 @@ func verifyAddress(#city: String, #state: String, #zip: Int?) -> (latitude: Doub
 	return (nil, nil)
 }
 
-extension UIView
-{
-	func didAddSubview(subview: UIView)
-	{
-		NSNotificationCenter.defaultCenter().postNotificationName("kNotification_UIView_didAddSubview", object: self)
-	}
-}
 class DatePicker : UIDatePicker
 {
 	let font = UIFont(name: "Heiti SC", size: 18)
-	override func didAddSubview(subview: UIView)
-	{
-		super.didAddSubview(subview)
-	}
 	func setup()
 	{
+		subviews.filter { $0 is UILabel} .map { self.updateLabels($0 as! UIView) }
 		NSNotificationCenter.defaultCenter().addObserver(self, selector: "subviewsUpdated:", name: "kNotification_UIView_didAddSubview", object: nil)
 	}
 	deinit
@@ -304,15 +294,14 @@ class DatePicker : UIDatePicker
 	}
 	func updateLabels(var view: UIView)
 	{
-		let label = UILabel()
 		let _ : [Void] = view.subviews.map {
 			if $0 is UILabel
 			{
-				($0 as UILabel).font = self.font
+				($0 as! UILabel).font = self.font
 			}
 			else
 			{
-				self.updateLabels($0 as UIView)
+				self.updateLabels($0 as! UIView)
 			}
 		}
 	}
@@ -334,9 +323,9 @@ class DatePicker : UIDatePicker
 		{
 			return
 		}
-		if ((notification.object!.isKindOfClass(NSClassFromString("UIPickerTableView"))) && isSubview((notification.object as UIView)))
+		if ((notification.object!.isKindOfClass(NSClassFromString("UIPickerTableView"))) && isSubview((notification.object as! UIView)))
 		{
-			updateLabels(notification.object as UIView)
+			updateLabels(notification.object as! UIView)
 		}
 	}
 }
