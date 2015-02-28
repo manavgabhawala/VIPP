@@ -172,11 +172,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbt-mx-Wl7">
-                                                    <rect key="frame" x="23" y="40" width="54" height="20"/>
-                                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="20"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tfH-d5-CXr">
                                                     <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -188,16 +183,13 @@
                                             <constraint firstItem="tfH-d5-CXr" firstAttribute="top" secondItem="Si5-Sq-onl" secondAttribute="topMargin" constant="-8" id="1Nj-hX-hmu"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="tfH-d5-CXr" secondAttribute="bottom" constant="-8" id="26O-Cm-CyG"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="tfH-d5-CXr" secondAttribute="trailing" constant="-8" id="Hzw-50-hpw"/>
-                                            <constraint firstAttribute="centerY" secondItem="cbt-mx-Wl7" secondAttribute="centerY" id="WLx-Cd-IvE"/>
                                             <constraint firstItem="tfH-d5-CXr" firstAttribute="leading" secondItem="Si5-Sq-onl" secondAttribute="leadingMargin" constant="-8" id="X9o-H9-g3d"/>
-                                            <constraint firstAttribute="centerX" secondItem="cbt-mx-Wl7" secondAttribute="centerX" id="xN3-Lp-jHG"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="tfH-d5-CXr" id="5yh-w8-yQs"/>
-                                            <outlet property="label" destination="cbt-mx-Wl7" id="NuH-8t-7ha"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DefaultCell" id="Yt1-tY-ijn">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" reuseIdentifier="DefaultCell" id="Yt1-tY-ijn">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -205,7 +197,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -219,10 +211,12 @@
                                             <constraint firstAttribute="height" constant="44" id="pl9-p5-hTA"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suc-m7-CDM">
-                                        <rect key="frame" x="477" y="20" width="115" height="44"/>
-                                        <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="13"/>
-                                        <state key="normal" title="Request Black Car">
+                                    <button opaque="NO" contentMode="scaleAspectFit" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="suc-m7-CDM">
+                                        <rect key="frame" x="548" y="20" width="44" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="suc-m7-CDM" secondAttribute="height" multiplier="1:1" id="J1m-x9-3Cx"/>
+                                        </constraints>
+                                        <state key="normal" image="Black Car">
                                             <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
@@ -252,12 +246,23 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDp-Yp-1RY">
+                                <rect key="frame" x="10" y="10" width="54" height="54"/>
+                                <state key="normal" image="Profile">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="profileButton:" destination="deu-3L-GlY" eventType="touchUpInside" id="HmS-K7-DSa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="kfB-M2-8EH" firstAttribute="top" secondItem="Vyn-hH-0ve" secondAttribute="bottom" constant="8" id="1ff-GX-ICY"/>
                             <constraint firstAttribute="trailingMargin" secondItem="XkU-Pj-OCr" secondAttribute="trailing" constant="-16" id="9fZ-Oq-2IW"/>
+                            <constraint firstItem="TDp-Yp-1RY" firstAttribute="width" secondItem="TDp-Yp-1RY" secondAttribute="height" multiplier="1:1" id="Akq-2w-lEv"/>
                             <constraint firstItem="XkU-Pj-OCr" firstAttribute="top" secondItem="4O7-lC-VYo" secondAttribute="topMargin" id="AsX-7a-8YH"/>
+                            <constraint firstItem="TDp-Yp-1RY" firstAttribute="leading" secondItem="4O7-lC-VYo" secondAttribute="leadingMargin" constant="-6" id="BpK-BF-7pa"/>
                             <constraint firstItem="CrH-p7-veV" firstAttribute="top" secondItem="XkU-Pj-OCr" secondAttribute="bottom" id="Ciq-sj-MRH"/>
                             <constraint firstItem="XkU-Pj-OCr" firstAttribute="leading" secondItem="4O7-lC-VYo" secondAttribute="leadingMargin" constant="-16" id="Edc-IG-QJz"/>
                             <constraint firstAttribute="trailingMargin" secondItem="naV-DO-Liv" secondAttribute="trailing" constant="-16" id="Eq8-ZN-Rze"/>
@@ -267,6 +272,8 @@
                             <constraint firstItem="naV-DO-Liv" firstAttribute="centerY" secondItem="4O7-lC-VYo" secondAttribute="centerY" multiplier="1.65" id="dba-IK-3Dq"/>
                             <constraint firstItem="kfB-M2-8EH" firstAttribute="top" secondItem="naV-DO-Liv" secondAttribute="bottom" id="hru-yY-p9H"/>
                             <constraint firstAttribute="centerX" secondItem="Vyn-hH-0ve" secondAttribute="centerX" id="j8V-dV-SMX"/>
+                            <constraint firstItem="CrH-p7-veV" firstAttribute="top" secondItem="TDp-Yp-1RY" secondAttribute="bottom" id="jHN-Pq-oCH"/>
+                            <constraint firstItem="TDp-Yp-1RY" firstAttribute="top" secondItem="4O7-lC-VYo" secondAttribute="topMargin" constant="10" id="nPG-cX-vde"/>
                             <constraint firstItem="naV-DO-Liv" firstAttribute="top" secondItem="CrH-p7-veV" secondAttribute="bottom" id="uPu-Pg-E3a"/>
                         </constraints>
                     </view>
@@ -2716,6 +2723,7 @@ Some other stuff</string>
     <resources>
         <image name="Background 0" width="640" height="960"/>
         <image name="Banner" width="1777" height="262"/>
+        <image name="Black Car" width="100" height="100"/>
         <image name="Email-Share" width="50" height="50"/>
         <image name="Envelope" width="337" height="152"/>
         <image name="FB-Share" width="50" height="50"/>
@@ -2723,6 +2731,7 @@ Some other stuff</string>
         <image name="Grey Back" width="834" height="560"/>
         <image name="Logo" width="300" height="167"/>
         <image name="Logo with Caption" width="180" height="108"/>
+        <image name="Profile" width="100" height="100"/>
         <image name="Text-Share" width="50" height="50"/>
         <image name="Twitter-Share" width="50" height="50"/>
         <image name="Up Arrow" width="393" height="74"/>

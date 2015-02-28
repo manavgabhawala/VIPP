@@ -48,7 +48,7 @@ class HomeViewController: UIViewController
 		pagingController.view.frame.size = pagingViewContainer.frame.size
 		pagingControl.numberOfPages = numberOfImagesSlideshow
 	}
-	
+	//MARK: - Actions
 	@IBAction func requestBlackCar(_ : UIButton)
 	{
 		if let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath
@@ -56,11 +56,34 @@ class HomeViewController: UIViewController
 			if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ClubCollectionViewCell
 			{
 				let location = cell.club.location
-				println("Call uber with drop off location: \(cell.club.location)")
+				let name = cell.club.name
+				if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
+				{
+					// Do something awesome - the app is installed! Launch App.
+					let URL = NSURL(string: "uber://?action=setPickup&pickup=my_location&&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
+					UIApplication.sharedApplication().openURL(URL)
+				}
+				else
+				{
+					// No Uber app! Open Mobile Website.
+					UIApplication.sharedApplication().openURL(NSURL(string: "uber.com")!)
+				}
 			}
 		}
 	}
-	
+	@IBAction func profileButton(_ : UIButton)
+	{
+		let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
+		alertController.addAction(UIAlertAction(title: "Log Out", style: .Destructive, handler: {(action) in
+			PFUser.logOut()
+			let initialViewController = self.storyboard?.instantiateInitialViewController() as InitialViewController
+			initialViewController.modalPresentationStyle = .FullScreen
+			initialViewController.modalTransitionStyle = .CrossDissolve
+			self.presentViewController(initialViewController, animated: true, completion: nil)
+		}))
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+		presentViewController(alertController, animated: true, completion: nil)
+	}
 }
 //MARK: - Parse Interaction
 extension HomeViewController
@@ -97,7 +120,7 @@ extension HomeViewController : UIPageViewControllerDelegate, UIPageViewControlle
 	{
 		for i in 0..<numberOfImagesSlideshow
 		{
-			let image = UIImage(named: "Logo")
+			let image = UIImage(named: "placeholder.png")
 			if (i < currentImages.count)
 			{
 				currentImages[i].imageView.image = image
@@ -173,12 +196,15 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 			cell.selectedBackgroundView = UIImageView(image: UIImage(named: "CellBackgroundSelected"))
 			cell.selectedBackgroundView?.contentMode = .ScaleAspectFill
 			let club = clubs[index]
-			cell.label.text = club.name
 			cell.club = club
 			club.delegate = cell
 			if let image = club.logo
 			{
 				cell.setImage(image)
+			}
+			else
+			{
+				cell.setImage(UIImage(named: "DefaultCell")!)
 			}
 			return cell
 		}
@@ -189,7 +215,6 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 	}
 	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
 	{
-		//TODO: Implement Me
 		return Int(ceil(Double(clubs.count) / Double(numberOfClubsPerPage)))
 	}
 	func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath)

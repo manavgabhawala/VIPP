@@ -10,7 +10,6 @@ import UIKit
 
 class ClubCollectionViewCell: UICollectionViewCell, ClubDelegate
 {
-	@IBOutlet var label : UILabel!
 	@IBOutlet var imageView : UIImageView!
 	
 	var club : Club!
@@ -19,9 +18,5 @@ class ClubCollectionViewCell: UICollectionViewCell, ClubDelegate
 	{
 		imageView.image = image
 		imageView.setNeedsDisplay()
-		if (imageView.image?.size != CGSizeZero)
-		{
-			label.hidden = true
-		}
 	}
 }
