@@ -41,9 +41,13 @@ class InitialViewController: UIViewController {
 				installation["user"] = user
 				installation.saveEventually(nil)
 			}
-			if (user["isValidVIPP"] != nil && user["isValidVIPP"] as Bool)
+			let validVIPP = user["validVIPP"] as? Bool
+			if validVIPP != nil && validVIPP!
 			{
-				//TODO: Give Full Access
+				let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as HomeViewController
+				homeViewController.modalPresentationStyle = .FullScreen
+				homeViewController.modalTransitionStyle = .CrossDissolve
+				self.presentViewController(homeViewController, animated: true, completion: nil)
 			}
 			else
 			{

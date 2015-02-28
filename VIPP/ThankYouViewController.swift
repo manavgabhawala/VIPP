@@ -18,6 +18,20 @@ class ThankYouViewController: UIViewController
 		super.viewDidLoad()
 		UIApplication.sharedApplication().statusBarStyle = .Default
 	}
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
+		let user = PFUser.currentUser()
+		let validVIPP = user["validVIPP"] as? Bool
+		println(validVIPP)
+		if validVIPP != nil && validVIPP!
+		{
+			let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as HomeViewController
+			homeViewController.modalPresentationStyle = .FullScreen
+			homeViewController.modalTransitionStyle = .CrossDissolve
+			self.presentViewController(homeViewController, animated: true, completion: nil)
+		}
+	}
 	@IBAction func facebookShare(_: UIButton)
 	{
 		let facebookSheet = SLComposeViewController(forServiceType: SLServiceTypeFacebook)

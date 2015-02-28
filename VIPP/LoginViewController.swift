@@ -84,9 +84,13 @@ class LoginViewController: UIViewController
 			PFUser.logInWithUsernameInBackground(email, password: password, block: {(user, error) in
 				if (user != nil && error == nil)
 				{
-					if (user["isValidVIPP"] != nil && user["isValidVIPP"] as Bool)
+					let validVIPP = user["validVIPP"] as? Bool
+					if validVIPP != nil && validVIPP!
 					{
-						//TODO: Give Full Access
+						let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as HomeViewController
+						homeViewController.modalPresentationStyle = .FullScreen
+						homeViewController.modalTransitionStyle = .CrossDissolve
+						self.presentViewController(homeViewController, animated: true, completion: nil)
 					}
 					else
 					{

@@ -13,16 +13,15 @@ class ClubCollectionViewCell: UICollectionViewCell, ClubDelegate
 	@IBOutlet var label : UILabel!
 	@IBOutlet var imageView : UIImageView!
 	
-	func imageLoaded(image: UIImage?)
+	var club : Club!
+	
+	func setImage(image: UIImage)
 	{
-		if let actualImage = image
+		imageView.image = image
+		imageView.setNeedsDisplay()
+		if (imageView.image?.size != CGSizeZero)
 		{
 			label.hidden = true
-			imageView.image = actualImage
-		}
-		else
-		{
-			label.hidden = false
 		}
 	}
 }
