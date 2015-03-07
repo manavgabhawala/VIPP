@@ -30,6 +30,10 @@
 		82421E061A8AC789005BA5F3 /* ropes.png in Resources */ = {isa = PBXBuildFile; fileRef = 82421E001A8AC783005BA5F3 /* ropes.png */; };
 		825AA5CD1AA15CC80092C7C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 825AA5CC1AA15CC80092C7C2 /* placeholder.png */; };
 		825AA5CE1AA15CC80092C7C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 825AA5CC1AA15CC80092C7C2 /* placeholder.png */; };
+		827E636A1AA6A96F00E77EB4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E63691AA6A96F00E77EB4 /* EventViewController.swift */; };
+		827E636B1AA6A96F00E77EB4 /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E63691AA6A96F00E77EB4 /* EventViewController.swift */; };
+		827E636F1AA6A9A000E77EB4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E636E1AA6A9A000E77EB4 /* Event.swift */; };
+		827E63701AA6A9A000E77EB4 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 827E636E1AA6A9A000E77EB4 /* Event.swift */; };
 		8290BEB51A89DF2A008A29EC /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8290BEAE1A89DF2A008A29EC /* 0.png */; };
 		8290BEB61A89DF2A008A29EC /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 8290BEAE1A89DF2A008A29EC /* 0.png */; };
 		8290BEB71A89DF2A008A29EC /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 8290BEAF1A89DF2A008A29EC /* 1.png */; };
@@ -106,6 +110,8 @@
 		82421DFF1A8AC783005BA5F3 /* ride.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ride.png; sourceTree = "<group>"; };
 		82421E001A8AC783005BA5F3 /* ropes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ropes.png; sourceTree = "<group>"; };
 		825AA5CC1AA15CC80092C7C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		827E63691AA6A96F00E77EB4 /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		827E636E1AA6A9A000E77EB4 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		8290BEAE1A89DF2A008A29EC /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		8290BEAF1A89DF2A008A29EC /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		8290BEB01A89DF2A008A29EC /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -191,6 +197,7 @@
 		822990951A8ADB4000082E06 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
 				82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */,
 			);
@@ -208,6 +215,24 @@
 				820525BB1A8D350700A42167 /* Launch Image.storyboard */,
 			);
 			name = "Signup Stuff";
+			sourceTree = "<group>";
+		};
+		827E636C1AA6A97800E77EB4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				82BE9D9E1A9FE2290040C573 /* Club.swift */,
+				827E636E1AA6A9A000E77EB4 /* Event.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		827E636D1AA6A98900E77EB4 /* Main App */ = {
+			isa = PBXGroup;
+			children = (
+				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
+				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
+			);
+			name = "Main App";
 			sourceTree = "<group>";
 		};
 		8290BEC31A89DF33008A29EC /* Nightlife */ = {
@@ -254,10 +279,9 @@
 				829DC1631A7B3E1F00CD6187 /* AppDelegate.swift */,
 				82C7B3F11A7F13400088EC2B /* Extensions.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
-				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
-				82BE9D9E1A9FE2290040C573 /* Club.swift */,
-				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				822990961A8ADB4900082E06 /* Signup Stuff */,
+				827E636D1AA6A98900E77EB4 /* Main App */,
+				827E636C1AA6A97800E77EB4 /* Model */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,
 				822990951A8ADB4000082E06 /* Views */,
 				829DC1611A7B3E1F00CD6187 /* Supporting Files */,
@@ -452,6 +476,7 @@
 			files = (
 				82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
 				82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */,
+				827E636A1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC31A89A17C00C0C8FE /* OtherViewControllers.swift in Sources */,
 				82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */,
@@ -461,6 +486,7 @@
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
+				827E636F1AA6A9A000E77EB4 /* Event.swift in Sources */,
 				82153BC81A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -471,6 +497,7 @@
 			files = (
 				82DBDE701A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
 				82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */,
+				827E636B1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9DA01A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC41A89A17E00C0C8FE /* OtherViewControllers.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
@@ -480,6 +507,7 @@
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
 				82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
+				827E63701AA6A9A000E77EB4 /* Event.swift in Sources */,
 				82153BC91A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

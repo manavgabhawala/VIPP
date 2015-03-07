@@ -12,7 +12,7 @@ class ClubCollectionViewCell: UICollectionViewCell, ClubDelegate
 {
 	@IBOutlet var imageView : UIImageView!
 	
-	var club : Club!
+	weak var club : Club!
 	
 	func setImage(image: UIImage)
 	{

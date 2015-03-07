@@ -23,7 +23,6 @@ class ThankYouViewController: UIViewController
 		super.viewDidAppear(animated)
 		let user = PFUser.currentUser()
 		let validVIPP = user["validVIPP"] as? Bool
-		println(validVIPP)
 		if validVIPP != nil && validVIPP!
 		{
 			let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
