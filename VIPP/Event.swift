@@ -11,7 +11,7 @@ import Foundation
 class Event
 {
 	var description = ""
-	var image = UIImage(named: "placeholder.png")
+	var image = UIImage(named: "Loading-Event")
 	var date = NSDate()
 	var objectId : String!
 	var imageURL : NSURL!

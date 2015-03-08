@@ -56,20 +56,11 @@ class HomeViewController: UIViewController
 		{
 			if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ClubCollectionViewCell
 			{
-				if cell.club.events.count > 0
-				{
-					let eventViewController = storyboard!.instantiateViewControllerWithIdentifier("EventViewController") as! EventViewController
-					eventViewController.club = cell.club
-					eventViewController.modalPresentationStyle = .OverFullScreen
-					eventViewController.modalTransitionStyle = .CoverVertical
-					presentViewController(eventViewController, animated: true, completion: nil)
-				}
-				else
-				{
-					let alertController = UIAlertController(title: "No Events Found", message: "Unfortunately, \(cell.club.name) has no events on our servers currently. Please feel free to browse through our other clubs.", preferredStyle: .Alert)
-					alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
-					presentViewController(alertController, animated: true, completion: nil)
-				}
+				let eventViewController = storyboard!.instantiateViewControllerWithIdentifier("EventViewController") as! EventViewController
+				eventViewController.club = cell.club
+				eventViewController.modalPresentationStyle = .OverFullScreen
+				eventViewController.modalTransitionStyle = .CoverVertical
+				presentViewController(eventViewController, animated: true, completion: nil)
 			}
 		}
 	}
@@ -199,7 +190,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 			cell.selectedBackgroundView?.contentMode = .ScaleAspectFill
 			let club = clubs[index]
 			cell.club = club
-			club.delegate = cell
+			clubs[index].delegate = cell
 			if let image = club.logo
 			{
 				cell.setImage(image)

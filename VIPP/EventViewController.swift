@@ -17,52 +17,68 @@ class EventViewController : UIViewController
 	var currentImages = [ImageViewController]()
 	var club : Club!
 	let pagingController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-	
+	var pageIndex : Int = 0
+	{
+		didSet
+		{
+			if (pageIndex >= club.events.count)
+			{
+				pageIndex = 0
+			}
+			if (pageIndex < 0)
+			{
+				pageIndex = club.events.count - 1
+			}
+		}
+	}
 	//MARK: - View Controller Lifecycle
 	override func viewDidLoad()
 	{
 		clubName.text = club.name
-		if club.events.count == 0
-		{
-			//TODO: No events found
-			println("No events found")
-		}
 		club.events.sort { $0.date < $1.date }
-		let firstDate = club.events.first?.date
-		let dateFormatter = NSDateFormatter()
-		dateFormatter.dateStyle = .LongStyle
-		eventDate.text = dateFormatter.stringFromDate(firstDate ?? NSDate(timeIntervalSinceNow: 0))
 		getImagesFromServer()
+		setDate(0)
 		pagingController.delegate = self
 		pagingController.dataSource = self
 		pagingController.setViewControllers([viewControllerForIndex(0)], direction: .Forward, animated: true, completion: nil)
+		pageIndex = 0
 		pagingViewContainer.addSubview(pagingController.view)
 	}
 	override func viewDidLayoutSubviews()
 	{
-		if (view.frame.size.width < pagingViewContainer.frame.size.height)
+		let percentage : CGFloat = 0.85
+		if (percentage * view.frame.size.width < pagingViewContainer.frame.size.height)
 		{
 			let centerY = pagingViewContainer.frame.origin.y + pagingViewContainer.frame.size.height / 2
-			pagingViewContainer.frame.size = CGSize(width: view.frame.size.width, height: view.frame.size.width)
+			pagingViewContainer.frame.size = CGSize(width: view.frame.size.width * percentage, height: view.frame.size.width * percentage)
 			pagingViewContainer.center.x = view.frame.width / 2
 			pagingViewContainer.center.y = centerY
 		}
-		let percentage : CGFloat = 1.0
 		let frame = pagingViewContainer.frame
-		pagingController.view.frame = CGRect(origin: CGPoint(x: frame.width * (1 - percentage) / 2, y: 0), size: CGSize(width: frame.width * percentage, height: frame.height))
+		pagingController.view.frame.size = pagingViewContainer.frame.size
 	}
 	
 	//MARK: - Server Interaction
 	func getImagesFromServer()
 	{
 		var index = 0
-		currentImages = club.events.map {
-			let imageViewController = self.viewControllerWithImage($0.image, tag: index)
-			$0.controller = imageViewController
-			$0.loadImage()
-			++index
-			return imageViewController
+		if club.events.count > 0
+		{
+			currentImages = club.events.map {
+				let imageViewController = self.viewControllerWithImage($0.image, tag: index)
+				$0.controller = imageViewController
+				$0.loadImage()
+				++index
+				return imageViewController
+			}
 		}
+		else
+		{
+			let controller = viewControllerWithImage(UIImage(named: "No-Event"), tag: 0)
+			currentImages = [controller]
+			pagingController.view.userInteractionEnabled = false
+		}
+		
 	}
 	func getFriends()
 	{
@@ -98,18 +114,24 @@ class EventViewController : UIViewController
 	{
 		
 	}
+	@IBAction func nextPage(_: UIButton)
+	{
+		++pageIndex
+		pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Forward, animated: true, completion: nil)
+		setDate(pageIndex)
+	}
+	@IBAction func previousPage(_: UIButton)
+	{
+		--pageIndex
+		pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Reverse, animated: false, completion: nil)
+		setDate(pageIndex)
+	}
 }
+//MARK: - PageView Stuff
 extension EventViewController : UIPageViewControllerDataSource, UIPageViewControllerDelegate
 {
 	func viewControllerForIndex(index: Int) -> ImageViewController
 	{
-		if (currentImages.count == 0)
-		{
-			//FIXME: Remove me later
-			let controller = storyboard?.instantiateViewControllerWithIdentifier("ImageViewController") as! ImageViewController
-			controller.imageView.image = UIImage(named: "placeholder.png")
-			return controller
-		}
 		if (index < 0)
 		{
 			return viewControllerForIndex(currentImages.count - 1)
@@ -118,7 +140,9 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 		{
 			return viewControllerForIndex(0)
 		}
-		return currentImages[index]
+		let controller = currentImages[index]
+		controller.imageView.frame.size = pagingViewContainer.frame.size
+		return controller
 	}
 	func viewControllerWithImage(image: UIImage?, tag: Int) -> ImageViewController
 	{
@@ -126,7 +150,7 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 		viewController.view.tag = tag
 		viewController.disableAnimations = true
 		viewController.imageView.image = image
-		viewController.view.frame.size = pagingViewContainer.frame.size
+		viewController.imageView.frame.size = pagingViewContainer.frame.size
 		return viewController
 	}
 	func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
@@ -143,10 +167,27 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 	{
 		if (completed)
 		{
-			let currentIndex = (pageViewController.viewControllers.first! as! UIViewController).view.tag
-			let dateFormatter = NSDateFormatter()
-			dateFormatter.dateStyle = .LongStyle
-			eventDate.text = dateFormatter.stringFromDate(club.events[currentIndex].date)
+			pageIndex = (pageViewController.viewControllers!.first! as! UIViewController).view.tag
+			setDate(pageIndex)
 		}
+	}
+	func setDate(currentIndex: Int)
+	{
+		if club.events.count == 0
+		{
+			eventDate.text = "No Events"
+			return
+		}
+		if (currentIndex >= club.events.count)
+		{
+			return setDate(0)
+		}
+		if (currentIndex < 0)
+		{
+			return setDate(club.events.count - 1)
+		}
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateStyle = .LongStyle
+		eventDate.text = dateFormatter.stringFromDate(club.events[currentIndex].date)
 	}
 }

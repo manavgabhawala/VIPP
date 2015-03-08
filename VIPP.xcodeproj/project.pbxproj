@@ -80,6 +80,8 @@
 		82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */; };
 		82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
 		82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
+		82D17C7A1AACDB75008346CD /* event-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D17C791AACDB75008346CD /* event-bg.png */; };
+		82D17C7B1AACDB75008346CD /* event-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D17C791AACDB75008346CD /* event-bg.png */; };
 		82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */; };
 		82DBDE701A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */; };
 		82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E2A5571A869E8E004C4795 /* LoginViewController.swift */; };
@@ -150,6 +152,7 @@
 		82BE9D9E1A9FE2290040C573 /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
 		82C7B3F11A7F13400088EC2B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		82D17C791AACDB75008346CD /* event-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-bg.png"; sourceTree = "<group>"; };
 		82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		82E2A5571A869E8E004C4795 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -241,6 +244,7 @@
 			children = (
 				82421DFE1A8AC783005BA5F3 /* friends.png */,
 				825AA5CC1AA15CC80092C7C2 /* placeholder.png */,
+				82D17C791AACDB75008346CD /* event-bg.png */,
 				82421DFF1A8AC783005BA5F3 /* ride.png */,
 				82421E001A8AC783005BA5F3 /* ropes.png */,
 				8290BEAE1A89DF2A008A29EC /* 0.png */,
@@ -441,6 +445,7 @@
 				8290BEBF1A89DF2A008A29EC /* 5.png in Resources */,
 				82421E011A8AC783005BA5F3 /* friends.png in Resources */,
 				82421E031A8AC783005BA5F3 /* ropes.png in Resources */,
+				82D17C7A1AACDB75008346CD /* event-bg.png in Resources */,
 				829DC1691A7B3E1F00CD6187 /* Main.storyboard in Resources */,
 				825AA5CD1AA15CC80092C7C2 /* placeholder.png in Resources */,
 				829DC16B1A7B3E1F00CD6187 /* Images.xcassets in Resources */,
@@ -455,6 +460,7 @@
 				82421E051A8AC789005BA5F3 /* ride.png in Resources */,
 				82421E041A8AC789005BA5F3 /* friends.png in Resources */,
 				825AA5CE1AA15CC80092C7C2 /* placeholder.png in Resources */,
+				82D17C7B1AACDB75008346CD /* event-bg.png in Resources */,
 				8290BEBC1A89DF2A008A29EC /* 3.png in Resources */,
 				8290BEB81A89DF2A008A29EC /* 1.png in Resources */,
 				8290BEB61A89DF2A008A29EC /* 0.png in Resources */,
