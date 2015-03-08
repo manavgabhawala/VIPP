@@ -222,6 +222,7 @@
 			children = (
 				82BE9D9E1A9FE2290040C573 /* Club.swift */,
 				827E636E1AA6A9A000E77EB4 /* Event.swift */,
+				822990961A8ADB4900082E06 /* Signup Stuff */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -229,8 +230,8 @@
 		827E636D1AA6A98900E77EB4 /* Main App */ = {
 			isa = PBXGroup;
 			children = (
-				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
 				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
+				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
 			);
 			name = "Main App";
 			sourceTree = "<group>";
@@ -279,7 +280,6 @@
 				829DC1631A7B3E1F00CD6187 /* AppDelegate.swift */,
 				82C7B3F11A7F13400088EC2B /* Extensions.swift */,
 				829DC1671A7B3E1F00CD6187 /* Main.storyboard */,
-				822990961A8ADB4900082E06 /* Signup Stuff */,
 				827E636D1AA6A98900E77EB4 /* Main App */,
 				827E636C1AA6A97800E77EB4 /* Model */,
 				829DC16A1A7B3E1F00CD6187 /* Images.xcassets */,

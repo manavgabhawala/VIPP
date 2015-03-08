@@ -22,6 +22,7 @@ class Club
 	var delegate : ClubDelegate?
 	var photos = [UIImage]()
 	var events = [Event]()
+	var objectId : String?
 	
 	init(name: String, url: NSURL?, location: PFGeoPoint, photos: [String])
 	{
@@ -44,22 +45,25 @@ class Club
 	convenience init(object: PFObject)
 	{
 		self.init(name: object["name"] as! String, url: NSURL(string: object["logo"] as! String), location: object["geoLocation"] as! PFGeoPoint, photos: object["photos"] as! [String])
-		findEvents(object, force: false)
+		self.objectId = object.objectId
+		findEvents(force: false)
 	}
-	func findEvents(object: PFObject, force: Bool)
+	func findEvents(#force: Bool)
 	{
-		let eventsQuery = object.relationForKey("events").query()
+		let eventsQuery = PFQuery(className: "Event")
+		if let objId = objectId
+		{
+			eventsQuery.whereKey("club", equalTo: PFObject(withoutDataWithClassName: "Club", objectId: objId))
+		}
+		eventsQuery.whereKey("time", greaterThanOrEqualTo: NSDate(timeIntervalSinceNow: 0))
 		eventsQuery.findObjectsInBackgroundWithBlock { (results, error) in
 			if (results != nil && error == nil)
 			{
-				self.events = (results as! [PFObject]).map  { Event(object: $0) }
+				self.events = (results as! [PFObject]).map  { Event(object: $0, club: self) }
 			}
 			else
 			{
-				if force
-				{
-					//TODO: Do something catastrophic here.
-				}
+				//TODO: Show error
 			}
 		}
 	}

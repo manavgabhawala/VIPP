@@ -13,7 +13,8 @@ class HomeViewController: UIViewController
 	@IBOutlet var collectionView : UICollectionView!
 	@IBOutlet var pagingViewContainer : UIView!
 	@IBOutlet var pagingControl : UIPageControl!
-	@IBOutlet var requestButton : UIButton!
+	@IBOutlet var nextButton : UIButton!
+	
 	let pagingController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
 	
 	var clubs = [Club]()
@@ -49,26 +50,25 @@ class HomeViewController: UIViewController
 		pagingControl.numberOfPages = numberOfImagesSlideshow
 	}
 	//MARK: - Actions
-	@IBAction func requestBlackCar(_ : UIButton)
+	@IBAction func showEvents(_ : UIButton)
 	{
 		if let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath
 		{
 			if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? ClubCollectionViewCell
 			{
-				let location = cell.club.location
-				let name = cell.club.name
-				let uberClient = "DJIZIgHZ1AwWkLERkkNns0t_7QCW_L7"
-				if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
+				if cell.club.events.count > 0
 				{
-					// Do something awesome - the app is installed! Launch App.
-					let URL = NSURL(string: "uber://?client_id=\(uberClient)&action=setPickup&pickup=my_location&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
-					UIApplication.sharedApplication().openURL(URL)
+					let eventViewController = storyboard!.instantiateViewControllerWithIdentifier("EventViewController") as! EventViewController
+					eventViewController.club = cell.club
+					eventViewController.modalPresentationStyle = .OverFullScreen
+					eventViewController.modalTransitionStyle = .CoverVertical
+					presentViewController(eventViewController, animated: true, completion: nil)
 				}
 				else
 				{
-					// No Uber app! Open Mobile Website.
-					let URL = NSURL(string: "https://m.uber.com/sign-up?client_id=\(uberClient)&pickup=my_location&dropoff[latitude]=\(location.latitude)&dropoff[longitude]=\(location.longitude)&dropoff[nickname]=\(name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
-					UIApplication.sharedApplication().openURL(URL)
+					let alertController = UIAlertController(title: "No Events Found", message: "Unfortunately, \(cell.club.name) has no events on our servers currently. Please feel free to browse through our other clubs.", preferredStyle: .Alert)
+					alertController.addAction(UIAlertAction(title: "Dismiss", style: .Default, handler: nil))
+					presentViewController(alertController, animated: true, completion: nil)
 				}
 			}
 		}
@@ -101,7 +101,7 @@ extension HomeViewController
 				if (results.count == 0) { return }
 				if let actualResults = results as? [PFObject]
 				{
-					actualResults.map { self.clubs.append(Club(name: $0["name"] as! String, url: NSURL(string: $0["logo"] as! String), location: $0["geoLocation"] as! PFGeoPoint, photos: $0["photos"] as! [String])) }
+					actualResults.map { self.clubs.append(Club(object: $0)) }
 					self.currentIndex += results.count
 				}
 				self.loadNextClubs()
@@ -265,7 +265,12 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 					}
 				}
 			}
-			requestButton.enabled = true
+			let frame = nextButton.frame
+			nextButton.frame.origin.x = view.frame.width + 20
+			nextButton.hidden = false
+			UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
+					self.nextButton.frame = frame
+				}, completion: nil)
 		}
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize

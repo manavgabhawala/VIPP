@@ -52,10 +52,11 @@ class ImageViewController : UIViewController
 {
 	@IBOutlet var imageView : UIImageView!
 	var appeared = false
+	var disableAnimations = false
 	override func viewWillAppear(animated: Bool)
 	{
 		super.viewWillAppear(animated)
-		if (!appeared)
+		if (!appeared && !disableAnimations)
 		{
 			let actualFrame = imageView.frame
 			imageView.frame.origin.y = view.frame.height / 2
