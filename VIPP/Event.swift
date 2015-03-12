@@ -15,8 +15,8 @@ class Event
 	var date = NSDate()
 	var objectId : String!
 	var imageURL : NSURL!
-	weak var controller : ImageViewController!
 	weak var club : Club?
+	var delegate: ImageDownloaded?
 	
 	init(object: PFObject, club: Club)
 	{
@@ -35,7 +35,7 @@ class Event
 				if let image = UIImage(data: data)
 				{
 					self.image = image
-					self.controller.imageView.image = self.image
+					self.delegate?.setImage(image)
 				}
 			})
 		}

@@ -66,7 +66,7 @@ class EventViewController : UIViewController
 		{
 			currentImages = club.events.map {
 				let imageViewController = self.viewControllerWithImage($0.image, tag: index)
-				$0.controller = imageViewController
+				$0.delegate = imageViewController
 				$0.loadImage()
 				++index
 				return imageViewController

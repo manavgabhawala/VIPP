@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SystemConfiguration
 
 extension UIView
 {
@@ -329,7 +330,51 @@ class DatePicker : UIDatePicker
 		}
 	}
 }
+extension UIAlertController
+{
+	/**
+	A quick access function that returns an instance of a UIAlertController with the generic title an Error occured.
+	:param: title
+	:param: message An optional string which is the message that will be displayed. If the string is a nil the default message: "An error occurred while loading the data from the internet. Please check your internet connection and try again." will be displayed.
+	:param: error An optional error whose value will take precedence over the message specified.
+	:return: This function returns a UIAlertController instance with a dismiss action provided and can directly be displayed using the presentViewController function.
+	*/
+	class func errorAlertController(title tit: String?, message msg: String?, error: NSError?) -> UIAlertController
+	{
+		let title = tit ?? "An Error Occurred"
+		let message = error?.userInfo?["error"] as? String ?? msg ?? "An error occurred while communicating with our servers. Please check that you have a valid internet connection and try again."
+		let alertController = UIAlertController(title: title.sentenceCapitalizedString(), message: message.sentenceCapitalizedString(), preferredStyle: UIAlertControllerStyle.Alert)
+		alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
+		return alertController
+	}
+}
+
+
 public func < (lhs: NSDate, rhs: NSDate) -> Bool
 {
 	return lhs.compare(rhs) == .OrderedAscending
+}
+
+func isConnectedToInternet() -> Bool
+{
+	let zero : Int8 = 0
+	//var zeroAddress = sockaddr_in(sin_len: 0, sin_family: 0, sin_port: 0, sin_addr: in_addr(s_addr: 0), sin_zero: (0, 0, 0, 0, 0, 0, 0, 0))
+	var zeroAddress = sockaddr_in();
+	zeroAddress.sin_len = UInt8(sizeof(sockaddr_in.Type))
+	zeroAddress.sin_family = UInt8(AF_INET)
+	zeroAddress.sin_len = UInt8(sizeofValue(zeroAddress))
+	zeroAddress.sin_family = sa_family_t(AF_INET)
+	
+	let defaultRouteReachability = withUnsafePointer(&zeroAddress) {
+		SCNetworkReachabilityCreateWithAddress(nil, UnsafePointer($0)).takeRetainedValue()
+	}
+	
+	var flags : SCNetworkReachabilityFlags = 0
+	if SCNetworkReachabilityGetFlags(defaultRouteReachability, &flags) == 0 {
+		return false
+	}
+	
+	let isReachable = (flags & UInt32(kSCNetworkFlagsReachable)) != 0
+	let needsConnection = (flags & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
+	return (isReachable && !needsConnection)
 }

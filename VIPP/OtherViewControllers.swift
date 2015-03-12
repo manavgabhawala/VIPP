@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+protocol ImageDownloaded
+{
+	func setImage(image: UIImage)
+}
+
 protocol TermsAndConditionsViewControllerDelegate
 {
 	func agreesToTerms()
@@ -48,7 +53,7 @@ class TermsAndConditionsViewController : UIViewController
 	}
 }
 
-class ImageViewController : UIViewController
+class ImageViewController : UIViewController, ImageDownloaded
 {
 	@IBOutlet var imageView : UIImageView!
 	var appeared = false
@@ -71,5 +76,10 @@ class ImageViewController : UIViewController
 	override func viewDidDisappear(animated: Bool)
 	{
 		appeared = false
+	}
+	func setImage(image: UIImage)
+	{
+		imageView.image = image
+		imageView.setNeedsDisplay()
 	}
 }

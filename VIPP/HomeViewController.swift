@@ -190,7 +190,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 			cell.selectedBackgroundView?.contentMode = .ScaleAspectFill
 			let club = clubs[index]
 			cell.club = club
-			clubs[index].delegate = cell
+			clubs[index].logoDelegate = cell
 			if let image = club.logo
 			{
 				cell.setImage(image)
@@ -217,43 +217,22 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 		if  index < clubs.count
 		{
 			let club = clubs[index]
-			if club.photos.count > 0
+			for (i, _) in enumerate(club.photoURLS)
 			{
-				for (i, photo) in enumerate(club.photos)
+				if club.photosDelegate != nil
 				{
-					currentImages[i].imageView.image = photo
-					currentImages[i].imageView.setNeedsDisplay()
-				}
-			}
-			else
-			{
-				for (i, aPhotoURL) in enumerate(club.photoURLS)
-				{
-					if (i < numberOfImagesSlideshow)
+					if club.photosDelegate!.count <= i
 					{
-						if let photoURL = aPhotoURL
-						{
-							let downloadRequest = NSURLRequest(URL: photoURL, cachePolicy: NSURLRequestCachePolicy.ReturnCacheDataElseLoad, timeoutInterval: 30.0)
-							NSURLConnection.sendAsynchronousRequest(downloadRequest, queue: NSOperationQueue(), completionHandler: {(response, data, error) in
-								if let image = UIImage(data: data)
-								{
-									if (i < club.photos.count)
-									{
-										club.photos[i] = image
-									}
-									else
-									{
-										club.photos.append(image)
-									}
-									if (i < self.currentImages.count)
-									{
-										self.currentImages[i].imageView.image = image
-										self.currentImages[i].imageView.setNeedsDisplay()
-									}
-								}
-							})
-						}
+						club.photosDelegate!.append(viewControllerForIndex(i))
 					}
+					else
+					{
+						club.photosDelegate![i] = viewControllerForIndex(i)
+					}
+				}
+				else
+				{
+					club.photosDelegate = [viewControllerForIndex(i)]
 				}
 			}
 			let frame = nextButton.frame
@@ -262,6 +241,8 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 			UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
 					self.nextButton.frame = frame
 				}, completion: nil)
+			pagingControl.currentPage = 0
+			pagingController.setViewControllers([viewControllerForIndex(0)], direction: .Forward, animated: false, completion: nil)
 		}
 	}
 	func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize

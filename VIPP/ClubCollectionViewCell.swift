@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ClubCollectionViewCell: UICollectionViewCell, ClubDelegate
+class ClubCollectionViewCell: UICollectionViewCell, ImageDownloaded
 {
 	@IBOutlet var imageView : UIImageView!
 	
