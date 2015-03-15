@@ -49,6 +49,11 @@ class HomeViewController: UIViewController
 		pagingController.view.frame.size = pagingViewContainer.frame.size
 		pagingControl.numberOfPages = numberOfImagesSlideshow
 	}
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
+		UIApplication.sharedApplication().statusBarStyle = .Default
+	}
 	//MARK: - Actions
 	@IBAction func showEvents(_ : UIButton)
 	{
@@ -66,7 +71,26 @@ class HomeViewController: UIViewController
 	}
 	@IBAction func profileButton(_ : UIButton)
 	{
-		let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
+		performSegueWithIdentifier("slideDownProfile", sender: self)
+//		let profileViewController = storyboard!.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
+//		profileViewController.delegate = self
+//		profileViewController.modalPresentationStyle = .FullScreen
+//		profileViewController.modalTransitionStyle = .CoverVertical
+//		presentViewController(profileViewController, animated: true, completion: nil)
+//		profileViewController.view.frame.size = view.frame.size
+//		//profileViewController.setTableFrame(view.frame.size)
+//		view.addSubview(profileViewController.view)
+//		view.bringSubviewToFront(profileViewController.view)
+		/*UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
+			profileViewController.view.frame.origin.y = 0.0
+			}, completion: {(completed) in
+				if (completed)
+				{
+					profileViewController.view.updateConstraints()
+					//profileViewController.setTableFrame(self.view.frame.size)
+				}
+		})*/
+		/*let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
 		alertController.addAction(UIAlertAction(title: "Log Out", style: .Destructive, handler: {(action) in
 			PFUser.logOut()
 			let initialViewController = self.storyboard?.instantiateInitialViewController() as! InitialViewController
@@ -75,7 +99,20 @@ class HomeViewController: UIViewController
 			self.presentViewController(initialViewController, animated: true, completion: nil)
 		}))
 		alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-		presentViewController(alertController, animated: true, completion: nil)
+		presentViewController(alertController, animated: true, completion: nil)*/
+	}
+	@IBAction func unwindSegue(sender: UIStoryboardSegue)
+	{
+		
+	}
+	override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue
+	{
+		if identifier == "slideUpProfile"
+		{
+			let customSegue = SlideUpSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+			return customSegue
+		}
+		return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
 	}
 }
 //MARK: - Parse Interaction
@@ -175,9 +212,7 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
 	{
 		return numberOfClubsPerPage
-	}
-	
-	// The cell that is returned must be retrieved from a call to -dequeueReusableCellWithReuseIdentifier:forIndexPath:
+	}	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
 		let index = (indexPath.section * numberOfClubsPerPage) + indexPath.row
