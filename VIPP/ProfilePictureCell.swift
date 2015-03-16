@@ -30,7 +30,7 @@ class ProfilePictureCell: UITableViewCell
 			viewProfileButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
 			if let fbId = user["fbId"] as? String
 			{
-				let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(fbId)/picture?type=large&return_ssl_resources=1")!
+				let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(fbId)/picture?type=normal&return_ssl_resources=1")!
 				let request = NSURLRequest(URL: profilePictureURL)
 				NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: {(response, data, error) in
 					if (error == nil)

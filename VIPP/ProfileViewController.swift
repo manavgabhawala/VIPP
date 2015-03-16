@@ -105,7 +105,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		if tableCells[indexPath.row] is ProfileButtonCell
 		{
 			let cell = tableCells[indexPath.row]
-			((cell.subviews.first! as! UIView).subviews as! [UIView]).map{(view: UIView) -> Void in UIView.animateWithDuration(1.0, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: { view.alpha = 1.0 }, completion: nil)  }
+			((cell.subviews.first! as! UIView).subviews as! [UIView]).map{(view: UIView) -> Void in UIView.animateWithDuration(1.0, delay: 0.3, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: { view.alpha = 1.0 }, completion: nil)  }
 		}
 	}
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)

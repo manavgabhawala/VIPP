@@ -107,6 +107,23 @@ class InitialViewController: UIViewController {
 						{
 							user["email"] = email
 						}
+						if let gender = result.objectForKey("gender") as? String
+						{
+							user["isFemale"] = false
+							if gender == "female"
+							{
+								user["isFemale"] = true
+							}
+						}
+						if let birthday = result.objectForKey("birthday") as? String
+						{
+							let dateFormatter = NSDateFormatter()
+							dateFormatter.dateFormat = "MM/DD/YYYY"
+							if let date = dateFormatter.dateFromString(birthday)
+							{
+								user["birthday"] = date
+							}
+						}
 						let currentInstallation = PFInstallation.currentInstallation()
 						currentInstallation["user"] = user
 						user.saveInBackgroundWithBlock(nil)

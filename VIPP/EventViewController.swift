@@ -116,15 +116,21 @@ class EventViewController : UIViewController
 	}
 	@IBAction func nextPage(_: UIButton)
 	{
-		++pageIndex
-		pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Forward, animated: true, completion: nil)
-		setDate(pageIndex)
+		if !(pageIndex + 1 >= club.events.count)
+		{
+			++pageIndex
+			pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Forward, animated: true, completion: nil)
+			setDate(pageIndex)
+		}
 	}
 	@IBAction func previousPage(_: UIButton)
 	{
-		--pageIndex
-		pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Reverse, animated: false, completion: nil)
-		setDate(pageIndex)
+		if !(pageIndex - 1 < 0)
+		{
+			--pageIndex
+			pagingController.setViewControllers([viewControllerForIndex(pageIndex)], direction: .Reverse, animated: false, completion: nil)
+			setDate(pageIndex)
+		}
 	}
 }
 //MARK: - PageView Stuff
@@ -156,11 +162,19 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 	func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController?
 	{
 		let index = viewController.view.tag - 1
+		if (index < 0)
+		{
+			return nil
+		}
 		return viewControllerForIndex(index)
 	}
 	func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController?
 	{
 		let index = viewController.view.tag + 1
+		if (index >= club.events.count)
+		{
+			return nil
+		}
 		return viewControllerForIndex(index)
 	}
 	func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool)

@@ -101,6 +101,12 @@ class SignUpViewController: UIViewController
 				setTextFields()
 				textFields[TextField.FirstName.rawValue].text = user["firstName"] as! String
 				textFields[TextField.LastName.rawValue].text = user["lastName"] as! String
+				if let date = user["birthday"] as? NSDate
+				{
+					let dateFormatter = NSDateFormatter()
+					dateFormatter.dateStyle = .MediumStyle
+					birthdayDetailLabel?.text = dateFormatter.stringFromDate(date)
+				}
 				backButton.hidden = true
 				tableView.reloadData()
 			}
@@ -622,6 +628,7 @@ extension SignUpViewController : TermsAndConditionsViewControllerDelegate
 		user["favoriteVenues"] = userData.venues
 		user["nightLifeHabits"] = userData.guysGirls
 		user["validVIPP"] = false
+		user["isFemale"] = false
 		if let promo = userData.promoCode
 		{
 			user["promo"] = PFObject(withoutDataWithClassName: "PromoCodes", objectId: promo)
