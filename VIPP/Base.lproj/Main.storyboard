@@ -2911,7 +2911,7 @@ Some other stuff</string>
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Oan-dc-ULK">
-                                        <rect key="frame" x="268" y="16.5" width="64" height="44"/>
+                                        <rect key="frame" x="268" y="17" width="64" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Sof-Ia-vDC"/>
                                             <constraint firstAttribute="width" constant="64" id="t1d-Xr-loF"/>
@@ -3125,7 +3125,7 @@ Some other stuff</string>
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thanks for applying to VIPP!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mlp-PI-fFh">
-                                <rect key="frame" x="168" y="290" width="263.5" height="20"/>
+                                <rect key="frame" x="168" y="290" width="264" height="20"/>
                                 <fontDescription key="fontDescription" name="STHeitiSC-Medium" family="Heiti SC" pointSize="20"/>
                                 <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3226,6 +3226,17 @@ Some other stuff</string>
                                     <constraint firstAttribute="height" constant="77" id="6b8-AF-401"/>
                                 </constraints>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tlj-MK-ezM">
+                                <rect key="frame" x="218" y="487" width="165" height="32"/>
+                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="20"/>
+                                <state key="normal" title="CHECK IF INVITED">
+                                    <color key="titleColor" red="0.27843137254901962" green="0.27843137254901962" blue="0.27843137254901962" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="checkIfInvited:" destination="JBN-05-7HP" eventType="touchUpInside" id="qzl-jm-uqi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -3235,6 +3246,7 @@ Some other stuff</string>
                             <constraint firstItem="BEl-CI-Eeg" firstAttribute="top" secondItem="mlp-PI-fFh" secondAttribute="bottom" constant="8" symbolic="YES" id="8pP-6Z-h8D"/>
                             <constraint firstItem="mLc-3e-gXk" firstAttribute="centerY" secondItem="CuK-Jj-nuE" secondAttribute="centerY" id="91J-R8-bpO"/>
                             <constraint firstItem="mLc-3e-gXk" firstAttribute="centerY" secondItem="RH8-dN-2wu" secondAttribute="centerY" id="9WK-ob-iaq"/>
+                            <constraint firstItem="9z9-Rb-wT3" firstAttribute="top" secondItem="Tlj-MK-ezM" secondAttribute="bottom" constant="8" id="9WN-AA-toT"/>
                             <constraint firstAttribute="centerY" secondItem="mlp-PI-fFh" secondAttribute="centerY" id="A8J-tl-iEi"/>
                             <constraint firstItem="4iv-fJ-XYp" firstAttribute="top" secondItem="p2D-dt-Kfr" secondAttribute="topMargin" id="AMP-Yk-dHE"/>
                             <constraint firstItem="ReO-Yv-Vqs" firstAttribute="top" secondItem="pca-kH-Evo" secondAttribute="bottom" multiplier="1.1" constant="8" symbolic="YES" id="Aq8-jx-jbw"/>
@@ -3251,6 +3263,7 @@ Some other stuff</string>
                             <constraint firstItem="b7Q-TH-OHC" firstAttribute="top" secondItem="9z9-Rb-wT3" secondAttribute="bottom" constant="8" id="VQp-cU-ZeL"/>
                             <constraint firstAttribute="centerX" secondItem="ReO-Yv-Vqs" secondAttribute="centerX" id="f0G-AA-c7R"/>
                             <constraint firstAttribute="trailingMargin" secondItem="4iv-fJ-XYp" secondAttribute="trailing" constant="-16" id="itd-Vd-6Cq"/>
+                            <constraint firstAttribute="centerX" secondItem="Tlj-MK-ezM" secondAttribute="centerX" id="qhV-NN-IMC"/>
                             <constraint firstAttribute="centerX" secondItem="mlp-PI-fFh" secondAttribute="centerX" id="v0r-TJ-mfm"/>
                             <constraint firstItem="ap5-86-WLM" firstAttribute="leading" secondItem="mLc-3e-gXk" secondAttribute="trailing" constant="33" id="wgg-HN-YRO"/>
                             <constraint firstItem="pca-kH-Evo" firstAttribute="top" secondItem="4iv-fJ-XYp" secondAttribute="bottom" id="wqc-4X-blf"/>
@@ -3576,8 +3589,8 @@ Some other stuff</string>
         <image name="pattern.png" width="720" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Vc3-j8-PIa"/>
         <segue reference="z2m-BL-8ja"/>
         <segue reference="Ksh-El-tCn"/>
+        <segue reference="l9h-Op-m36"/>
     </inferredMetricsTieBreakers>
 </document>

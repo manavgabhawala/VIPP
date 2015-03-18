@@ -34,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				installation.saveEventually(nil)
 			}
 		}
-		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, false).first as? String
+		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as? String
 		{
 			profilePictureLocation = "\(directory)/ProfilePic.png"
 			let fileManger = NSFileManager()

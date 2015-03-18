@@ -30,9 +30,9 @@ class ProfilePictureCell: UITableViewCell
 			nameLabel.text = name
 			logoutButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
 			let fileManager = NSFileManager()
-			if fileManager.fileExistsAtPath(profilePictureLocation)
+			if let image = UIImage(contentsOfFile: profilePictureLocation) where fileManager.fileExistsAtPath(profilePictureLocation)
 			{
-				profilePicture.image = UIImage(contentsOfFile: profilePictureLocation)!
+				profilePicture.image = image
 			}
 			else
 			{

@@ -59,6 +59,19 @@ class ThankYouViewController: UIViewController
 		messageController.body = "Check out this Vipp app – Download this to get into top nightlife venues with me! http://getvipp.com"
 		presentViewController(messageController, animated: true, completion: nil)
 	}
+	@IBAction func checkIfInvited(_: UIButton)
+	{
+		let user = PFUser.currentUser()
+		user.fetchIfNeeded()
+		let validVIPP = user["validVIPP"] as? Bool
+		if validVIPP != nil && validVIPP!
+		{
+			let homeViewController = self.storyboard!.instantiateViewControllerWithIdentifier("HomeViewController") as! HomeViewController
+			homeViewController.modalPresentationStyle = .FullScreen
+			homeViewController.modalTransitionStyle = .CrossDissolve
+			self.presentViewController(homeViewController, animated: true, completion: nil)
+		}
+	}
 }
 extension ThankYouViewController : MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate
 {
