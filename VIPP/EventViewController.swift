@@ -249,12 +249,28 @@ extension EventViewController : UICollectionViewDataSource, UICollectionViewDele
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendCell", forIndexPath: indexPath) as! FriendCollectionViewCell
+		
 		if (club.events[pageIndex].friends[indexPath.row].0)
 		{
+			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendCell", forIndexPath: indexPath) as! FriendCollectionViewCell
 			cell.setImage(club.events[pageIndex].friends[indexPath.row].1)
+			return cell
 		}
-		//TODO: Setup cell here
-		return cell
+		else
+		{
+			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NoFBFriendCell", forIndexPath: indexPath) as! FriendWithoutFBCollectionViewCell
+			let string = club.events[pageIndex].friends[indexPath.row].1.capitalizedString
+			var name = ""
+			for char in string
+			{
+				let str = String(char)
+				if str.lowercaseString != str
+				{
+					name += str
+				}
+			}
+			cell.setup(name)
+			return cell
+		}
 	}
 }

@@ -29,8 +29,7 @@ class ProfilePictureCell: UITableViewCell
 			let name = (user["firstName"] as? String ?? "") + " " + (user["lastName"] as? String ?? "")
 			nameLabel.text = name
 			logoutButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
-			let fileManager = NSFileManager()
-			if let image = UIImage(contentsOfFile: profilePictureLocation) where fileManager.fileExistsAtPath(profilePictureLocation)
+			if let image = UIImage(contentsOfFile: profilePictureLocation)
 			{
 				profilePicture.image = image
 			}
@@ -38,16 +37,18 @@ class ProfilePictureCell: UITableViewCell
 			{
 				if let fbId = user["fbId"] as? String
 				{
-					facebookProfilePicture(facebookId: fbId, {(response, data, error) in
+					facebookProfilePicture(facebookId: fbId, size: "normal", block: {(response, data, error) in
 						if (error == nil)
 						{
 							if let image = UIImage(data: data)
 							{
 								self.profilePicture.image = image
 								self.profilePicture.setNeedsDisplay()
-								if let data = UIImagePNGRepresentation(image)
+								if let imageData = UIImagePNGRepresentation(image)
 								{
-									data.writeToFile(profilePictureLocation, atomically: true)
+									let fileManager = NSFileManager()
+									fileManager.removeItemAtPath(profilePictureLocation, error: nil)
+									imageData.writeToFile(profilePictureLocation, atomically: true)
 								}
 							}
 						}

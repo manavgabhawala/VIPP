@@ -37,8 +37,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as? String
 		{
 			profilePictureLocation = "\(directory)/ProfilePic.png"
-			let fileManger = NSFileManager()
-			fileManger.createDirectoryAtPath(profilePictureLocation, withIntermediateDirectories: true, attributes: nil, error: nil)
 		}
 		return true
 	}

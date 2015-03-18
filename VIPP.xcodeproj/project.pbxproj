@@ -248,13 +248,6 @@
 			name = "Signup Stuff";
 			sourceTree = "<group>";
 		};
-		824798571AB75B3500FEA122 /* AddressBook */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = AddressBook;
-			sourceTree = "<group>";
-		};
 		827E636C1AA6A97800E77EB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +295,6 @@
 				829DC1761A7B3E1F00CD6187 /* VIPPTests */,
 				829DC15F1A7B3E1F00CD6187 /* Products */,
 				829DC18C1A7B3E7100CD6187 /* Frameworks */,
-				824798571AB75B3500FEA122 /* AddressBook */,
 			);
 			sourceTree = "<group>";
 		};

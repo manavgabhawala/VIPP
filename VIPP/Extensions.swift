@@ -388,9 +388,9 @@ func safeLogout()
 	PFInstallation.currentInstallation().saveEventually(nil)
 }
 
-func facebookProfilePicture(#facebookId: String, block: (NSURLResponse!, NSData!, NSError!) -> Void)
+func facebookProfilePicture(#facebookId: String, #size: String, #block: (NSURLResponse!, NSData!, NSError!) -> Void)
 {
-	let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(facebookId)/picture?type=normal&return_ssl_resources=1")!
+	let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(facebookId)/picture?type=\(size)&return_ssl_resources=1")!
 	let request = NSURLRequest(URL: profilePictureURL)
 	NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: block)
 }

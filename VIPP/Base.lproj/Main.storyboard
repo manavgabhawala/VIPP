@@ -678,6 +678,30 @@
                                                         <outlet property="imageView" destination="aRh-Dv-pzP" id="rXc-SE-gZP"/>
                                                     </connections>
                                                 </collectionViewCell>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="NoFBFriendCell" id="Y8m-S2-Zzi" customClass="FriendWithoutFBCollectionViewCell" customModule="VIPP" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dAE-26-Gka">
+                                                                <rect key="frame" x="3" y="10" width="31" height="17"/>
+                                                                <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="centerX" secondItem="dAE-26-Gka" secondAttribute="centerX" id="No2-nF-dFi"/>
+                                                        <constraint firstAttribute="centerY" secondItem="dAE-26-Gka" secondAttribute="centerY" id="pwQ-Lf-JYT"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="label" destination="dAE-26-Gka" id="oF2-vh-Kii"/>
+                                                    </connections>
+                                                </collectionViewCell>
                                             </cells>
                                             <connections>
                                                 <outlet property="dataSource" destination="8dM-7J-NQH" id="yhX-aL-F39"/>

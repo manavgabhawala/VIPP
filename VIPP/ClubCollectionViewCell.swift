@@ -29,11 +29,16 @@ class FriendCollectionViewCell : UICollectionViewCell
 	{
 		imageView.layer.cornerRadius = imageView.frame.width / 2
 		imageView.layer.masksToBounds = true
-		facebookProfilePicture(facebookId: fbId, {(response, data, error) in
+		layer.cornerRadius = frame.width / 2
+		layer.masksToBounds = true
+		backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
+		facebookProfilePicture(facebookId: fbId, size: "square", block: {(response, data, error) in
 			if let image = UIImage(data: data)
 			{
 				self.imageView.image = image
 				self.imageView.setNeedsDisplay()
+				self.backgroundColor = UIColor.clearColor()
+				self.setNeedsDisplay()
 			}
 			else
 			{
@@ -41,5 +46,16 @@ class FriendCollectionViewCell : UICollectionViewCell
 				println(error)
 			}
 		})
+	}
+}
+class FriendWithoutFBCollectionViewCell : UICollectionViewCell
+{
+	@IBOutlet var label : UILabel!
+	func setup(text: String)
+	{
+		layer.cornerRadius = frame.width / 2
+		layer.masksToBounds = true
+		backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.7)
+		label.text = text
 	}
 }
