@@ -54,7 +54,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		tableCells.append(profilePictureCell)
 		let buttons = [	(UIImage(named: "InvitesIcon")!, "INVITES"),
 						(UIImage(named: "BookingsIcon")!, "BOOKINGS"),
-						(UIImage(named: "RewardsIcon")!, "REWARDS"),
+						//(UIImage(named: "RewardsIcon")!, "REWARDS"),
 						(UIImage(named: "SettingsIcon")!, "SETTINGS"),
 						(UIImage(named: "AboutIcon")!, "ABOUT") ]
 		for button in buttons
