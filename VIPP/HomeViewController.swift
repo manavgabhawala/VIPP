@@ -138,6 +138,7 @@ extension HomeViewController
 			else
 			{
 				//TODO: Show error
+				println(error)
 			}
 		}
 	}

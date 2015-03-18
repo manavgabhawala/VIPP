@@ -17,7 +17,7 @@ class Event
 	var imageURL : NSURL!
 	weak var club : Club?
 	var delegate: ImageDownloaded?
-	
+	var friends = [Bool, String]()
 	init(object: PFObject, club: Club)
 	{
 		self.objectId = object.objectId
@@ -25,6 +25,7 @@ class Event
 		self.description = object["description"] as! String
 		self.imageURL = NSURL(string: object["image"] as! String)
 		self.club = club
+		getFriendInfo()
 	}
 	func loadImage()
 	{
@@ -32,12 +33,49 @@ class Event
 		{
 			let downloadRequest = NSURLRequest(URL: URL, cachePolicy: .ReloadIgnoringLocalCacheData, timeoutInterval: 30.0)
 			NSURLConnection.sendAsynchronousRequest(downloadRequest, queue: NSOperationQueue(), completionHandler:  { (response, data, error) in
-				if let image = UIImage(data: data)
+				if (error == nil)
 				{
-					self.image = image
-					self.delegate?.setImage(image)
+					if let image = UIImage(data: data)
+					{
+						self.image = image
+						self.delegate?.setImage(image)
+					}
+				}
+				else
+				{
+					//TODO: Show error
+					println(error)
 				}
 			})
+		}
+	}
+	func getFriendInfo()
+	{
+		friends.removeAll(keepCapacity: false)
+		let query = PFQuery(className: "Invitation")
+		query.whereKey("event", equalTo: PFObject(withoutDataWithClassName: "Event", objectId: objectId))
+		query.whereKey("invitedBy", equalTo: PFUser.currentUser())
+		query.includeKey("invitedVIPP")
+		query.findObjectsInBackgroundWithBlock {(results, error) in
+			if (error == nil)
+			{
+				self.friends = (results as! [PFObject]).map {
+					let user = $0["invitedVIPP"] as! PFUser
+					if let fbId = user["fbId"] as? String
+					{
+						return (true, fbId)
+					}
+					else
+					{
+						return (false, (user["firstName"] as? String ?? "") + " " + (user["lastName"] as? String ?? ""))
+					}
+				}
+			}
+			else
+			{
+				//TODO: Show error
+				println(error)
+			}
 		}
 	}
 }

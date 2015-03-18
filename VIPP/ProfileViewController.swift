@@ -13,7 +13,6 @@ class ProfileViewController: UIViewController
 {
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var bottomBar : UIView!
-	
 	var tableCells = [UITableViewCell]()
 	//MARK: - ViewController Lifecycle
 	override func viewDidLoad()
@@ -39,14 +38,11 @@ class ProfileViewController: UIViewController
 	}
 	
 	//MARK: - Actions
-	@IBAction func tapOnVipp(_: UIButton)
+	func logout(_: UIButton)
 	{
-		//TODO: Remove `self`.
-		//dismissViewControllerAnimated(true, completion: nil)
-	}
-	func viewAccountAction(_: UIButton)
-	{
-		
+		safeLogout()
+		let initialController = storyboard!.instantiateInitialViewController() as! UIViewController
+		presentViewController(initialController, animated: true, completion: nil)
 	}
 }
 extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
@@ -54,7 +50,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 	func setupCells()
 	{
 		let profilePictureCell = tableView.dequeueReusableCellWithIdentifier("profileImageCell") as! ProfilePictureCell
-		profilePictureCell.setup(self, action: "viewAccountAction:")
+		profilePictureCell.setup(self, action: "logout:")
 		tableCells.append(profilePictureCell)
 		let buttons = [	(UIImage(named: "InvitesIcon")!, "INVITES"),
 						(UIImage(named: "BookingsIcon")!, "BOOKINGS"),

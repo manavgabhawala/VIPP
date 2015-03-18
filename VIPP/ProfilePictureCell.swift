@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import MobileCoreServices
 
 class ProfilePictureCell: UITableViewCell
 {
 	@IBOutlet var backImage: UIImageView!
 	@IBOutlet var profilePicture : UIImageView!
 	@IBOutlet var nameLabel : UILabel!
-	@IBOutlet var viewProfileButton : UIButton!
+	@IBOutlet var logoutButton : UIButton!
 	
 	func setup(target: AnyObject?, action: Selector)
 	{
@@ -27,22 +28,31 @@ class ProfilePictureCell: UITableViewCell
 		{
 			let name = (user["firstName"] as? String ?? "") + " " + (user["lastName"] as? String ?? "")
 			nameLabel.text = name
-			viewProfileButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
-			if let fbId = user["fbId"] as? String
+			logoutButton.addTarget(target, action: action, forControlEvents: .TouchUpInside)
+			let fileManager = NSFileManager()
+			if fileManager.fileExistsAtPath(profilePictureLocation)
 			{
-				let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(fbId)/picture?type=normal&return_ssl_resources=1")!
-				let request = NSURLRequest(URL: profilePictureURL)
-				NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: {(response, data, error) in
-					if (error == nil)
-					{
-						if let image = UIImage(data: data)
+				profilePicture.image = UIImage(contentsOfFile: profilePictureLocation)!
+			}
+			else
+			{
+				if let fbId = user["fbId"] as? String
+				{
+					facebookProfilePicture(facebookId: fbId, {(response, data, error) in
+						if (error == nil)
 						{
-							//TODO: Add a cache for the profile picture.
-							self.profilePicture.image = image
-							self.profilePicture.setNeedsDisplay()
+							if let image = UIImage(data: data)
+							{
+								self.profilePicture.image = image
+								self.profilePicture.setNeedsDisplay()
+								if let data = UIImagePNGRepresentation(image)
+								{
+									data.writeToFile(profilePictureLocation, atomically: true)
+								}
+							}
 						}
-					}
-				})
+					})
+				}
 			}
 		}
 	}

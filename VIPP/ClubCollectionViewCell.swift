@@ -20,3 +20,26 @@ class ClubCollectionViewCell: UICollectionViewCell, ImageDownloaded
 		imageView.setNeedsDisplay()
 	}
 }
+
+class FriendCollectionViewCell : UICollectionViewCell
+{
+	@IBOutlet var imageView : UIImageView!
+	
+	func setImage(fbId: String)
+	{
+		imageView.layer.cornerRadius = imageView.frame.width / 2
+		imageView.layer.masksToBounds = true
+		facebookProfilePicture(facebookId: fbId, {(response, data, error) in
+			if let image = UIImage(data: data)
+			{
+				self.imageView.image = image
+				self.imageView.setNeedsDisplay()
+			}
+			else
+			{
+				//TODO: Show error
+				println(error)
+			}
+		})
+	}
+}

@@ -348,7 +348,7 @@ extension UIAlertController
 		return alertController
 	}
 }
-
+var profilePictureLocation : String = ""
 
 public func < (lhs: NSDate, rhs: NSDate) -> Bool
 {
@@ -377,4 +377,20 @@ func isConnectedToInternet() -> Bool
 	let isReachable = (flags & UInt32(kSCNetworkFlagsReachable)) != 0
 	let needsConnection = (flags & UInt32(kSCNetworkFlagsConnectionRequired)) != 0
 	return (isReachable && !needsConnection)
+}
+
+func safeLogout()
+{
+	PFUser.logOut()
+	let fileManager = NSFileManager()
+	fileManager.removeItemAtPath(profilePictureLocation, error: nil)
+	PFInstallation.currentInstallation().removeObjectForKey("user")
+	PFInstallation.currentInstallation().saveEventually(nil)
+}
+
+func facebookProfilePicture(#facebookId: String, block: (NSURLResponse!, NSData!, NSError!) -> Void)
+{
+	let profilePictureURL = NSURL(string: "https://graph.facebook.com/\(facebookId)/picture?type=normal&return_ssl_resources=1")!
+	let request = NSURLRequest(URL: profilePictureURL)
+	NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: block)
 }

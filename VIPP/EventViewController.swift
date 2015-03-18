@@ -11,12 +11,15 @@ import UIKit
 class EventViewController : UIViewController
 {
 	@IBOutlet var pagingViewContainer : UIView!
+	@IBOutlet var collectionView : UICollectionView!
 	@IBOutlet var clubName: UILabel!
 	@IBOutlet var eventDate: UILabel!
+	var fbFriends = [(id: String(), name: String())]
 	
 	var currentImages = [ImageViewController]()
 	var club : Club!
 	let pagingController = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+	
 	var pageIndex : Int = 0
 	{
 		didSet
@@ -43,6 +46,22 @@ class EventViewController : UIViewController
 		pagingController.setViewControllers([viewControllerForIndex(0)], direction: .Forward, animated: true, completion: nil)
 		pageIndex = 0
 		pagingViewContainer.addSubview(pagingController.view)
+		if PFUser.currentUser()["fbId"] != nil
+		{
+			let request = FBRequest.requestForMyFriends()
+			request.startWithCompletionHandler {(connection, results, error) in
+				if (error == nil)
+				{
+					let friends = ((results as! NSDictionary).objectForKey("data") as! [NSDictionary]).map { ($0.valueForKey("id") as! String, $0.valueForKey("name") as! String) }
+					self.fbFriends = friends.map { (id: $0.0, name: $0.1) }
+				}
+				else
+				{
+					//TODO: Show error
+					println(error)
+				}
+			}
+		}
 	}
 	override func viewDidLayoutSubviews()
 	{
@@ -108,7 +127,17 @@ class EventViewController : UIViewController
 	}
 	@IBAction func generalShareButtonPressed(_ : UIButton)
 	{
-		
+		if club.events.count > 0
+		{
+			let invitationController = storyboard!.instantiateViewControllerWithIdentifier("InvitationsViewController") as! InvitationsViewController
+			invitationController.facebookFriends = fbFriends
+			
+			invitationController.event = club.events[pageIndex]
+			invitationController.modalPresentationStyle = .PageSheet
+			invitationController.modalTransitionStyle = .CoverVertical
+			presentViewController(invitationController, animated: true, completion: nil)
+		}
+		//TODO: Disable invite button when no clubs exist.
 	}
 	@IBAction func friendIconPressed(user: PFUser)
 	{
@@ -183,6 +212,7 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 		{
 			pageIndex = (pageViewController.viewControllers!.first! as! UIViewController).view.tag
 			setDate(pageIndex)
+			collectionView.reloadSections(NSIndexSet(index: 0))
 		}
 	}
 	func setDate(currentIndex: Int)
@@ -203,5 +233,28 @@ extension EventViewController : UIPageViewControllerDataSource, UIPageViewContro
 		let dateFormatter = NSDateFormatter()
 		dateFormatter.dateStyle = .LongStyle
 		eventDate.text = dateFormatter.stringFromDate(club.events[currentIndex].date)
+	}
+}
+//MARK: - Collection View Stuff
+extension EventViewController : UICollectionViewDataSource, UICollectionViewDelegate
+{
+	func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int
+	{
+		return 1
+	}
+	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+	{
+		return club.events[pageIndex].friends.count
+	}
+	
+	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
+	{
+		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FriendCell", forIndexPath: indexPath) as! FriendCollectionViewCell
+		if (club.events[pageIndex].friends[indexPath.row].0)
+		{
+			cell.setImage(club.events[pageIndex].friends[indexPath.row].1)
+		}
+		//TODO: Setup cell here
+		return cell
 	}
 }

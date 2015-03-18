@@ -22,6 +22,7 @@ class ThankYouViewController: UIViewController
 	{
 		super.viewDidAppear(animated)
 		let user = PFUser.currentUser()
+		user.fetchIfNeeded()
 		let validVIPP = user["validVIPP"] as? Bool
 		if validVIPP != nil && validVIPP!
 		{

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87p" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D105g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -320,7 +320,6 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="tapOnVipp:" destination="KZy-ed-Kif" eventType="touchUpInside" id="JLw-ko-tp0"/>
                                             <segue destination="v9U-sl-Zc0" kind="unwind" identifier="slideUpProfile" unwindAction="unwindSegue:" id="bCL-rm-6md"/>
                                         </connections>
                                     </button>
@@ -369,9 +368,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4uE-7d-Bc4">
-                                                    <rect key="frame" x="238" y="165" width="124" height="28"/>
+                                                    <rect key="frame" x="265" y="165" width="71" height="28"/>
                                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="16"/>
-                                                    <state key="normal" title="VIEW ACCOUNT">
+                                                    <state key="normal" title="LOG OUT">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -399,9 +398,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="backImage" destination="NCQ-Nx-Z0q" id="6YI-VH-Gtb"/>
+                                            <outlet property="logoutButton" destination="4uE-7d-Bc4" id="Gtv-LU-ujb"/>
                                             <outlet property="nameLabel" destination="k5T-ZF-t8m" id="IPF-a1-Mbk"/>
                                             <outlet property="profilePicture" destination="7Ym-sN-UJ6" id="ar6-M5-dKw"/>
-                                            <outlet property="viewProfileButton" destination="4uE-7d-Bc4" id="zNR-r3-Ti7"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="buttonCell" id="7fC-jm-pAa" customClass="ProfileButtonCell" customModule="VIPP" customModuleProvider="target">
@@ -625,16 +624,96 @@
                                     <action selector="previousPage:" destination="8dM-7J-NQH" eventType="touchUpInside" id="91f-eK-oBV"/>
                                 </connections>
                             </button>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b5N-Qb-sjq">
+                                <rect key="frame" x="0.0" y="466" width="600" height="64"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="qhD-a6-eGj">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SOK-XH-vmJ">
+                                            <rect key="frame" x="542" y="7" width="50" height="50"/>
+                                            <state key="normal" image="InvitesIcon">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="generalShareButtonPressed:" destination="8dM-7J-NQH" eventType="touchUpInside" id="bE1-cU-3vj"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FRIEND LIST" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xy4-tV-9xd">
+                                            <rect key="frame" x="253" y="3" width="94" height="18"/>
+                                            <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="18"/>
+                                            <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0s0-7d-mTw">
+                                            <rect key="frame" x="8" y="23" width="526" height="41"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="azk-5o-nI6">
+                                                <size key="itemSize" width="37" height="37"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FriendCell" id="Dub-7n-ZvZ" customClass="FriendCollectionViewCell" customModule="VIPP" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aRh-Dv-pzP">
+                                                                <rect key="frame" x="0.0" y="0.0" width="37" height="37"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottomMargin" secondItem="aRh-Dv-pzP" secondAttribute="bottom" constant="-8" id="3c0-q5-nfv"/>
+                                                        <constraint firstItem="aRh-Dv-pzP" firstAttribute="top" secondItem="Dub-7n-ZvZ" secondAttribute="topMargin" constant="-8" id="RPC-7Y-6FP"/>
+                                                        <constraint firstAttribute="trailingMargin" secondItem="aRh-Dv-pzP" secondAttribute="trailing" constant="-8" id="mKh-Oe-zIe"/>
+                                                        <constraint firstItem="aRh-Dv-pzP" firstAttribute="leading" secondItem="Dub-7n-ZvZ" secondAttribute="leadingMargin" constant="-8" id="ueT-pa-i7U"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="aRh-Dv-pzP" id="rXc-SE-gZP"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                            <connections>
+                                                <outlet property="dataSource" destination="8dM-7J-NQH" id="yhX-aL-F39"/>
+                                                <outlet property="delegate" destination="8dM-7J-NQH" id="pXJ-gV-Cq1"/>
+                                            </connections>
+                                        </collectionView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="xy4-tV-9xd" secondAttribute="centerX" id="2tp-m2-Q9e"/>
+                                        <constraint firstAttribute="bottom" secondItem="0s0-7d-mTw" secondAttribute="bottom" id="DLf-kZ-IDi"/>
+                                        <constraint firstItem="0s0-7d-mTw" firstAttribute="leading" secondItem="qhD-a6-eGj" secondAttribute="leading" constant="8" id="ElJ-CR-W3h"/>
+                                        <constraint firstItem="SOK-XH-vmJ" firstAttribute="leading" secondItem="0s0-7d-mTw" secondAttribute="trailing" constant="8" id="HCb-Zi-ZoJ"/>
+                                        <constraint firstAttribute="centerY" secondItem="SOK-XH-vmJ" secondAttribute="centerY" id="OxF-T6-A8E"/>
+                                        <constraint firstItem="xy4-tV-9xd" firstAttribute="top" secondItem="qhD-a6-eGj" secondAttribute="top" constant="3" id="YkP-Na-NUV"/>
+                                        <constraint firstItem="0s0-7d-mTw" firstAttribute="top" secondItem="xy4-tV-9xd" secondAttribute="bottom" constant="2" id="m1k-No-nw7"/>
+                                        <constraint firstAttribute="trailing" secondItem="SOK-XH-vmJ" secondAttribute="trailing" constant="8" id="sZH-D0-VxS"/>
+                                    </constraints>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="oAb-7g-4o8"/>
+                                </constraints>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V9f-J5-F2I" firstAttribute="leading" secondItem="TbG-YG-g8K" secondAttribute="leading" constant="8" id="5Vq-8c-WJo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b5N-Qb-sjq" secondAttribute="trailing" constant="-16" id="6NQ-s8-jLM"/>
+                            <constraint firstItem="b5N-Qb-sjq" firstAttribute="leading" secondItem="TbG-YG-g8K" secondAttribute="leadingMargin" constant="-16" id="9gS-iI-tba"/>
                             <constraint firstItem="kke-eJ-xnD" firstAttribute="trailing" secondItem="TbG-YG-g8K" secondAttribute="trailing" constant="-6" id="Bij-nq-SIq"/>
                             <constraint firstItem="krw-EN-TrO" firstAttribute="leading" secondItem="TbG-YG-g8K" secondAttribute="leadingMargin" constant="-16" id="C9C-2u-4xT"/>
                             <constraint firstItem="lrQ-aN-GBy" firstAttribute="leading" secondItem="TbG-YG-g8K" secondAttribute="leadingMargin" constant="-16" id="CKK-rC-ztp"/>
                             <constraint firstItem="lrQ-aN-GBy" firstAttribute="top" secondItem="RSS-2A-EMl" secondAttribute="bottom" id="Df2-S9-dFu"/>
                             <constraint firstItem="d2x-qu-Jbb" firstAttribute="leading" secondItem="TbG-YG-g8K" secondAttribute="leadingMargin" constant="-16" id="Dil-Y4-zwJ"/>
                             <constraint firstItem="d2x-qu-Jbb" firstAttribute="bottom" secondItem="RSS-2A-EMl" secondAttribute="top" id="FFU-Bd-srg"/>
+                            <constraint firstItem="lrQ-aN-GBy" firstAttribute="top" secondItem="b5N-Qb-sjq" secondAttribute="bottom" id="FTK-BR-aFy"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Q3c-S9-ZeA" secondAttribute="trailing" constant="-16" id="Iio-JT-Y60"/>
                             <constraint firstItem="Eed-0P-X0W" firstAttribute="top" secondItem="lrQ-aN-GBy" secondAttribute="bottom" id="Mre-s4-MOK"/>
                             <constraint firstAttribute="trailingMargin" secondItem="krw-EN-TrO" secondAttribute="trailing" constant="-16" id="O77-I9-eVf"/>
@@ -655,6 +734,7 @@
                     </view>
                     <connections>
                         <outlet property="clubName" destination="Jqk-SQ-c7y" id="Ehe-KB-HnO"/>
+                        <outlet property="collectionView" destination="0s0-7d-mTw" id="1oy-vF-x6U"/>
                         <outlet property="eventDate" destination="c10-pW-gOu" id="v7R-G5-7Vv"/>
                         <outlet property="pagingViewContainer" destination="SJl-hG-uQR" id="eY9-Qu-Dl7"/>
                     </connections>
@@ -666,7 +746,7 @@
         <!--Invitations View Controller-->
         <scene sceneID="Ji4-Zg-bpo">
             <objects>
-                <viewController storyboardIdentifier="InvitationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RA1-pJ-sot" customClass="InvitationsViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="InvitationsViewController" modalTransitionStyle="crossDissolve" modalPresentationStyle="formSheet" useStoryboardIdentifierAsRestorationIdentifier="YES" id="RA1-pJ-sot" customClass="InvitationsViewController" customModule="VIPP" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oMl-64-ZuI"/>
                         <viewControllerLayoutGuide type="bottom" id="qqh-Qj-DMq"/>
@@ -692,7 +772,7 @@
                                             <color key="titleColor" red="0.1960784314" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="dismissSelf:" destination="8dM-7J-NQH" eventType="touchUpInside" id="egB-QO-LQB"/>
+                                            <action selector="dismissSelf:" destination="RA1-pJ-sot" eventType="touchUpInside" id="xVC-M6-RKu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -706,14 +786,337 @@
                                     <constraint firstItem="rdt-V7-dYL" firstAttribute="bottom" secondItem="5SU-QG-L4T" secondAttribute="bottom" id="qkt-pz-H4h"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mc1-FU-Rgb">
+                                <rect key="frame" x="0.0" y="64" width="600" height="64"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Banner" translatesAutoresizingMaskIntoConstraints="NO" id="JWP-bU-AkY">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x89-0V-d7k">
+                                        <rect key="frame" x="194" y="20" width="212" height="23"/>
+                                        <attributedString key="attributedText">
+                                            <fragment content="I">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="N">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="V">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="I">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="T">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="E ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="  ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="F">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="R">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="I">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="E">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="N">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="D">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content=" ">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="16" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                            <fragment content="S">
+                                                <attributes>
+                                                    <color key="NSColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <font key="NSFont" size="23" name="STHeitiSC-Light"/>
+                                                    <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural"/>
+                                                </attributes>
+                                            </fragment>
+                                        </attributedString>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="JWP-bU-AkY" secondAttribute="trailing" id="1Ww-Yj-iZ0"/>
+                                    <constraint firstAttribute="centerY" secondItem="x89-0V-d7k" secondAttribute="centerY" id="LT0-0L-mJd"/>
+                                    <constraint firstItem="JWP-bU-AkY" firstAttribute="leading" secondItem="mc1-FU-Rgb" secondAttribute="leading" id="P8Z-yj-rtI"/>
+                                    <constraint firstAttribute="centerX" secondItem="x89-0V-d7k" secondAttribute="centerX" id="dOd-s0-6a1"/>
+                                    <constraint firstItem="JWP-bU-AkY" firstAttribute="top" secondItem="mc1-FU-Rgb" secondAttribute="top" id="f1w-JT-z4y"/>
+                                    <constraint firstAttribute="height" constant="64" id="hua-px-78d"/>
+                                    <constraint firstAttribute="bottom" secondItem="JWP-bU-AkY" secondAttribute="bottom" id="x1C-oj-5yg"/>
+                                </constraints>
+                            </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sfg-Fr-izy">
+                                <rect key="frame" x="0.0" y="128" width="600" height="31"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RAT-I7-vpC"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="ON VIPP"/>
+                                    <segment title="INVITE NEW"/>
+                                </segments>
+                                <color key="tintColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="segmentChange:" destination="RA1-pJ-sot" eventType="valueChanged" id="I5V-Zw-ETu"/>
+                                </connections>
+                            </segmentedControl>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="C1r-Ht-cpU">
+                                <rect key="frame" x="0.0" y="158" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="RA1-pJ-sot" id="p2U-g4-jx7"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="EHV-pE-ZUn">
+                                <rect key="frame" x="0.0" y="202" width="600" height="398"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fbCell" id="vFe-oV-2lR" customClass="InvitationCell" customModule="VIPP" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vFe-oV-2lR" id="iuD-hK-5nm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0P0-Jx-dV7">
+                                                    <rect key="frame" x="8" y="14" width="57" height="22"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="21"/>
+                                                    <color key="textColor" red="0.078431372549019607" green="0.078431372549019607" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RH-rd-HPx">
+                                                    <rect key="frame" x="542" y="0.0" width="50" height="50"/>
+                                                    <state key="normal" image="InvitesIcon">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="3RH-rd-HPx" firstAttribute="trailing" secondItem="iuD-hK-5nm" secondAttribute="trailingMargin" id="BDd-ND-39o"/>
+                                                <constraint firstAttribute="centerY" secondItem="0P0-Jx-dV7" secondAttribute="centerY" id="Dga-KP-gGH"/>
+                                                <constraint firstAttribute="centerY" secondItem="3RH-rd-HPx" secondAttribute="centerY" id="Jhn-FH-2Ao"/>
+                                                <constraint firstItem="0P0-Jx-dV7" firstAttribute="leading" secondItem="iuD-hK-5nm" secondAttribute="leadingMargin" id="Oaf-SW-Zhl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="0P0-Jx-dV7" id="AuC-DR-CO4"/>
+                                            <outlet property="shareButton" destination="3RH-rd-HPx" id="IOh-N8-CCo"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressCell" id="xbU-oX-PO0" customClass="AddressBookCell" customModule="VIPP" customModuleProvider="target">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xbU-oX-PO0" id="HpD-dq-VB8">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hFM-Km-5kM">
+                                                    <rect key="frame" x="8" y="8" width="46" height="17"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
+                                                    <color key="textColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SN0-wt-4qM">
+                                                    <rect key="frame" x="542" y="0.0" width="50" height="50"/>
+                                                    <state key="normal" image="InvitesIcon">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqa-Bm-0nT">
+                                                    <rect key="frame" x="16" y="29" width="35" height="13"/>
+                                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="13"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Vqa-Bm-0nT" firstAttribute="leading" secondItem="HpD-dq-VB8" secondAttribute="leadingMargin" constant="8" id="64p-Fu-NMA"/>
+                                                <constraint firstAttribute="centerY" secondItem="SN0-wt-4qM" secondAttribute="centerY" id="DAx-3W-oVb"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Vqa-Bm-0nT" secondAttribute="bottom" id="KlR-Sw-emJ"/>
+                                                <constraint firstItem="hFM-Km-5kM" firstAttribute="leading" secondItem="HpD-dq-VB8" secondAttribute="leadingMargin" id="Kmc-61-A42"/>
+                                                <constraint firstItem="SN0-wt-4qM" firstAttribute="trailing" secondItem="HpD-dq-VB8" secondAttribute="trailingMargin" id="XZY-KJ-Pbb"/>
+                                                <constraint firstItem="hFM-Km-5kM" firstAttribute="top" secondItem="HpD-dq-VB8" secondAttribute="topMargin" id="dhX-Zu-PgN"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="messageButton" destination="SN0-wt-4qM" id="yXw-KZ-pAL"/>
+                                            <outlet property="nameLabel" destination="hFM-Km-5kM" id="5x3-Tq-zof"/>
+                                            <outlet property="phoneNumberLabel" destination="Vqa-Bm-0nT" id="Okb-xK-Vq1"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="RA1-pJ-sot" id="i1m-3z-OwI"/>
+                                    <outlet property="delegate" destination="RA1-pJ-sot" id="zzR-0x-1th"/>
+                                </connections>
+                            </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BbA-L3-HD6" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="1nI-o1-5Hz"/>
+                            <constraint firstItem="EHV-pE-ZUn" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="8wn-Z5-BcT"/>
+                            <constraint firstItem="C1r-Ht-cpU" firstAttribute="top" secondItem="Sfg-Fr-izy" secondAttribute="bottom" id="Cad-ES-yy8"/>
+                            <constraint firstItem="Sfg-Fr-izy" firstAttribute="top" secondItem="mc1-FU-Rgb" secondAttribute="bottom" id="MHC-iz-RN8"/>
+                            <constraint firstItem="mc1-FU-Rgb" firstAttribute="top" secondItem="BbA-L3-HD6" secondAttribute="bottom" id="NpI-lO-P4h"/>
+                            <constraint firstItem="Sfg-Fr-izy" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="O0S-Nq-7Ok"/>
+                            <constraint firstItem="C1r-Ht-cpU" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="aSC-D3-kCI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sfg-Fr-izy" secondAttribute="trailing" constant="-16" id="drp-ex-w7r"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="mc1-FU-Rgb" secondAttribute="trailing" constant="-16" id="hA6-Rq-UM1"/>
+                            <constraint firstItem="EHV-pE-ZUn" firstAttribute="top" secondItem="C1r-Ht-cpU" secondAttribute="bottom" id="hDn-Qw-gDJ"/>
+                            <constraint firstItem="mc1-FU-Rgb" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="hUp-mb-LSd"/>
                             <constraint firstItem="BbA-L3-HD6" firstAttribute="top" secondItem="jlJ-qk-DC7" secondAttribute="topMargin" id="jwK-hG-PEa"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="C1r-Ht-cpU" secondAttribute="trailing" constant="-16" id="ngc-J2-BPL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BbA-L3-HD6" secondAttribute="trailing" constant="-16" id="noj-b6-FXU"/>
+                            <constraint firstItem="qqh-Qj-DMq" firstAttribute="top" secondItem="EHV-pE-ZUn" secondAttribute="bottom" id="rrT-7E-Rsf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EHV-pE-ZUn" secondAttribute="trailing" constant="-16" id="uFN-aX-TUb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="C1r-Ht-cpU" id="XAN-Gj-Wao"/>
+                        <outlet property="tableView" destination="EHV-pE-ZUn" id="8PL-U2-VnH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hKL-KF-cik" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -3159,6 +3562,7 @@ Some other stuff</string>
         <image name="FB-Share" width="50" height="50"/>
         <image name="FBLogin" width="700" height="86"/>
         <image name="Grey Back" width="834" height="560"/>
+        <image name="InvitesIcon" width="50" height="50"/>
         <image name="Logo" width="300" height="167"/>
         <image name="Logo with Caption" width="180" height="108"/>
         <image name="Next" width="50" height="50"/>
@@ -3172,8 +3576,8 @@ Some other stuff</string>
         <image name="pattern.png" width="720" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Vc3-j8-PIa"/>
         <segue reference="z2m-BL-8ja"/>
         <segue reference="Ksh-El-tCn"/>
-        <segue reference="l9h-Op-m36"/>
     </inferredMetricsTieBreakers>
 </document>

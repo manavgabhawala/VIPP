@@ -30,6 +30,10 @@
 		82421E061A8AC789005BA5F3 /* ropes.png in Resources */ = {isa = PBXBuildFile; fileRef = 82421E001A8AC783005BA5F3 /* ropes.png */; };
 		824798391AB6778A00FEA122 /* InvitationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824798381AB6778A00FEA122 /* InvitationsViewController.swift */; };
 		8247983A1AB6778A00FEA122 /* InvitationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 824798381AB6778A00FEA122 /* InvitationsViewController.swift */; };
+		8247983C1AB6827800FEA122 /* InvitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247983B1AB6827800FEA122 /* InvitationCell.swift */; };
+		8247983D1AB6827800FEA122 /* InvitationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8247983B1AB6827800FEA122 /* InvitationCell.swift */; };
+		824798401AB743AA00FEA122 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247983E1AB743AA00FEA122 /* AddressBook.framework */; };
+		824798411AB743AA00FEA122 /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8247983F1AB743AA00FEA122 /* AddressBookUI.framework */; };
 		825AA5CD1AA15CC80092C7C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 825AA5CC1AA15CC80092C7C2 /* placeholder.png */; };
 		825AA5CE1AA15CC80092C7C2 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 825AA5CC1AA15CC80092C7C2 /* placeholder.png */; };
 		826B22B91AB37EBC00C34FC6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */; };
@@ -121,7 +125,10 @@
 		82421DFE1A8AC783005BA5F3 /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
 		82421DFF1A8AC783005BA5F3 /* ride.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ride.png; sourceTree = "<group>"; };
 		82421E001A8AC783005BA5F3 /* ropes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ropes.png; sourceTree = "<group>"; };
-		824798381AB6778A00FEA122 /* InvitationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationsViewController.swift; path = VIPP/InvitationsViewController.swift; sourceTree = "<group>"; };
+		824798381AB6778A00FEA122 /* InvitationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationsViewController.swift; sourceTree = "<group>"; };
+		8247983B1AB6827800FEA122 /* InvitationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvitationCell.swift; sourceTree = "<group>"; };
+		8247983E1AB743AA00FEA122 /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		8247983F1AB743AA00FEA122 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		825AA5CC1AA15CC80092C7C2 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
 		826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		826B22E71AB3BA4A00C34FC6 /* ProfilePictureCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePictureCell.swift; sourceTree = "<group>"; };
@@ -177,6 +184,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				824798401AB743AA00FEA122 /* AddressBook.framework in Frameworks */,
+				824798411AB743AA00FEA122 /* AddressBookUI.framework in Frameworks */,
 				82153BC61A89AA2600C0C8FE /* MessageUI.framework in Frameworks */,
 				829DC1A81A7B3EF600CD6187 /* libsqlite3.dylib in Frameworks */,
 				829DC1B21A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */,
@@ -215,12 +224,13 @@
 		822990951A8ADB4000082E06 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				826B22EE1AB3D2EA00C34FC6 /* SlideDownSegue.swift */,
 				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
 				82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */,
 				826B22E71AB3BA4A00C34FC6 /* ProfilePictureCell.swift */,
 				826B22EA1AB3BCC600C34FC6 /* ProfileButtonCell.swift */,
-				826B22EE1AB3D2EA00C34FC6 /* SlideDownSegue.swift */,
+				8247983B1AB6827800FEA122 /* InvitationCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -238,6 +248,13 @@
 			name = "Signup Stuff";
 			sourceTree = "<group>";
 		};
+		824798571AB75B3500FEA122 /* AddressBook */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = AddressBook;
+			sourceTree = "<group>";
+		};
 		827E636C1AA6A97800E77EB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,6 +270,7 @@
 				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
 				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
 				826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */,
+				824798381AB6778A00FEA122 /* InvitationsViewController.swift */,
 			);
 			name = "Main App";
 			sourceTree = "<group>";
@@ -280,11 +298,11 @@
 		829DC1551A7B3E1F00CD6187 = {
 			isa = PBXGroup;
 			children = (
-				824798381AB6778A00FEA122 /* InvitationsViewController.swift */,
 				829DC1601A7B3E1F00CD6187 /* VIPP */,
 				829DC1761A7B3E1F00CD6187 /* VIPPTests */,
 				829DC15F1A7B3E1F00CD6187 /* Products */,
 				829DC18C1A7B3E7100CD6187 /* Frameworks */,
+				824798571AB75B3500FEA122 /* AddressBook */,
 			);
 			sourceTree = "<group>";
 		};
@@ -344,6 +362,8 @@
 		829DC18C1A7B3E7100CD6187 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8247983E1AB743AA00FEA122 /* AddressBook.framework */,
+				8247983F1AB743AA00FEA122 /* AddressBookUI.framework */,
 				82153BC51A89AA2600C0C8FE /* MessageUI.framework */,
 				829DC1A71A7B3EF600CD6187 /* libsqlite3.dylib */,
 				829DC1A51A7B3EEE00CD6187 /* libz.dylib */,
@@ -516,6 +536,7 @@
 				826B22B91AB37EBC00C34FC6 /* ProfileViewController.swift in Sources */,
 				826B22EB1AB3BCC600C34FC6 /* ProfileButtonCell.swift in Sources */,
 				827E636F1AA6A9A000E77EB4 /* Event.swift in Sources */,
+				8247983C1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC81A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 				824798391AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
 				826B22EF1AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,
@@ -542,6 +563,7 @@
 				826B22BA1AB37EBF00C34FC6 /* ProfileViewController.swift in Sources */,
 				826B22EC1AB3BCC600C34FC6 /* ProfileButtonCell.swift in Sources */,
 				827E63701AA6A9A000E77EB4 /* Event.swift in Sources */,
+				8247983D1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC91A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 				8247983A1AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
 				826B22F01AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,

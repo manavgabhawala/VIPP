@@ -92,6 +92,7 @@ class Club
 					else
 					{
 						//TODO: Show error
+						println(error)
 					}
 				})
 			}
@@ -113,6 +114,7 @@ class Club
 			else
 			{
 				//TODO: Show error
+				println(error)
 			}
 		}
 	}
