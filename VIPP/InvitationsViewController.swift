@@ -8,6 +8,7 @@
 
 import UIKit
 import AddressBook
+import MessageUI
 
 class InvitationsViewController: UIViewController
 {
@@ -16,8 +17,11 @@ class InvitationsViewController: UIViewController
 	var searchQuery : String? = nil
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var searchBar : UISearchBar!
+	
 	var showFacebook = true
 	var event : Event!
+	@IBOutlet var connectToFacebook : UIButton!
+	@IBOutlet var addressBookAccess : UIImageView!
 	
 	//MARK: - ViewController Lifecycle
 	override func viewDidLoad()
@@ -44,12 +48,15 @@ class InvitationsViewController: UIViewController
 	}
 	@IBAction func segmentChange(sender: UISegmentedControl)
 	{
+		connectToFacebook.hidden = true
+		addressBookAccess.hidden = true
 		showFacebook = !Bool(sender.selectedSegmentIndex)
 		if showFacebook
 		{
 			if PFUser.currentUser()["fbId"] == nil
 			{
 				//TODO: Show Connect to Facebook Button
+				connectToFacebook.hidden = false
 			}
 		}
 		else
@@ -70,9 +77,55 @@ class InvitationsViewController: UIViewController
 				}
 			}
 		}
-		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Left)
+		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: showFacebook ? .Right : .Left)
 	}
-	
+	@IBAction func connectToFacebook(_: UIButton)
+	{
+		PFFacebookUtils.linkUser(PFUser.currentUser(), permissions: ["public_profile", "email", "user_birthday", "user_friends"], block: {(result, error) in
+			FBRequestConnection.startForMeWithCompletionHandler({(connection, result, error) in
+				if (error == nil)
+				{
+					let user = PFUser.currentUser()
+					user["fbId"] = result.objectForKey("id")
+					if let gender = result.objectForKey("gender") as? String
+					{
+						user["isFemale"] = false
+						if gender == "female"
+						{
+							user["isFemale"] = true
+						}
+					}
+					self.lazilyFindFacebookFriends()
+					user.saveInBackgroundWithBlock(nil)
+				}
+				else
+				{
+					//TODO: Show error
+					println(error)
+				}
+			})
+		})
+	}
+	func lazilyFindFacebookFriends()
+	{
+		let request = FBRequest.requestForMyFriends()
+		request.startWithCompletionHandler {(connection, results, error) in
+			if (error == nil)
+			{
+				let friends = ((results as! NSDictionary).objectForKey("data") as! [NSDictionary]).map { ($0.valueForKey("id") as! String, $0.valueForKey("name") as! String) }
+				self.facebookFriends = friends.map { (id: $0.0, name: $0.1) }
+				if self.showFacebook
+				{
+					self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+				}
+			}
+			else
+			{
+				//TODO: Show error
+				println(error)
+			}
+		}
+	}
 }
 extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource
 {
@@ -88,6 +141,7 @@ extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource
 			{
 				return facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }.count
 			}
+			connectToFacebook.hidden = facebookFriends.count != 0
 			return facebookFriends.count
 		}
 		if let searching = searchQuery
@@ -101,10 +155,16 @@ extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource
 		if showFacebook
 		{
 			let cell = tableView.dequeueReusableCellWithIdentifier("fbCell") as! InvitationCell
-			cell.nameLabel.text = facebookFriends[indexPath.row].name
+			cell.delegate = self
+			cell.event = event
+			let person = facebookFriends[indexPath.row]
+			cell.nameLabel.text = person.name
+			cell.fbId = person.id
 			if let searching = searchQuery
 			{
-				cell.nameLabel.text = facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }[indexPath.row].name
+				let person = facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }[indexPath.row]
+				cell.nameLabel.text = person.name
+				cell.fbId = person.id
 			}
 			return cell
 		}
@@ -145,6 +205,7 @@ extension InvitationsViewController : UISearchBarDelegate
 		}
 		tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
 	}
+	
 	/**
 	A registered notification callback for when the keyboard is shown because the user tapped on a textfield.
 	
@@ -191,6 +252,8 @@ extension InvitationsViewController
 			}
 			else
 			{
+				println(error)
+				self.addressBookAccess.hidden = false
 				// TODO: Change table view to show request access.
 			}
 		})
@@ -255,7 +318,6 @@ extension InvitationsViewController
 		var value: AnyObject? = ABRecordCopyValue(record, propertyName)?.takeRetainedValue()
 		return value as? T
 	}
-
 }
 private struct MultivalueEntry<T>
 {
@@ -268,5 +330,32 @@ private struct MultivalueEntry<T>
 		self.value = value
 		self.label = label
 		self.id = id
+	}
+}
+//MARK: Share for non-existing users.
+extension InvitationsViewController : AddressBookCellDelegate, MFMessageComposeViewControllerDelegate, InvitationCellDelegate
+{
+	func sendMessage(number: String?)
+	{
+		let messageController = MFMessageComposeViewController()
+		messageController.messageComposeDelegate = self
+		if let no = number
+		{
+			messageController.recipients = [no]
+		}
+		messageController.body = "Hey, I want you to attend \(event.description) with me. Join me on Vipp: https://appsto.re/us/XdqP5.i"
+		presentViewController(messageController, animated: true, completion: nil)
+	}
+	func messageComposeViewController(controller: MFMessageComposeViewController!, didFinishWithResult result: MessageComposeResult)
+	{
+		controller.dismissViewControllerAnimated(true, completion: nil)
+	}
+	func removeFacebookUser(id: String)
+	{
+		if let index = find(facebookFriends.map { $0.0 }, id)
+		{
+			facebookFriends.removeAtIndex(index)
+			tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+		}
 	}
 }

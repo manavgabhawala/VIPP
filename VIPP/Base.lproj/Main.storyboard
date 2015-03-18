@@ -646,7 +646,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="0s0-7d-mTw">
-                                            <rect key="frame" x="8" y="23" width="526" height="41"/>
+                                            <rect key="frame" x="8" y="21" width="526" height="41"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="20" minimumInteritemSpacing="20" id="azk-5o-nI6">
                                                 <size key="itemSize" width="37" height="37"/>
@@ -711,12 +711,12 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="centerX" secondItem="xy4-tV-9xd" secondAttribute="centerX" id="2tp-m2-Q9e"/>
-                                        <constraint firstAttribute="bottom" secondItem="0s0-7d-mTw" secondAttribute="bottom" id="DLf-kZ-IDi"/>
+                                        <constraint firstAttribute="bottom" secondItem="0s0-7d-mTw" secondAttribute="bottom" constant="2" id="DLf-kZ-IDi"/>
                                         <constraint firstItem="0s0-7d-mTw" firstAttribute="leading" secondItem="qhD-a6-eGj" secondAttribute="leading" constant="8" id="ElJ-CR-W3h"/>
                                         <constraint firstItem="SOK-XH-vmJ" firstAttribute="leading" secondItem="0s0-7d-mTw" secondAttribute="trailing" constant="8" id="HCb-Zi-ZoJ"/>
                                         <constraint firstAttribute="centerY" secondItem="SOK-XH-vmJ" secondAttribute="centerY" id="OxF-T6-A8E"/>
                                         <constraint firstItem="xy4-tV-9xd" firstAttribute="top" secondItem="qhD-a6-eGj" secondAttribute="top" constant="3" id="YkP-Na-NUV"/>
-                                        <constraint firstItem="0s0-7d-mTw" firstAttribute="top" secondItem="xy4-tV-9xd" secondAttribute="bottom" constant="2" id="m1k-No-nw7"/>
+                                        <constraint firstItem="0s0-7d-mTw" firstAttribute="top" secondItem="xy4-tV-9xd" secondAttribute="bottom" id="m1k-No-nw7"/>
                                         <constraint firstAttribute="trailing" secondItem="SOK-XH-vmJ" secondAttribute="trailing" constant="8" id="sZH-D0-VxS"/>
                                     </constraints>
                                 </view>
@@ -1055,6 +1055,9 @@
                                                     <state key="normal" image="InvitesIcon">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="invite:" destination="vFe-oV-2lR" eventType="touchUpInside" id="Cz4-61-viZ"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -1067,7 +1070,6 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="nameLabel" destination="0P0-Jx-dV7" id="AuC-DR-CO4"/>
-                                            <outlet property="shareButton" destination="3RH-rd-HPx" id="IOh-N8-CCo"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addressCell" id="xbU-oX-PO0" customClass="AddressBookCell" customModule="VIPP" customModuleProvider="target">
@@ -1086,6 +1088,9 @@
                                                     <state key="normal" image="InvitesIcon">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="message:" destination="xbU-oX-PO0" eventType="touchUpInside" id="cEh-9C-3PQ"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vqa-Bm-0nT">
                                                     <rect key="frame" x="16" y="29" width="35" height="13"/>
@@ -1105,7 +1110,6 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="messageButton" destination="SN0-wt-4qM" id="yXw-KZ-pAL"/>
                                             <outlet property="nameLabel" destination="hFM-Km-5kM" id="5x3-Tq-zof"/>
                                             <outlet property="phoneNumberLabel" destination="Vqa-Bm-0nT" id="Okb-xK-Vq1"/>
                                         </connections>
@@ -1116,28 +1120,54 @@
                                     <outlet property="delegate" destination="RA1-pJ-sot" id="zzR-0x-1th"/>
                                 </connections>
                             </tableView>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nnc-UP-SJr">
+                                <rect key="frame" x="150" y="282" width="300" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="Kwn-QB-yrg"/>
+                                    <constraint firstAttribute="width" constant="300" id="hIt-tn-CPp"/>
+                                </constraints>
+                                <state key="normal" image="FBLogin">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="connectToFacebook:" destination="RA1-pJ-sot" eventType="touchUpInside" id="1Mc-kE-E1g"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aHy-LD-ZlQ">
+                                <rect key="frame" x="180" y="236" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="FRT-OI-AKA"/>
+                                    <constraint firstAttribute="height" constant="128" id="VSp-np-LYo"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.90980392160000001" green="0.90980392160000001" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BbA-L3-HD6" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="1nI-o1-5Hz"/>
+                            <constraint firstAttribute="centerX" secondItem="aHy-LD-ZlQ" secondAttribute="centerX" id="3eO-7g-Hs1"/>
                             <constraint firstItem="EHV-pE-ZUn" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="8wn-Z5-BcT"/>
                             <constraint firstItem="C1r-Ht-cpU" firstAttribute="top" secondItem="Sfg-Fr-izy" secondAttribute="bottom" id="Cad-ES-yy8"/>
+                            <constraint firstAttribute="centerY" secondItem="aHy-LD-ZlQ" secondAttribute="centerY" id="GHs-bt-Fd2"/>
                             <constraint firstItem="Sfg-Fr-izy" firstAttribute="top" secondItem="mc1-FU-Rgb" secondAttribute="bottom" id="MHC-iz-RN8"/>
                             <constraint firstItem="mc1-FU-Rgb" firstAttribute="top" secondItem="BbA-L3-HD6" secondAttribute="bottom" id="NpI-lO-P4h"/>
                             <constraint firstItem="Sfg-Fr-izy" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="O0S-Nq-7Ok"/>
                             <constraint firstItem="C1r-Ht-cpU" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="aSC-D3-kCI"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Sfg-Fr-izy" secondAttribute="trailing" constant="-16" id="drp-ex-w7r"/>
+                            <constraint firstAttribute="centerX" secondItem="Nnc-UP-SJr" secondAttribute="centerX" id="eKE-66-nL7"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mc1-FU-Rgb" secondAttribute="trailing" constant="-16" id="hA6-Rq-UM1"/>
                             <constraint firstItem="EHV-pE-ZUn" firstAttribute="top" secondItem="C1r-Ht-cpU" secondAttribute="bottom" id="hDn-Qw-gDJ"/>
                             <constraint firstItem="mc1-FU-Rgb" firstAttribute="leading" secondItem="jlJ-qk-DC7" secondAttribute="leadingMargin" constant="-16" id="hUp-mb-LSd"/>
                             <constraint firstItem="BbA-L3-HD6" firstAttribute="top" secondItem="jlJ-qk-DC7" secondAttribute="topMargin" id="jwK-hG-PEa"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C1r-Ht-cpU" secondAttribute="trailing" constant="-16" id="ngc-J2-BPL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="BbA-L3-HD6" secondAttribute="trailing" constant="-16" id="noj-b6-FXU"/>
+                            <constraint firstAttribute="centerY" secondItem="Nnc-UP-SJr" secondAttribute="centerY" id="nzL-SN-Hm9"/>
                             <constraint firstItem="qqh-Qj-DMq" firstAttribute="top" secondItem="EHV-pE-ZUn" secondAttribute="bottom" id="rrT-7E-Rsf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EHV-pE-ZUn" secondAttribute="trailing" constant="-16" id="uFN-aX-TUb"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addressBookAccess" destination="aHy-LD-ZlQ" id="Rr6-DK-9Z1"/>
+                        <outlet property="connectToFacebook" destination="Nnc-UP-SJr" id="cxJ-KX-soX"/>
                         <outlet property="searchBar" destination="C1r-Ht-cpU" id="XAN-Gj-Wao"/>
                         <outlet property="tableView" destination="EHV-pE-ZUn" id="8PL-U2-VnH"/>
                     </connections>
@@ -3613,8 +3643,8 @@ Some other stuff</string>
         <image name="pattern.png" width="720" height="216"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="z2m-BL-8ja"/>
+        <segue reference="Vc3-j8-PIa"/>
         <segue reference="Ksh-El-tCn"/>
-        <segue reference="l9h-Op-m36"/>
+        <segue reference="z2m-BL-8ja"/>
     </inferredMetricsTieBreakers>
 </document>

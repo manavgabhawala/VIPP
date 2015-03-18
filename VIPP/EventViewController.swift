@@ -76,7 +76,11 @@ class EventViewController : UIViewController
 		let frame = pagingViewContainer.frame
 		pagingController.view.frame.size = pagingViewContainer.frame.size
 	}
-	
+	override func viewDidAppear(animated: Bool)
+	{
+		super.viewDidAppear(animated)
+		getFriends()
+	}
 	//MARK: - Server Interaction
 	func getImagesFromServer()
 	{
@@ -101,7 +105,12 @@ class EventViewController : UIViewController
 	}
 	func getFriends()
 	{
-		
+		if (club.events.count > 0 && pageIndex >= 0 && pageIndex < club.events.count)
+		{
+			club.events[pageIndex].getFriendInfo({
+				self.collectionView.reloadSections(NSIndexSet(index: 0))
+			})
+		}
 	}
 	
 	//MARK: - Actions
@@ -130,18 +139,13 @@ class EventViewController : UIViewController
 		if club.events.count > 0
 		{
 			let invitationController = storyboard!.instantiateViewControllerWithIdentifier("InvitationsViewController") as! InvitationsViewController
-			invitationController.facebookFriends = fbFriends
-			
+			let invitedFriends = club.events[pageIndex].friends.filter { $0.0 }.map { $0.1 }
+			invitationController.facebookFriends = fbFriends.filter { !contains(invitedFriends, $0.id) }
 			invitationController.event = club.events[pageIndex]
 			invitationController.modalPresentationStyle = .PageSheet
 			invitationController.modalTransitionStyle = .CoverVertical
 			presentViewController(invitationController, animated: true, completion: nil)
 		}
-		//TODO: Disable invite button when no clubs exist.
-	}
-	@IBAction func friendIconPressed(user: PFUser)
-	{
-		
 	}
 	@IBAction func nextPage(_: UIButton)
 	{
@@ -244,7 +248,11 @@ extension EventViewController : UICollectionViewDataSource, UICollectionViewDele
 	}
 	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
 	{
-		return club.events[pageIndex].friends.count
+		if club.events.count > 0
+		{
+			return club.events[pageIndex].friends.count
+		}
+		return 0
 	}
 	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell

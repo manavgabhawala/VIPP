@@ -262,8 +262,8 @@
 			children = (
 				82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */,
 				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
-				826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */,
 				824798381AB6778A00FEA122 /* InvitationsViewController.swift */,
+				826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */,
 			);
 			name = "Main App";
 			sourceTree = "<group>";

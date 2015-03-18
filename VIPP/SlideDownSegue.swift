@@ -20,7 +20,7 @@ class SlideDownSegue: UIStoryboardSegue
 		(sourceViewController as! UIViewController).view.bringSubviewToFront((destinationViewController as! UIViewController).view)
 		let originalCenter = (sourceViewController as! UIViewController).view.center
 		(destinationViewController as! UIViewController).view.frame.origin.y = -(sourceViewController as! UIViewController).view.frame.height + 64.0
-		UIView.animateWithDuration(2.5, delay: 0.0, usingSpringWithDamping: 0.75, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
+		UIView.animateWithDuration(1.3, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
 				(self.destinationViewController as! UIViewController).view.center = originalCenter
 			}, completion: {(completed) in
 				if completed
@@ -45,7 +45,7 @@ class SlideUpSegue : UIStoryboardSegue
 	{
 		(sourceViewController as! UIViewController).view.superview?.insertSubview((destinationViewController as! UIViewController).view, atIndex: 0)
 		UIApplication.sharedApplication().statusBarStyle = .Default
-		UIView.animateWithDuration(2.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
+		UIView.animateWithDuration(1.3, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
 			(self.sourceViewController as! UIViewController).view.frame.origin.y = -(self.destinationViewController as! UIViewController).view.frame.height + 64.0
 			}, completion: {(completed) in
 				if completed

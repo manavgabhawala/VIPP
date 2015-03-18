@@ -25,7 +25,7 @@ class Event
 		self.description = object["description"] as! String
 		self.imageURL = NSURL(string: object["image"] as! String)
 		self.club = club
-		getFriendInfo()
+		getFriendInfo(nil)
 	}
 	func loadImage()
 	{
@@ -49,9 +49,8 @@ class Event
 			})
 		}
 	}
-	func getFriendInfo()
+	func getFriendInfo(completion: (() -> Void)?)
 	{
-		friends.removeAll(keepCapacity: false)
 		let query = PFQuery(className: "Invitation")
 		query.whereKey("event", equalTo: PFObject(withoutDataWithClassName: "Event", objectId: objectId))
 		query.whereKey("invitedBy", equalTo: PFUser.currentUser())
@@ -70,6 +69,7 @@ class Event
 						return (false, (user["firstName"] as? String ?? "") + " " + (user["lastName"] as? String ?? ""))
 					}
 				}
+				completion?()
 			}
 			else
 			{

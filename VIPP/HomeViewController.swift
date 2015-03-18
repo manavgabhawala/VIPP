@@ -272,9 +272,9 @@ extension HomeViewController : UICollectionViewDataSource, UICollectionViewDeleg
 				}
 			}
 			let frame = nextButton.frame
-			nextButton.frame.origin.x = view.frame.width + 20
+			nextButton.frame.origin.x = view.frame.width + 50
 			nextButton.hidden = false
-			UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
+			UIView.animateWithDuration(0.5, delay: 0.0, usingSpringWithDamping: 1.0, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
 					self.nextButton.frame = frame
 				}, completion: nil)
 			pagingControl.currentPage = 0
