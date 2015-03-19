@@ -40,9 +40,14 @@ class ProfileViewController: UIViewController
 	//MARK: - Actions
 	func logout(_: UIButton)
 	{
-		safeLogout()
-		let initialController = storyboard!.instantiateInitialViewController() as! UIViewController
-		presentViewController(initialController, animated: true, completion: nil)
+		let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
+		alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+		alertController.addAction(UIAlertAction(title: "Log Out", style: .Destructive, handler: {(action) in
+			safeLogout()
+			let initialController = self.storyboard!.instantiateInitialViewController() as! UIViewController
+			self.presentViewController(initialController, animated: true, completion: nil)
+		}))
+		presentViewController(alertController, animated: true, completion: nil)
 	}
 }
 extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
@@ -63,7 +68,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 			buttonCell.setup(button)
 			tableCells.append(buttonCell)
 		}
-		//tableView.reloadData()
+		tableView.reloadData()
 	}
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{
