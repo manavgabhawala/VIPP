@@ -190,6 +190,24 @@ extension String
 		}
 		return formattedString
 	}
+	/**
+	This function gets the initials of a string if the string contains a name.
+	
+	:returns: The initials of the name
+	*/
+	func getInitials() -> String
+	{
+		var initials = ""
+		for char in self.capitalizedString
+		{
+			let str = String(char)
+			if str.lowercaseString != str
+			{
+				initials += str
+			}
+		}
+		return initials
+	}
 }
 
 /**
@@ -350,9 +368,18 @@ extension UIAlertController
 }
 var profilePictureLocation : String = ""
 
+extension NSDate : Comparable {}
 public func < (lhs: NSDate, rhs: NSDate) -> Bool
 {
 	return lhs.compare(rhs) == .OrderedAscending
+}
+public func > (lhs: NSDate, rhs: NSDate) -> Bool
+{
+	return lhs.compare(rhs) == .OrderedDescending
+}
+public func == (lhs: NSDate, rhs: NSDate) -> Bool
+{
+	return lhs.compare(rhs) == .OrderedSame
 }
 
 func isConnectedToInternet() -> Bool

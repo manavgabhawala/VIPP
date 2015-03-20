@@ -254,7 +254,6 @@ extension EventViewController : UICollectionViewDataSource, UICollectionViewDele
 		}
 		return 0
 	}
-	
 	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell
 	{
 		
@@ -267,17 +266,7 @@ extension EventViewController : UICollectionViewDataSource, UICollectionViewDele
 		else
 		{
 			let cell = collectionView.dequeueReusableCellWithReuseIdentifier("NoFBFriendCell", forIndexPath: indexPath) as! FriendWithoutFBCollectionViewCell
-			let string = club.events[pageIndex].friends[indexPath.row].1.capitalizedString
-			var name = ""
-			for char in string
-			{
-				let str = String(char)
-				if str.lowercaseString != str
-				{
-					name += str
-				}
-			}
-			cell.setup(name)
+			cell.setup(club.events[pageIndex].friends[indexPath.row].1.getInitials())
 			return cell
 		}
 	}

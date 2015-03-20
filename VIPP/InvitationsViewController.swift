@@ -19,7 +19,7 @@ class InvitationsViewController: UIViewController
 	@IBOutlet var searchBar : UISearchBar!
 	
 	var showFacebook = true
-	var event : Event!
+	weak var event : Event!
 	@IBOutlet var connectToFacebook : UIButton!
 	@IBOutlet var addressBookAccess : UIImageView!
 	
@@ -108,23 +108,27 @@ class InvitationsViewController: UIViewController
 	}
 	func lazilyFindFacebookFriends()
 	{
-		let request = FBRequest.requestForMyFriends()
-		request.startWithCompletionHandler {(connection, results, error) in
-			if (error == nil)
-			{
-				let friends = ((results as! NSDictionary).objectForKey("data") as! [NSDictionary]).map { ($0.valueForKey("id") as! String, $0.valueForKey("name") as! String) }
-				self.facebookFriends = friends.map { (id: $0.0, name: $0.1) }
-				if self.showFacebook
+		event.getFriendInfo({
+			let fbIds = self.event.friends.filter { $0.0 }.map { $0.1 }
+			let request = FBRequest.requestForMyFriends()
+			request.startWithCompletionHandler {(connection, results, error) in
+				if (error == nil)
 				{
-					self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+					let friends = ((results as! NSDictionary).objectForKey("data") as! [NSDictionary]).map { ($0.valueForKey("id") as! String, $0.valueForKey("name") as! String) }
+					self.facebookFriends = friends.filter { !contains(fbIds, $0.0) }.map { (id: $0.0, name: $0.1) }
+					if self.showFacebook
+					{
+						self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: .Automatic)
+					}
+				}
+				else
+				{
+					//TODO: Show error
+					println(error)
 				}
 			}
-			else
-			{
-				//TODO: Show error
-				println(error)
-			}
-		}
+		})
+		
 	}
 }
 extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource

@@ -18,14 +18,17 @@ class Event
 	weak var club : Club?
 	var delegate: ImageDownloaded?
 	var friends = [Bool, String]()
-	init(object: PFObject, club: Club)
+	init(object: PFObject, club: Club?)
 	{
 		self.objectId = object.objectId
 		self.date = object["time"] as! NSDate
 		self.description = object["description"] as! String
 		self.imageURL = NSURL(string: object["image"] as! String)
 		self.club = club
-		getFriendInfo(nil)
+		if club != nil
+		{
+			getFriendInfo(nil)
+		}
 	}
 	func loadImage()
 	{
@@ -54,6 +57,7 @@ class Event
 		let query = PFQuery(className: "Invitation")
 		query.whereKey("event", equalTo: PFObject(withoutDataWithClassName: "Event", objectId: objectId))
 		query.whereKey("invitedBy", equalTo: PFUser.currentUser())
+		query.whereKey("accepted", notEqualTo: false)
 		query.includeKey("invitedVIPP")
 		query.findObjectsInBackgroundWithBlock {(results, error) in
 			if (error == nil)

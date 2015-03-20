@@ -225,9 +225,9 @@
 			isa = PBXGroup;
 			children = (
 				826B22EE1AB3D2EA00C34FC6 /* SlideDownSegue.swift */,
+				82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */,
 				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
-				82153BC21A89A17C00C0C8FE /* OtherViewControllers.swift */,
 				826B22E71AB3BA4A00C34FC6 /* ProfilePictureCell.swift */,
 				826B22EA1AB3BCC600C34FC6 /* ProfileButtonCell.swift */,
 				8247983B1AB6827800FEA122 /* InvitationCell.swift */,

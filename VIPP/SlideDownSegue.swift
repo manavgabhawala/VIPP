@@ -25,10 +25,12 @@ class SlideDownSegue: UIStoryboardSegue
 			}, completion: {(completed) in
 				if completed
 				{
-					(self.destinationViewController as! UIViewController).modalPresentationStyle = .FullScreen
-					(self.destinationViewController as! UIViewController).modalTransitionStyle = .CoverVertical
+					(self.destinationViewController as! UIViewController).view.userInteractionEnabled = false
 					(self.destinationViewController as! UIViewController).view.removeFromSuperview()
-					(self.sourceViewController as! UIViewController).presentViewController((self.destinationViewController as! UIViewController), animated: false, completion: nil)
+					(self.sourceViewController as! UIViewController).presentViewController((self.destinationViewController as! UIViewController), animated: false, completion: {
+						(self.destinationViewController as! UIViewController).view.userInteractionEnabled = true
+					})
+					
 				}
 		})
 		
