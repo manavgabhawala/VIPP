@@ -9,7 +9,7 @@
 import UIKit
 import MobileCoreServices
 
-class ProfilePictureCell: UITableViewCell
+class ProfilePictureCell: UIView
 {
 	@IBOutlet var backImage: UIImageView!
 	@IBOutlet var profilePicture : UIImageView!

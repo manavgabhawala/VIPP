@@ -310,7 +310,7 @@ extension InvitationsViewController
 			if let value = ABMultiValueCopyValueAtIndex(multivalue, i).takeRetainedValue() as? T
 			{
 				let id : Int = Int(ABMultiValueGetIdentifierAtIndex(multivalue, i))
-				let label : String? = ABMultiValueCopyLabelAtIndex(multivalue, i)?.takeRetainedValue() as! NSString as String
+				let label : String? = ABMultiValueCopyLabelAtIndex(multivalue, i)?.takeRetainedValue() as? NSString as? String
 				allValues.append(MultivalueEntry(value: value, label: label, id: id))
 			}
 		}

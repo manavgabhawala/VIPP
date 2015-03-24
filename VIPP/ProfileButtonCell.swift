@@ -30,7 +30,10 @@ class ProfileButtonCell: UITableViewCell
 		}
 	}
 }
-
+protocol InvitedCellDelegate
+{
+	func deleteCell(sender: UITableViewCell)
+}
 class InvitedCell : UITableViewCell
 {
 	@IBOutlet var nameLabel: UILabel!
@@ -38,9 +41,11 @@ class InvitedCell : UITableViewCell
 	@IBOutlet var accepted : UIButton!
 	@IBOutlet var declined : UIButton!
 	var objectId : String!
-	func setup(invitedBy: PFUser, event: Event, accepted: Bool?, objectId: String)
+	var delegate : InvitedCellDelegate?
+	func setup(invitedBy: PFUser, event: Event, accepted: Bool?, objectId: String, delegate: InvitedCellDelegate)
 	{
 		self.objectId = objectId
+		self.delegate = delegate
 		let name = (invitedBy["firstName"] as? String ?? "") + " " + (invitedBy["lastName"] as? String ?? "")
 		nameLabel.text = name + " invited you to " + event.description
 		picture.backgroundColor = UIColor.grayColor().colorWithAlphaComponent(0.5)
@@ -64,11 +69,7 @@ class InvitedCell : UITableViewCell
 		{
 			if accept
 			{
-				//TODO: Make accepted permanent.
-			}
-			else
-			{
-				//TODO: Make declined permanent.
+				self.accepted.setImage(UIImage(named: "Attending")!, forState: .Normal)
 			}
 		}
 	}
@@ -79,7 +80,7 @@ class InvitedCell : UITableViewCell
 		object.saveEventually({(result, error) in
 			if (error == nil && result)
 			{
-				//TODO: Make accepted permanent.
+				self.accepted.setImage(UIImage(named: "Attending")!, forState: .Normal)
 			}
 			else
 			{
@@ -95,7 +96,7 @@ class InvitedCell : UITableViewCell
 		object.saveEventually({(result, error) in
 			if (error == nil && result)
 			{
-				//TODO: Make declined permanent.
+				self.delegate?.deleteCell(self)
 			}
 			else
 			{
@@ -104,4 +105,10 @@ class InvitedCell : UITableViewCell
 			}
 		})
 	}
+}
+
+class BookingsCell : UITableViewCell
+{
+	@IBOutlet var backImage : UIImageView!
+	
 }

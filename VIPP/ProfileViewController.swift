@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController
 	@IBOutlet var placeholderButton : UIButton!
 	
 	var tableCells = [UITableViewCell]()
-	var profileCell : ProfilePictureCell!
+	@IBOutlet var profileCell : ProfilePictureCell!
 	var mainViewCells = [ProfileButtonCell]()
 	var invitesCells = [InvitedCell]()
 	private var currentState = ProfileState.Home
@@ -33,6 +33,7 @@ class ProfileViewController: UIViewController
 		UIApplication.sharedApplication().statusBarStyle = .LightContent
 		// Do any additional setup after loading the view.
 		setupCells()
+		profileCell.setup(self, action: "logout:")
 	}
 	override func didReceiveMemoryWarning()
 	{
@@ -42,11 +43,6 @@ class ProfileViewController: UIViewController
 	override func viewDidAppear(animated: Bool)
 	{
 		view.bringSubviewToFront(tableView)
-	}
-	func setTableFrame(size: CGSize)
-	{
-		tableView.frame = CGRect(origin: CGPointZero, size: CGSize(width: size.width, height: size.height - bottomBar.frame.height))
-		println(tableView.frame)
 	}
 	
 	//MARK: - Database Interaction
@@ -64,9 +60,12 @@ class ProfileViewController: UIViewController
 					let event = Event(object: obj["event"] as! PFObject, club: nil)
 					if event.date >= NSDate(timeIntervalSinceNow: 0)
 					{
-						let cell = self.tableView.dequeueReusableCellWithIdentifier("invitedCell") as! InvitedCell
-						cell.setup(obj["invitedBy"] as! PFUser, event: Event(object: obj["event"] as! PFObject, club: nil), accepted: obj["accepted"] as? Bool, objectId: obj.objectId)
-						self.invitesCells.append(cell)
+						if (obj["accepted"] == nil) || (obj["accepted"] as! Bool)
+						{
+							let cell = self.tableView.dequeueReusableCellWithIdentifier("invitedCell") as! InvitedCell
+							cell.setup(obj["invitedBy"] as! PFUser, event: Event(object: obj["event"] as! PFObject, club: nil), accepted: obj["accepted"] as? Bool, objectId: obj.objectId, delegate: self)
+							self.invitesCells.append(cell)
+						}
 					}
 				}
 				if self.currentState == .Invites
@@ -125,13 +124,22 @@ class ProfileViewController: UIViewController
 		}
 	}
 }
+extension ProfileViewController : InvitedCellDelegate
+{
+	func deleteCell(sender: UITableViewCell)
+	{
+		if let indexPath = tableView.indexPathForCell(sender)
+		{
+			tableCells.removeAtIndex(indexPath.row)
+			invitesCells.removeAtIndex(indexPath.row)
+			tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+		}
+	}
+}
 extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 {
 	func setupCells()
 	{
-		let profilePictureCell = tableView.dequeueReusableCellWithIdentifier("profileImageCell") as! ProfilePictureCell
-		profilePictureCell.setup(self, action: "logout:")
-		profileCell = profilePictureCell
 		let buttons =  [	(UIImage(named: "InvitesIcon")!, "INVITES", Selector("showInvites")),
 						(UIImage(named: "BookingsIcon")!, "BOOKINGS", Selector("showBookings")),
 						//(UIImage(named: "RewardsIcon")!, "REWARDS"),
@@ -153,22 +161,15 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 	}
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
 	{
-		return section == 0 ? 1 : (tableCells.count == 0 ? 1 : tableCells.count)
+		return section == 0 ? 0 : tableCells.count == 0 ? 1 : tableCells.count
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
-		return indexPath.section == 0 ? profileCell : (indexPath.row < tableCells.count ? tableCells[indexPath.row] : tableView.dequeueReusableCellWithIdentifier("noResults") as! UITableViewCell)
+		return indexPath.row < tableCells.count ? tableCells[indexPath.row] : tableView.dequeueReusableCellWithIdentifier("noResults") as! UITableViewCell
 	}
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
 	{
-		let rowSize = tableView.rowHeight
-		if indexPath.section == 0
-		{
-			let otherRows = CGFloat(mainViewCells.count) * rowSize
-			let bottomPadding : CGFloat = 30.0
-			return tableView.frame.height - otherRows - bottomPadding
-		}
-		return rowSize
+		return tableView.rowHeight
 	}
 	func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath)
 	{
@@ -189,7 +190,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 	}
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
 	{
-		if indexPath.section == 1 && currentState == .Home, let cell = tableCells[indexPath.row] as? ProfileButtonCell
+		if currentState == .Home, let cell = tableCells[indexPath.row] as? ProfileButtonCell
 		{
 			cell.didTap()
 		}
