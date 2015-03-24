@@ -110,5 +110,48 @@ class InvitedCell : UITableViewCell
 class BookingsCell : UITableViewCell
 {
 	@IBOutlet var backImage : UIImageView!
-	
+	@IBOutlet var eventNameLabel : UILabel!
+	@IBOutlet var eventDateLabel : UILabel!
+	func setup(name: String, date: String, imageURL: NSURL? = nil, image: UIImage? = nil)
+	{
+		let view = UIView(frame: backImage.frame)
+		view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+		backImage.addSubview(view)
+		let topSeparator = UIView(frame: CGRect(x: 0, y: 0, width: backImage.frame.size.width, height: 1))
+		topSeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+		backImage.addSubview(topSeparator)
+		let bottomSeparator = UIView(frame: CGRect(x: 0, y: backImage.frame.size.height - 1, width: backImage.frame.size.width, height: 1))
+		bottomSeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+		backImage.addSubview(bottomSeparator)
+		
+		eventNameLabel.text = name
+		eventDateLabel.text = date
+		if image != nil
+		{
+			backImage.image = image
+			backImage.setNeedsDisplay()
+		}
+		else
+		{
+			if let URL = imageURL
+			{
+				let request = NSURLRequest(URL: URL)
+				NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue(), completionHandler: {(response, data, error) in
+					if (error == nil)
+					{
+						if let image = UIImage(data: data)
+						{
+							self.backImage.image = image
+							self.backImage.setNeedsDisplay()
+						}
+					}
+					else
+					{
+						//TODO: Show error
+						println(error)
+					}
+				})
+			}
+		}
+	}
 }

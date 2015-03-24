@@ -72,34 +72,6 @@ class HomeViewController: UIViewController
 	@IBAction func profileButton(_ : UIButton)
 	{
 		performSegueWithIdentifier("slideDownProfile", sender: self)
-//		let profileViewController = storyboard!.instantiateViewControllerWithIdentifier("ProfileViewController") as! ProfileViewController
-//		profileViewController.delegate = self
-//		profileViewController.modalPresentationStyle = .FullScreen
-//		profileViewController.modalTransitionStyle = .CoverVertical
-//		presentViewController(profileViewController, animated: true, completion: nil)
-//		profileViewController.view.frame.size = view.frame.size
-//		//profileViewController.setTableFrame(view.frame.size)
-//		view.addSubview(profileViewController.view)
-//		view.bringSubviewToFront(profileViewController.view)
-		/*UIView.animateWithDuration(2.0, delay: 0.0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0.0, options: .CurveEaseInOut, animations: {
-			profileViewController.view.frame.origin.y = 0.0
-			}, completion: {(completed) in
-				if (completed)
-				{
-					profileViewController.view.updateConstraints()
-					//profileViewController.setTableFrame(self.view.frame.size)
-				}
-		})*/
-		/*let alertController = UIAlertController(title: "Log Out?", message: "Do you really wish to log out?", preferredStyle: .Alert)
-		alertController.addAction(UIAlertAction(title: "Log Out", style: .Destructive, handler: {(action) in
-			PFUser.logOut()
-			let initialViewController = self.storyboard?.instantiateInitialViewController() as! InitialViewController
-			initialViewController.modalPresentationStyle = .FullScreen
-			initialViewController.modalTransitionStyle = .CrossDissolve
-			self.presentViewController(initialViewController, animated: true, completion: nil)
-		}))
-		alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-		presentViewController(alertController, animated: true, completion: nil)*/
 	}
 	@IBAction func unwindSegue(sender: UIStoryboardSegue)
 	{
@@ -113,6 +85,14 @@ class HomeViewController: UIViewController
 			return customSegue
 		}
 		return super.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+	}
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	{
+		if segue.destinationViewController is ProfileViewController
+		{
+			let profile = segue.destinationViewController as! ProfileViewController
+			profile.clubs = clubs
+		}
 	}
 }
 //MARK: - Parse Interaction

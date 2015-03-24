@@ -11,19 +11,20 @@ import UIKit
 
 private enum ProfileState
 {
-	case Home, Invites
+	case Home, Invites, Bookings
 }
 class ProfileViewController: UIViewController
 {
 	@IBOutlet var tableView: UITableView!
 	@IBOutlet var bottomBar : UIView!
 	@IBOutlet var backButton : UIButton!
-	@IBOutlet var placeholderButton : UIButton!
-	
-	var tableCells = [UITableViewCell]()
 	@IBOutlet var profileCell : ProfilePictureCell!
+	
+	var clubs = [Club]()
+	var tableCells = [UITableViewCell]()
 	var mainViewCells = [ProfileButtonCell]()
 	var invitesCells = [InvitedCell]()
+	var bookingsCells = [BookingsCell]()
 	private var currentState = ProfileState.Home
 	
 	//MARK: - ViewController Lifecycle
@@ -81,6 +82,52 @@ class ProfileViewController: UIViewController
 			}
 		})
 	}
+	func getBookings()
+	{
+		let query = PFQuery(className: "Bookings")
+		query.whereKey("user", equalTo: PFUser.currentUser())
+		query.findObjectsInBackgroundWithBlock {(results, error) in
+			if (error == nil)
+			{
+				for obj in results as! [PFObject]
+				{
+					for club in self.clubs
+					{
+						if let event = (club.events.filter{$0.objectId == (obj["event"] as! PFObject).objectId } as [Event]).first
+						{
+							if event.date >= NSDate(timeIntervalSinceNow: 0)
+							{
+								let cell = self.tableView.dequeueReusableCellWithIdentifier("bookingCell") as! BookingsCell
+								let dateFormatter = NSDateFormatter()
+								dateFormatter.dateFormat = "M.dd.YY"
+								let dateString = dateFormatter.stringFromDate(event.date)
+								if let image = club.photos.first
+								{
+									cell.setup(event.description, date: dateString, image: image)
+								}
+								else
+								{
+									cell.setup(event.description, date: dateString, imageURL: club.photoURLS.first!)
+								}
+								self.bookingsCells.append(cell)
+							}
+						}
+					}
+					
+				}
+				if self.currentState == .Bookings
+				{
+					self.tableCells = self.bookingsCells
+					self.tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Left)
+				}
+			}
+			else
+			{
+				//TODO: Show error
+				println(error)
+			}
+		}
+	}
 	
 	//MARK: - Actions
 	func showInvites()
@@ -92,7 +139,10 @@ class ProfileViewController: UIViewController
 	}
 	func showBookings()
 	{
-		
+		backButton.hidden = false
+		currentState = .Bookings
+		tableCells = bookingsCells
+		tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Left)
 	}
 	func showSettings()
 	{
@@ -151,9 +201,10 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 			buttonCell.setup(button, target: self)
 			mainViewCells.append(buttonCell)
 		}
-		getInvites()
 		tableCells = mainViewCells
 		tableView.reloadData()
+		getInvites()
+		getBookings()
 	}
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{
@@ -169,6 +220,10 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 	}
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
 	{
+		if (tableCells.count > indexPath.row && tableCells[indexPath.row] is BookingsCell)
+		{
+			return 140.0
+		}
 		return tableView.rowHeight
 	}
 	func tableView(tableView: UITableView, didHighlightRowAtIndexPath indexPath: NSIndexPath)
@@ -193,6 +248,10 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		if currentState == .Home, let cell = tableCells[indexPath.row] as? ProfileButtonCell
 		{
 			cell.didTap()
+		}
+		if currentState == .Bookings && tableCells.count > indexPath.row, let cell = tableCells[indexPath.row] as? BookingsCell
+		{
+			
 		}
 	}
 }
