@@ -150,7 +150,8 @@ class ProfileViewController: UIViewController
 	}
 	func showAbout()
 	{
-		
+		let termsAndConditions = storyboard!.instantiateViewControllerWithIdentifier("TermsAndConditions") as! UINavigationController
+		presentViewController(termsAndConditions, animated: true, completion: nil)
 	}
 	func logout(_: UIButton)
 	{
@@ -172,6 +173,10 @@ class ProfileViewController: UIViewController
 			tableCells = mainViewCells
 			tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: .Right)
 		}
+	}
+	override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+	{
+		backButton.hidden = true
 	}
 }
 extension ProfileViewController : InvitedCellDelegate

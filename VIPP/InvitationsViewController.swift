@@ -55,7 +55,6 @@ class InvitationsViewController: UIViewController
 		{
 			if PFUser.currentUser()["fbId"] == nil
 			{
-				//TODO: Show Connect to Facebook Button
 				connectToFacebook.hidden = false
 			}
 		}
@@ -141,47 +140,82 @@ extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource
 	{
 		if showFacebook
 		{
+			if (PFUser.currentUser()["fbId"] == nil)
+			{
+				connectToFacebook.hidden = false
+				return 0
+			}
 			if let searching = searchQuery
 			{
-				return facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }.count
+				let count = facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }.count
+				return count == 0 ? 1 : count
 			}
-			connectToFacebook.hidden = facebookFriends.count != 0
-			return facebookFriends.count
+			return facebookFriends.count == 0 ? 1 : facebookFriends.count
+		}
+		if ABAddressBookGetAuthorizationStatus() != .Authorized
+		{
+			addressBookAccess.hidden = false
+			return 0
 		}
 		if let searching = searchQuery
 		{
-			return addressBookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }.count
+			let count = addressBookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }.count
+			return count == 0 ? 1 : count
 		}
-		return addressBookFriends.count
+		return addressBookFriends.count == 0 ? 1 : addressBookFriends.count
 	}
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
 	{
 		if showFacebook
 		{
-			let cell = tableView.dequeueReusableCellWithIdentifier("fbCell") as! InvitationCell
-			cell.delegate = self
-			cell.event = event
-			let person = facebookFriends[indexPath.row]
-			cell.nameLabel.text = person.name
-			cell.fbId = person.id
-			if let searching = searchQuery
+			if (indexPath.row < facebookFriends.count)
 			{
-				let person = facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }[indexPath.row]
+				let cell = tableView.dequeueReusableCellWithIdentifier("fbCell") as! InvitationCell
+				cell.delegate = self
+				cell.event = event
+				let person = facebookFriends[indexPath.row]
 				cell.nameLabel.text = person.name
 				cell.fbId = person.id
+				if let searching = searchQuery
+				{
+					let searchResults = facebookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }
+					if (indexPath.row < searchResults.count)
+					{
+						cell.nameLabel.text = searchResults[indexPath.row].name
+						cell.fbId = searchResults[indexPath.row].id
+					}
+					else
+					{
+						return tableView.dequeueReusableCellWithIdentifier("noResults") as! UITableViewCell 
+					}
+				}
+				return cell
 			}
-			return cell
 		}
-		let cell = tableView.dequeueReusableCellWithIdentifier("addressCell") as! AddressBookCell
-		cell.nameLabel.text = addressBookFriends[indexPath.row].name
-		cell.phoneNumberLabel.text = addressBookFriends[indexPath.row].phoneNumber
-		if let searching = searchQuery
+		else
 		{
-			let array = addressBookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }
-			cell.nameLabel.text = array[indexPath.row].name
-			cell.phoneNumberLabel.text = array[indexPath.row].phoneNumber
+			if (indexPath.row < addressBookFriends.count)
+			{
+				let cell = tableView.dequeueReusableCellWithIdentifier("addressCell") as! AddressBookCell
+				cell.nameLabel.text = addressBookFriends[indexPath.row].name
+				cell.phoneNumberLabel.text = addressBookFriends[indexPath.row].phoneNumber
+				if let searching = searchQuery
+				{
+					let array = addressBookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }
+					if (indexPath.row < array.count)
+					{
+						cell.nameLabel.text = array[indexPath.row].name
+						cell.phoneNumberLabel.text = array[indexPath.row].phoneNumber
+					}
+					else
+					{
+						return tableView.dequeueReusableCellWithIdentifier("noResults") as! UITableViewCell
+					}
+				}
+				return cell
+			}
 		}
-		return cell
+		return tableView.dequeueReusableCellWithIdentifier("noResults") as! UITableViewCell
 	}
 	func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
 	{
@@ -248,17 +282,18 @@ extension InvitationsViewController
 	func requestABAccess()
 	{
 		var emptyDictionary: CFDictionaryRef?
+		self.addressBookAccess.hidden = false
 		var addressBook = !(ABAddressBookCreateWithOptions(emptyDictionary, nil) != nil)
 		ABAddressBookRequestAccessWithCompletion(addressBook, {success, error in
 			if success
 			{
+				self.addressBookAccess.hidden = true
 				self.getContactNames();
 			}
 			else
 			{
 				println(error)
 				self.addressBookAccess.hidden = false
-				// TODO: Change table view to show request access.
 			}
 		})
 	}
