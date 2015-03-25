@@ -199,6 +199,7 @@ extension InvitationsViewController : UITableViewDelegate, UITableViewDataSource
 				let cell = tableView.dequeueReusableCellWithIdentifier("addressCell") as! AddressBookCell
 				cell.nameLabel.text = addressBookFriends[indexPath.row].name
 				cell.phoneNumberLabel.text = addressBookFriends[indexPath.row].phoneNumber
+				cell.delegate = self
 				if let searching = searchQuery
 				{
 					let array = addressBookFriends.filter { $0.name.rangeOfString(searching, options: .CaseInsensitiveSearch, range: nil, locale: nil) != nil }
