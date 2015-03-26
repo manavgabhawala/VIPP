@@ -98,16 +98,13 @@ class ProfileViewController: UIViewController
 							if event.date >= NSDate(timeIntervalSinceNow: 0)
 							{
 								let cell = self.tableView.dequeueReusableCellWithIdentifier("bookingCell") as! BookingsCell
-								let dateFormatter = NSDateFormatter()
-								dateFormatter.dateFormat = "M.dd.YY"
-								let dateString = dateFormatter.stringFromDate(event.date)
 								if let image = club.photos.first
 								{
-									cell.setup(event.description, date: dateString, image: image)
+									cell.setup(forEvent: event, image: image)
 								}
 								else
 								{
-									cell.setup(event.description, date: dateString, imageURL: club.photoURLS.first!)
+									cell.setup(forEvent: event, imageURL: club.photoURLS.first!)
 								}
 								self.bookingsCells.append(cell)
 							}
@@ -146,7 +143,9 @@ class ProfileViewController: UIViewController
 	}
 	func showSettings()
 	{
-		
+		let alertController = UIAlertController(title: "No Settings Available", message: "Currently, we do not have any customizable settings. We are working very hard to include these in future releases.", preferredStyle: .Alert)
+		alertController.addAction(UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil))
+		presentViewController(alertController, animated: true, completion: nil)
 	}
 	func showAbout()
 	{
@@ -254,9 +253,9 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		{
 			cell.didTap()
 		}
-		if currentState == .Bookings && tableCells.count > indexPath.row, let cell = tableCells[indexPath.row] as? BookingsCell
+		if currentState == .Bookings && tableCells.count > indexPath.row, let event = (tableCells[indexPath.row] as? BookingsCell)?.event
 		{
-			
+			println(event.description)
 		}
 	}
 }

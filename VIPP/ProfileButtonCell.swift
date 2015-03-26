@@ -112,8 +112,11 @@ class BookingsCell : UITableViewCell
 	@IBOutlet var backImage : UIImageView!
 	@IBOutlet var eventNameLabel : UILabel!
 	@IBOutlet var eventDateLabel : UILabel!
-	func setup(name: String, date: String, imageURL: NSURL? = nil, image: UIImage? = nil)
+	weak var event : Event?
+	func setup(forEvent event: Event, imageURL: NSURL? = nil, image: UIImage? = nil)
 	{
+		self.event = event
+		
 		let view = UIView(frame: backImage.frame)
 		view.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
 		backImage.addSubview(view)
@@ -124,8 +127,11 @@ class BookingsCell : UITableViewCell
 		bottomSeparator.backgroundColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
 		backImage.addSubview(bottomSeparator)
 		
-		eventNameLabel.text = name
-		eventDateLabel.text = date
+		eventNameLabel.text = event.description
+		
+		let dateFormatter = NSDateFormatter()
+		dateFormatter.dateFormat = "M.dd.YY"
+		eventDateLabel.text = dateFormatter.stringFromDate(event.date)
 		if image != nil
 		{
 			backImage.image = image
