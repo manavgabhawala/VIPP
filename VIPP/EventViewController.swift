@@ -116,19 +116,28 @@ class EventViewController : UIViewController
 	//MARK: - Actions
 	@IBAction func requestBlackCar(_ : UIButton)
 	{
-		let uberClient = "DJIZIgHZ1AwWkLERkkNns0t_7QCW_L7"
-		if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
+		if (pageIndex < club.events.count)
 		{
-			// Do something awesome - the app is installed! Launch App.
-			let URL = NSURL(string: "uber://?client_id=\(uberClient)&action=setPickup&pickup=my_location&dropoff[latitude]=\(club.location.latitude)&dropoff[longitude]=\(club.location.longitude)&dropoff[nickname]=\(club.name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
-			UIApplication.sharedApplication().openURL(URL)
+			let requestController = storyboard!.instantiateViewControllerWithIdentifier("RequestCarViewController") as! RequestCarViewController
+			requestController.event = club.events[pageIndex]
+			requestController.modalPresentationStyle = .FullScreen
+			requestController.modalTransitionStyle = .CoverVertical
+			presentViewController(requestController, animated: true, completion: nil)
 		}
-		else
-		{
-			// No Uber app! Open Mobile Website.
-			let URL = NSURL(string: "https://m.uber.com/sign-up?client_id=\(uberClient)&pickup=my_location&dropoff[latitude]=\(club.location.latitude)&dropoff[longitude]=\(club.location.longitude)&dropoff[nickname]=\(club.name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
-			UIApplication.sharedApplication().openURL(URL)
-		}
+		
+//		let uberClient = "DJIZIgHZ1AwWkLERkkNns0t_7QCW_L7"
+//		if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
+//		{
+//			// Do something awesome - the app is installed! Launch App.
+//			let URL = NSURL(string: "uber://?client_id=\(uberClient)&action=setPickup&pickup=my_location&dropoff[latitude]=\(club.location.latitude)&dropoff[longitude]=\(club.location.longitude)&dropoff[nickname]=\(club.name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
+//			UIApplication.sharedApplication().openURL(URL)
+//		}
+//		else
+//		{
+//			// No Uber app! Open Mobile Website.
+//			let URL = NSURL(string: "https://m.uber.com/sign-up?client_id=\(uberClient)&pickup=my_location&dropoff[latitude]=\(club.location.latitude)&dropoff[longitude]=\(club.location.longitude)&dropoff[nickname]=\(club.name)&product_id=327f7914-cd12-4f77-9e0c-b27bac580d03")!
+//			UIApplication.sharedApplication().openURL(URL)
+//		}
 	}
 	@IBAction func dismissSelf(_ : UIButton)
 	{

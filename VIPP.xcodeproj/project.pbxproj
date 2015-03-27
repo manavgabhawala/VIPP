@@ -90,6 +90,14 @@
 		829DC1B31A7B42B500CD6187 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */; };
 		82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
 		82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AC16FF1A7C749D0065387F /* SignUpViewController.swift */; };
+		82B735011AC5E83E0086FDF5 /* dark-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82B735001AC5E83E0086FDF5 /* dark-bg.png */; };
+		82B735021AC5E83E0086FDF5 /* dark-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82B735001AC5E83E0086FDF5 /* dark-bg.png */; };
+		82B735041AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B735031AC5E8E10086FDF5 /* RequestCarViewController.swift */; };
+		82B735051AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B735031AC5E8E10086FDF5 /* RequestCarViewController.swift */; };
+		82B735071AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B735061AC5E9F70086FDF5 /* RequestCarCells.swift */; };
+		82B735081AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B735061AC5E9F70086FDF5 /* RequestCarCells.swift */; };
+		82B7350D1AC607230086FDF5 /* UberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7350C1AC607230086FDF5 /* UberViewController.swift */; };
+		82B7350E1AC607230086FDF5 /* UberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B7350C1AC607230086FDF5 /* UberViewController.swift */; };
 		82BE9D9C1A9FDDAA0040C573 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */; };
 		82BE9D9D1A9FDDAA0040C573 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */; };
 		82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82BE9D9E1A9FE2290040C573 /* Club.swift */; };
@@ -176,6 +184,10 @@
 		829DC1AD1A7B407B00CD6187 /* VIPPTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VIPPTests-Bridging-Header.h"; path = "../VIPP/VIPPTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		829DC1B11A7B42B500CD6187 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
 		82AC16FF1A7C749D0065387F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		82B735001AC5E83E0086FDF5 /* dark-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dark-bg.png"; sourceTree = "<group>"; };
+		82B735031AC5E8E10086FDF5 /* RequestCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCarViewController.swift; sourceTree = "<group>"; };
+		82B735061AC5E9F70086FDF5 /* RequestCarCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestCarCells.swift; sourceTree = "<group>"; };
+		82B7350C1AC607230086FDF5 /* UberViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UberViewController.swift; sourceTree = "<group>"; };
 		82BE9D9B1A9FDDAA0040C573 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		82BE9D9E1A9FE2290040C573 /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
@@ -237,6 +249,7 @@
 				826B22E71AB3BA4A00C34FC6 /* ProfilePictureCell.swift */,
 				826B22EA1AB3BCC600C34FC6 /* ProfileButtonCell.swift */,
 				8247983B1AB6827800FEA122 /* InvitationCell.swift */,
+				82B735061AC5E9F70086FDF5 /* RequestCarCells.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -270,6 +283,8 @@
 				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
 				824798381AB6778A00FEA122 /* InvitationsViewController.swift */,
 				826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */,
+				82B735031AC5E8E10086FDF5 /* RequestCarViewController.swift */,
+				82B7350C1AC607230086FDF5 /* UberViewController.swift */,
 			);
 			name = "Main App";
 			sourceTree = "<group>";
@@ -277,6 +292,7 @@
 		8290BEC31A89DF33008A29EC /* Nightlife */ = {
 			isa = PBXGroup;
 			children = (
+				82B735001AC5E83E0086FDF5 /* dark-bg.png */,
 				821AC1B51AC143A900A09EA9 /* settings-contacts.png */,
 				821AC1B21AC12CEE00A09EA9 /* event-placeholder.png */,
 				82421DFE1A8AC783005BA5F3 /* friends.png */,
@@ -474,6 +490,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8290BEB51A89DF2A008A29EC /* 0.png in Resources */,
+				82B735011AC5E83E0086FDF5 /* dark-bg.png in Resources */,
 				8290BEBD1A89DF2A008A29EC /* 4.png in Resources */,
 				8290BEB71A89DF2A008A29EC /* 1.png in Resources */,
 				822990931A8AC8A500082E06 /* pattern.png in Resources */,
@@ -502,6 +519,7 @@
 				82421E051A8AC789005BA5F3 /* ride.png in Resources */,
 				82421E041A8AC789005BA5F3 /* friends.png in Resources */,
 				821AC1B41AC12CEE00A09EA9 /* event-placeholder.png in Resources */,
+				82B735021AC5E83E0086FDF5 /* dark-bg.png in Resources */,
 				825AA5CE1AA15CC80092C7C2 /* placeholder.png in Resources */,
 				821AC1B71AC143A900A09EA9 /* settings-contacts.png in Resources */,
 				82D17C7B1AACDB75008346CD /* event-bg.png in Resources */,
@@ -530,11 +548,13 @@
 				827E636A1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC31A89A17C00C0C8FE /* OtherViewControllers.swift in Sources */,
+				82B735071AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */,
 				82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */,
 				82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC1661A7B3E1F00CD6187 /* InitialViewController.swift in Sources */,
 				82BE9D9C1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
+				82B735041AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */,
 				15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
 				826B22B91AB37EBC00C34FC6 /* ProfileViewController.swift in Sources */,
@@ -542,6 +562,7 @@
 				827E636F1AA6A9A000E77EB4 /* Event.swift in Sources */,
 				8247983C1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC81A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
+				82B7350D1AC607230086FDF5 /* UberViewController.swift in Sources */,
 				824798391AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
 				826B22EF1AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,
 			);
@@ -557,11 +578,13 @@
 				827E636B1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9DA01A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC41A89A17E00C0C8FE /* OtherViewControllers.swift in Sources */,
+				82B735081AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
 				82BE9D9D1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
+				82B735051AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */,
 				82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
 				826B22BA1AB37EBF00C34FC6 /* ProfileViewController.swift in Sources */,
@@ -569,6 +592,7 @@
 				827E63701AA6A9A000E77EB4 /* Event.swift in Sources */,
 				8247983D1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC91A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
+				82B7350E1AC607230086FDF5 /* UberViewController.swift in Sources */,
 				8247983A1AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
 				826B22F01AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,
 			);
