@@ -26,6 +26,32 @@
 		8220B4721A7C775A00E53553 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8220B46E1A7C775A00E53553 /* Parse.framework */; };
 		822990931A8AC8A500082E06 /* pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 822990921A8AC8A500082E06 /* pattern.png */; };
 		822990941A8AC8A500082E06 /* pattern.png in Resources */ = {isa = PBXBuildFile; fileRef = 822990921A8AC8A500082E06 /* pattern.png */; };
+		82303F501AC658C1002600AA /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F311AC658C1002600AA /* NSData+NXOAuth2.m */; };
+		82303F511AC658C1002600AA /* NSData+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F311AC658C1002600AA /* NSData+NXOAuth2.m */; };
+		82303F521AC658C1002600AA /* NSString+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F331AC658C1002600AA /* NSString+NXOAuth2.m */; };
+		82303F531AC658C1002600AA /* NSString+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F331AC658C1002600AA /* NSString+NXOAuth2.m */; };
+		82303F541AC658C1002600AA /* NSURL+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F351AC658C1002600AA /* NSURL+NXOAuth2.m */; };
+		82303F551AC658C1002600AA /* NSURL+NXOAuth2.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F351AC658C1002600AA /* NSURL+NXOAuth2.m */; };
+		82303F561AC658C1002600AA /* NXOAuth2AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F381AC658C1002600AA /* NXOAuth2AccessToken.m */; };
+		82303F571AC658C1002600AA /* NXOAuth2AccessToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F381AC658C1002600AA /* NXOAuth2AccessToken.m */; };
+		82303F581AC658C1002600AA /* NXOAuth2Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3B1AC658C1002600AA /* NXOAuth2Account.m */; };
+		82303F591AC658C1002600AA /* NXOAuth2Account.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3B1AC658C1002600AA /* NXOAuth2Account.m */; };
+		82303F5A1AC658C1002600AA /* NXOAuth2AccountStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3D1AC658C1002600AA /* NXOAuth2AccountStore.m */; };
+		82303F5B1AC658C1002600AA /* NXOAuth2AccountStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3D1AC658C1002600AA /* NXOAuth2AccountStore.m */; };
+		82303F5C1AC658C1002600AA /* NXOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3F1AC658C1002600AA /* NXOAuth2Client.m */; };
+		82303F5D1AC658C1002600AA /* NXOAuth2Client.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F3F1AC658C1002600AA /* NXOAuth2Client.m */; };
+		82303F5E1AC658C1002600AA /* NXOAuth2Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F421AC658C1002600AA /* NXOAuth2Connection.m */; };
+		82303F5F1AC658C1002600AA /* NXOAuth2Connection.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F421AC658C1002600AA /* NXOAuth2Connection.m */; };
+		82303F601AC658C1002600AA /* NXOAuth2Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F451AC658C1002600AA /* NXOAuth2Constants.m */; };
+		82303F611AC658C1002600AA /* NXOAuth2Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F451AC658C1002600AA /* NXOAuth2Constants.m */; };
+		82303F621AC658C1002600AA /* NXOAuth2FileStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F471AC658C1002600AA /* NXOAuth2FileStreamWrapper.m */; };
+		82303F631AC658C1002600AA /* NXOAuth2FileStreamWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F471AC658C1002600AA /* NXOAuth2FileStreamWrapper.m */; };
+		82303F641AC658C1002600AA /* NXOAuth2PostBodyPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F491AC658C1002600AA /* NXOAuth2PostBodyPart.m */; };
+		82303F651AC658C1002600AA /* NXOAuth2PostBodyPart.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F491AC658C1002600AA /* NXOAuth2PostBodyPart.m */; };
+		82303F661AC658C1002600AA /* NXOAuth2PostBodyStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F4B1AC658C1002600AA /* NXOAuth2PostBodyStream.m */; };
+		82303F671AC658C1002600AA /* NXOAuth2PostBodyStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F4B1AC658C1002600AA /* NXOAuth2PostBodyStream.m */; };
+		82303F681AC658C1002600AA /* NXOAuth2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F4D1AC658C1002600AA /* NXOAuth2Request.m */; };
+		82303F691AC658C1002600AA /* NXOAuth2Request.m in Sources */ = {isa = PBXBuildFile; fileRef = 82303F4D1AC658C1002600AA /* NXOAuth2Request.m */; };
 		82421E011A8AC783005BA5F3 /* friends.png in Resources */ = {isa = PBXBuildFile; fileRef = 82421DFE1A8AC783005BA5F3 /* friends.png */; };
 		82421E021A8AC783005BA5F3 /* ride.png in Resources */ = {isa = PBXBuildFile; fileRef = 82421DFF1A8AC783005BA5F3 /* ride.png */; };
 		82421E031A8AC783005BA5F3 /* ropes.png in Resources */ = {isa = PBXBuildFile; fileRef = 82421E001A8AC783005BA5F3 /* ropes.png */; };
@@ -106,6 +132,12 @@
 		82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */; };
 		82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
 		82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82C7B3F11A7F13400088EC2B /* Extensions.swift */; };
+		82CA30BA1ACF903B00BFF052 /* FriendImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA30B91ACF903B00BFF052 /* FriendImage.swift */; };
+		82CA30BB1ACF903B00BFF052 /* FriendImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CA30B91ACF903B00BFF052 /* FriendImage.swift */; };
+		82CC9D061AD09BF2003A4642 /* FriendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC9D051AD09BF2003A4642 /* FriendGroupViewController.swift */; };
+		82CC9D071AD09BF2003A4642 /* FriendGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC9D051AD09BF2003A4642 /* FriendGroupViewController.swift */; };
+		82CC9D091AD0A3DE003A4642 /* FriendGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC9D081AD0A3DE003A4642 /* FriendGroup.swift */; };
+		82CC9D0A1AD0A3DE003A4642 /* FriendGroup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82CC9D081AD0A3DE003A4642 /* FriendGroup.swift */; };
 		82D17C7A1AACDB75008346CD /* event-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D17C791AACDB75008346CD /* event-bg.png */; };
 		82D17C7B1AACDB75008346CD /* event-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 82D17C791AACDB75008346CD /* event-bg.png */; };
 		82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */; };
@@ -136,6 +168,38 @@
 		8220B46D1A7C775A00E53553 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		8220B46E1A7C775A00E53553 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		822990921A8AC8A500082E06 /* pattern.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pattern.png; sourceTree = "<group>"; };
+		82303F301AC658C1002600AA /* NSData+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+NXOAuth2.h"; sourceTree = "<group>"; };
+		82303F311AC658C1002600AA /* NSData+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+NXOAuth2.m"; sourceTree = "<group>"; };
+		82303F321AC658C1002600AA /* NSString+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+NXOAuth2.h"; sourceTree = "<group>"; };
+		82303F331AC658C1002600AA /* NSString+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+NXOAuth2.m"; sourceTree = "<group>"; };
+		82303F341AC658C1002600AA /* NSURL+NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+NXOAuth2.h"; sourceTree = "<group>"; };
+		82303F351AC658C1002600AA /* NSURL+NXOAuth2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+NXOAuth2.m"; sourceTree = "<group>"; };
+		82303F361AC658C1002600AA /* NXOAuth2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2.h; sourceTree = "<group>"; };
+		82303F371AC658C1002600AA /* NXOAuth2AccessToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2AccessToken.h; sourceTree = "<group>"; };
+		82303F381AC658C1002600AA /* NXOAuth2AccessToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2AccessToken.m; sourceTree = "<group>"; };
+		82303F391AC658C1002600AA /* NXOAuth2Account+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NXOAuth2Account+Private.h"; sourceTree = "<group>"; };
+		82303F3A1AC658C1002600AA /* NXOAuth2Account.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Account.h; sourceTree = "<group>"; };
+		82303F3B1AC658C1002600AA /* NXOAuth2Account.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Account.m; sourceTree = "<group>"; };
+		82303F3C1AC658C1002600AA /* NXOAuth2AccountStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2AccountStore.h; sourceTree = "<group>"; };
+		82303F3D1AC658C1002600AA /* NXOAuth2AccountStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2AccountStore.m; sourceTree = "<group>"; };
+		82303F3E1AC658C1002600AA /* NXOAuth2Client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Client.h; sourceTree = "<group>"; };
+		82303F3F1AC658C1002600AA /* NXOAuth2Client.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Client.m; sourceTree = "<group>"; };
+		82303F401AC658C1002600AA /* NXOAuth2ClientDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2ClientDelegate.h; sourceTree = "<group>"; };
+		82303F411AC658C1002600AA /* NXOAuth2Connection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Connection.h; sourceTree = "<group>"; };
+		82303F421AC658C1002600AA /* NXOAuth2Connection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Connection.m; sourceTree = "<group>"; };
+		82303F431AC658C1002600AA /* NXOAuth2ConnectionDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2ConnectionDelegate.h; sourceTree = "<group>"; };
+		82303F441AC658C1002600AA /* NXOAuth2Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Constants.h; sourceTree = "<group>"; };
+		82303F451AC658C1002600AA /* NXOAuth2Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Constants.m; sourceTree = "<group>"; };
+		82303F461AC658C1002600AA /* NXOAuth2FileStreamWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2FileStreamWrapper.h; sourceTree = "<group>"; };
+		82303F471AC658C1002600AA /* NXOAuth2FileStreamWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2FileStreamWrapper.m; sourceTree = "<group>"; };
+		82303F481AC658C1002600AA /* NXOAuth2PostBodyPart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2PostBodyPart.h; sourceTree = "<group>"; };
+		82303F491AC658C1002600AA /* NXOAuth2PostBodyPart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2PostBodyPart.m; sourceTree = "<group>"; };
+		82303F4A1AC658C1002600AA /* NXOAuth2PostBodyStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2PostBodyStream.h; sourceTree = "<group>"; };
+		82303F4B1AC658C1002600AA /* NXOAuth2PostBodyStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2PostBodyStream.m; sourceTree = "<group>"; };
+		82303F4C1AC658C1002600AA /* NXOAuth2Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2Request.h; sourceTree = "<group>"; };
+		82303F4D1AC658C1002600AA /* NXOAuth2Request.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NXOAuth2Request.m; sourceTree = "<group>"; };
+		82303F4E1AC658C1002600AA /* NXOAuth2TrustDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NXOAuth2TrustDelegate.h; sourceTree = "<group>"; };
+		82303F4F1AC658C1002600AA /* OAuth2Client_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuth2Client_Prefix.pch; sourceTree = "<group>"; };
 		82421DFE1A8AC783005BA5F3 /* friends.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = friends.png; sourceTree = "<group>"; };
 		82421DFF1A8AC783005BA5F3 /* ride.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ride.png; sourceTree = "<group>"; };
 		82421E001A8AC783005BA5F3 /* ropes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ropes.png; sourceTree = "<group>"; };
@@ -192,6 +256,9 @@
 		82BE9D9E1A9FE2290040C573 /* Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Club.swift; sourceTree = "<group>"; };
 		82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpTableCells.swift; sourceTree = "<group>"; };
 		82C7B3F11A7F13400088EC2B /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		82CA30B91ACF903B00BFF052 /* FriendImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendImage.swift; sourceTree = "<group>"; };
+		82CC9D051AD09BF2003A4642 /* FriendGroupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendGroupViewController.swift; sourceTree = "<group>"; };
+		82CC9D081AD0A3DE003A4642 /* FriendGroup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendGroup.swift; sourceTree = "<group>"; };
 		82D17C791AACDB75008346CD /* event-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "event-bg.png"; sourceTree = "<group>"; };
 		82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubCollectionViewCell.swift; sourceTree = "<group>"; };
 		82E2A5571A869E8E004C4795 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -247,6 +314,7 @@
 				82DBDE6E1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift */,
 				82C7168F1A7D69CC004DEA94 /* SignUpTableCells.swift */,
 				826B22E71AB3BA4A00C34FC6 /* ProfilePictureCell.swift */,
+				82CA30B91ACF903B00BFF052 /* FriendImage.swift */,
 				826B22EA1AB3BCC600C34FC6 /* ProfileButtonCell.swift */,
 				8247983B1AB6827800FEA122 /* InvitationCell.swift */,
 				82B735061AC5E9F70086FDF5 /* RequestCarCells.swift */,
@@ -267,9 +335,49 @@
 			name = "Signup Stuff";
 			sourceTree = "<group>";
 		};
+		82303F2F1AC658C1002600AA /* OAuth2Client */ = {
+			isa = PBXGroup;
+			children = (
+				82303F361AC658C1002600AA /* NXOAuth2.h */,
+				82303F301AC658C1002600AA /* NSData+NXOAuth2.h */,
+				82303F311AC658C1002600AA /* NSData+NXOAuth2.m */,
+				82303F321AC658C1002600AA /* NSString+NXOAuth2.h */,
+				82303F331AC658C1002600AA /* NSString+NXOAuth2.m */,
+				82303F341AC658C1002600AA /* NSURL+NXOAuth2.h */,
+				82303F351AC658C1002600AA /* NSURL+NXOAuth2.m */,
+				82303F371AC658C1002600AA /* NXOAuth2AccessToken.h */,
+				82303F381AC658C1002600AA /* NXOAuth2AccessToken.m */,
+				82303F391AC658C1002600AA /* NXOAuth2Account+Private.h */,
+				82303F3A1AC658C1002600AA /* NXOAuth2Account.h */,
+				82303F3B1AC658C1002600AA /* NXOAuth2Account.m */,
+				82303F3C1AC658C1002600AA /* NXOAuth2AccountStore.h */,
+				82303F3D1AC658C1002600AA /* NXOAuth2AccountStore.m */,
+				82303F3E1AC658C1002600AA /* NXOAuth2Client.h */,
+				82303F3F1AC658C1002600AA /* NXOAuth2Client.m */,
+				82303F401AC658C1002600AA /* NXOAuth2ClientDelegate.h */,
+				82303F411AC658C1002600AA /* NXOAuth2Connection.h */,
+				82303F421AC658C1002600AA /* NXOAuth2Connection.m */,
+				82303F431AC658C1002600AA /* NXOAuth2ConnectionDelegate.h */,
+				82303F441AC658C1002600AA /* NXOAuth2Constants.h */,
+				82303F451AC658C1002600AA /* NXOAuth2Constants.m */,
+				82303F461AC658C1002600AA /* NXOAuth2FileStreamWrapper.h */,
+				82303F471AC658C1002600AA /* NXOAuth2FileStreamWrapper.m */,
+				82303F481AC658C1002600AA /* NXOAuth2PostBodyPart.h */,
+				82303F491AC658C1002600AA /* NXOAuth2PostBodyPart.m */,
+				82303F4A1AC658C1002600AA /* NXOAuth2PostBodyStream.h */,
+				82303F4B1AC658C1002600AA /* NXOAuth2PostBodyStream.m */,
+				82303F4C1AC658C1002600AA /* NXOAuth2Request.h */,
+				82303F4D1AC658C1002600AA /* NXOAuth2Request.m */,
+				82303F4E1AC658C1002600AA /* NXOAuth2TrustDelegate.h */,
+				82303F4F1AC658C1002600AA /* OAuth2Client_Prefix.pch */,
+			);
+			path = OAuth2Client;
+			sourceTree = "<group>";
+		};
 		827E636C1AA6A97800E77EB4 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				82CC9D081AD0A3DE003A4642 /* FriendGroup.swift */,
 				82BE9D9E1A9FE2290040C573 /* Club.swift */,
 				827E636E1AA6A9A000E77EB4 /* Event.swift */,
 			);
@@ -283,6 +391,7 @@
 				827E63691AA6A96F00E77EB4 /* EventViewController.swift */,
 				824798381AB6778A00FEA122 /* InvitationsViewController.swift */,
 				826B22B81AB37EBC00C34FC6 /* ProfileViewController.swift */,
+				82CC9D051AD09BF2003A4642 /* FriendGroupViewController.swift */,
 				82B735031AC5E8E10086FDF5 /* RequestCarViewController.swift */,
 				82B7350C1AC607230086FDF5 /* UberViewController.swift */,
 			);
@@ -378,6 +487,7 @@
 		829DC18C1A7B3E7100CD6187 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82303F2F1AC658C1002600AA /* OAuth2Client */,
 				8247983E1AB743AA00FEA122 /* AddressBook.framework */,
 				8247983F1AB743AA00FEA122 /* AddressBookUI.framework */,
 				82153BC51A89AA2600C0C8FE /* MessageUI.framework */,
@@ -544,26 +654,42 @@
 			files = (
 				826B22E81AB3BA4A00C34FC6 /* ProfilePictureCell.swift in Sources */,
 				82DBDE6F1A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
+				82303F681AC658C1002600AA /* NXOAuth2Request.m in Sources */,
 				82E2A5581A869E8E004C4795 /* LoginViewController.swift in Sources */,
+				82303F541AC658C1002600AA /* NSURL+NXOAuth2.m in Sources */,
+				82303F661AC658C1002600AA /* NXOAuth2PostBodyStream.m in Sources */,
+				82303F601AC658C1002600AA /* NXOAuth2Constants.m in Sources */,
 				827E636A1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9D9F1A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC31A89A17C00C0C8FE /* OtherViewControllers.swift in Sources */,
+				82CC9D061AD09BF2003A4642 /* FriendGroupViewController.swift in Sources */,
+				82303F561AC658C1002600AA /* NXOAuth2AccessToken.m in Sources */,
 				82B735071AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */,
 				82C7B3F21A7F13400088EC2B /* Extensions.swift in Sources */,
 				82AC17001A7C749D0065387F /* SignUpViewController.swift in Sources */,
+				82303F5A1AC658C1002600AA /* NXOAuth2AccountStore.m in Sources */,
 				829DC1661A7B3E1F00CD6187 /* InitialViewController.swift in Sources */,
+				82303F521AC658C1002600AA /* NSString+NXOAuth2.m in Sources */,
 				82BE9D9C1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
+				82303F501AC658C1002600AA /* NSData+NXOAuth2.m in Sources */,
+				82CA30BA1ACF903B00BFF052 /* FriendImage.swift in Sources */,
+				82303F641AC658C1002600AA /* NXOAuth2PostBodyPart.m in Sources */,
 				82C716901A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82B735041AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */,
 				15E8B9071A8340FF004E1366 /* ThankYouViewController.swift in Sources */,
 				829DC1641A7B3E1F00CD6187 /* AppDelegate.swift in Sources */,
 				826B22B91AB37EBC00C34FC6 /* ProfileViewController.swift in Sources */,
+				82303F5C1AC658C1002600AA /* NXOAuth2Client.m in Sources */,
+				82303F621AC658C1002600AA /* NXOAuth2FileStreamWrapper.m in Sources */,
 				826B22EB1AB3BCC600C34FC6 /* ProfileButtonCell.swift in Sources */,
+				82303F5E1AC658C1002600AA /* NXOAuth2Connection.m in Sources */,
+				82CC9D091AD0A3DE003A4642 /* FriendGroup.swift in Sources */,
 				827E636F1AA6A9A000E77EB4 /* Event.swift in Sources */,
 				8247983C1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC81A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 				82B7350D1AC607230086FDF5 /* UberViewController.swift in Sources */,
 				824798391AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
+				82303F581AC658C1002600AA /* NXOAuth2Account.m in Sources */,
 				826B22EF1AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,26 +700,42 @@
 			files = (
 				826B22E91AB3BA4A00C34FC6 /* ProfilePictureCell.swift in Sources */,
 				82DBDE701A9FF4F2000A1D62 /* ClubCollectionViewCell.swift in Sources */,
+				82303F691AC658C1002600AA /* NXOAuth2Request.m in Sources */,
 				82E2A5591A869E93004C4795 /* LoginViewController.swift in Sources */,
+				82303F551AC658C1002600AA /* NSURL+NXOAuth2.m in Sources */,
+				82303F671AC658C1002600AA /* NXOAuth2PostBodyStream.m in Sources */,
+				82303F611AC658C1002600AA /* NXOAuth2Constants.m in Sources */,
 				827E636B1AA6A96F00E77EB4 /* EventViewController.swift in Sources */,
 				82BE9DA01A9FE2290040C573 /* Club.swift in Sources */,
 				82153BC41A89A17E00C0C8FE /* OtherViewControllers.swift in Sources */,
+				82CC9D071AD09BF2003A4642 /* FriendGroupViewController.swift in Sources */,
+				82303F571AC658C1002600AA /* NXOAuth2AccessToken.m in Sources */,
 				82B735081AC5E9F70086FDF5 /* RequestCarCells.swift in Sources */,
 				82C716911A7D69CC004DEA94 /* SignUpTableCells.swift in Sources */,
 				82AC17011A7C749D0065387F /* SignUpViewController.swift in Sources */,
+				82303F5B1AC658C1002600AA /* NXOAuth2AccountStore.m in Sources */,
 				829DC17A1A7B3E1F00CD6187 /* VIPPTests.swift in Sources */,
+				82303F531AC658C1002600AA /* NSString+NXOAuth2.m in Sources */,
 				82BE9D9D1A9FDDAA0040C573 /* HomeViewController.swift in Sources */,
+				82303F511AC658C1002600AA /* NSData+NXOAuth2.m in Sources */,
+				82CA30BB1ACF903B00BFF052 /* FriendImage.swift in Sources */,
+				82303F651AC658C1002600AA /* NXOAuth2PostBodyPart.m in Sources */,
 				820C85CD1A7F584D00ADBF7B /* InitialViewController.swift in Sources */,
 				82B735051AC5E8E10086FDF5 /* RequestCarViewController.swift in Sources */,
 				82E2A55D1A86BF2B004C4795 /* ThankYouViewController.swift in Sources */,
 				82C7B3F31A7F15A10088EC2B /* Extensions.swift in Sources */,
 				826B22BA1AB37EBF00C34FC6 /* ProfileViewController.swift in Sources */,
+				82303F5D1AC658C1002600AA /* NXOAuth2Client.m in Sources */,
+				82303F631AC658C1002600AA /* NXOAuth2FileStreamWrapper.m in Sources */,
 				826B22EC1AB3BCC600C34FC6 /* ProfileButtonCell.swift in Sources */,
+				82303F5F1AC658C1002600AA /* NXOAuth2Connection.m in Sources */,
+				82CC9D0A1AD0A3DE003A4642 /* FriendGroup.swift in Sources */,
 				827E63701AA6A9A000E77EB4 /* Event.swift in Sources */,
 				8247983D1AB6827800FEA122 /* InvitationCell.swift in Sources */,
 				82153BC91A89DDCB00C0C8FE /* InformationViewController.swift in Sources */,
 				82B7350E1AC607230086FDF5 /* UberViewController.swift in Sources */,
 				8247983A1AB6778A00FEA122 /* InvitationsViewController.swift in Sources */,
+				82303F591AC658C1002600AA /* NXOAuth2Account.m in Sources */,
 				826B22F01AB3D2EA00C34FC6 /* SlideDownSegue.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

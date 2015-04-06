@@ -20,6 +20,7 @@ class ProfileViewController: UIViewController
 	@IBOutlet var backButton : UIButton!
 	@IBOutlet var profileCell : ProfilePictureCell!
 	
+	
 	var clubs = [Club]()
 	var tableCells = [UITableViewCell]()
 	var mainViewCells = [ProfileButtonCell]()
@@ -27,14 +28,16 @@ class ProfileViewController: UIViewController
 	var bookingsCells = [BookingsCell]()
 	private var currentState = ProfileState.Home
 	
+	var friendGroups = [FriendGroup]()
+	
 	//MARK: - ViewController Lifecycle
 	override func viewDidLoad()
 	{
 		super.viewDidLoad()
 		UIApplication.sharedApplication().statusBarStyle = .LightContent
 		// Do any additional setup after loading the view.
-		setupCells()
 		profileCell.setup(self, action: "logout:")
+		setupCells()
 	}
 	override func didReceiveMemoryWarning()
 	{
@@ -125,6 +128,25 @@ class ProfileViewController: UIViewController
 			}
 		}
 	}
+	func getFriendGroups()
+	{
+		let query = FriendGroup.createFriendGroupQuery()
+		query.findObjectsInBackgroundWithBlock({(results, error) in
+			if (error == nil)
+			{
+				self.friendGroups = (results as! [PFObject]).map { FriendGroup(object: $0) }
+				if let friendGroup = self.friendGroups.first
+				{
+					self.profileCell.setFriendGroup(friendGroup)
+				}
+			}
+			else
+			{
+				//TODO: Show error
+				println(error)
+			}
+		})
+	}
 	
 	//MARK: - Actions
 	func showInvites()
@@ -151,6 +173,15 @@ class ProfileViewController: UIViewController
 	{
 		let termsAndConditions = storyboard!.instantiateViewControllerWithIdentifier("TermsAndConditions") as! UINavigationController
 		presentViewController(termsAndConditions, animated: true, completion: nil)
+	}
+	func showFriendGroups()
+	{
+		let friendViewController = storyboard!.instantiateViewControllerWithIdentifier("FriendGroupViewController") as! FriendGroupViewController
+		friendViewController.modalPresentationStyle = .FullScreen
+		friendViewController.modalTransitionStyle = .CrossDissolve
+		friendViewController.friendGroups = friendGroups
+		friendViewController.profileViewController = self
+		presentViewController(friendViewController, animated: true, completion: nil)
 	}
 	func logout(_: UIButton)
 	{
@@ -197,6 +228,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		let buttons =  [	(UIImage(named: "InvitesIcon")!, "INVITES", Selector("showInvites")),
 						(UIImage(named: "BookingsIcon")!, "BOOKINGS", Selector("showBookings")),
 						//(UIImage(named: "RewardsIcon")!, "REWARDS"),
+						(UIImage(named: "RewardsIcon")!, "MY FRIEND GROUPS", Selector("showFriendGroups")),
 						(UIImage(named: "SettingsIcon")!, "SETTINGS", Selector("showSettings")),
 						(UIImage(named: "AboutIcon")!, "ABOUT", Selector("showAbout")) ]
 		for button in buttons
@@ -209,6 +241,7 @@ extension ProfileViewController : UITableViewDelegate, UITableViewDataSource
 		tableView.reloadData()
 		getInvites()
 		getBookings()
+		getFriendGroups()
 	}
 	func numberOfSectionsInTableView(tableView: UITableView) -> Int
 	{

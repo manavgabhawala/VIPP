@@ -62,7 +62,10 @@ class RequestCarViewController : UIViewController
 		let comparison = date!.compare(NSDate(timeIntervalSinceNow: 60 * 30))
 		if comparison == .OrderedSame || comparison == .OrderedAscending
 		{
-			
+			let uber = storyboard!.instantiateViewControllerWithIdentifier("UberViewController") as! UberViewController
+			uber.event = event
+			uber.productId = productId
+			presentViewController(uber, animated: true, completion: nil)
 		}
 		else
 		{

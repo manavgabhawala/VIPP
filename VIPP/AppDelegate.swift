@@ -34,9 +34,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 				installation.saveEventually(nil)
 			}
 		}
-		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as? String
+		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as? String
 		{
 			profilePictureLocation = "\(directory)/ProfilePic.png"
+		}
+		if let directory = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationSupportDirectory, NSSearchPathDomainMask.UserDomainMask, true).first as? String
+		{
+			uberOAuthCredentialsLocation = "\(directory)/Authentication.plist"
+			let fileManager = NSFileManager()
+			if !fileManager.fileExistsAtPath(directory)
+			{
+				fileManager.createDirectoryAtPath(directory, withIntermediateDirectories: true, attributes: nil, error: nil)
+			}
+			if !fileManager.fileExistsAtPath(uberOAuthCredentialsLocation)
+			{
+				fileManager.createFileAtPath(uberOAuthCredentialsLocation, contents: nil, attributes: nil)
+			}
 		}
 		return true
 	}

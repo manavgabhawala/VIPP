@@ -367,6 +367,7 @@ extension UIAlertController
 	}
 }
 var profilePictureLocation : String = ""
+var uberOAuthCredentialsLocation : String = ""
 
 extension NSDate : Comparable {}
 public func < (lhs: NSDate, rhs: NSDate) -> Bool
@@ -413,6 +414,7 @@ func safeLogout()
 	fileManager.removeItemAtPath(profilePictureLocation, error: nil)
 	PFInstallation.currentInstallation().removeObjectForKey("user")
 	PFInstallation.currentInstallation().saveEventually(nil)
+	fileManager.removeItemAtPath(uberOAuthCredentialsLocation, error: nil)
 }
 
 func facebookProfilePicture(#facebookId: String, #size: String, #block: (NSURLResponse!, NSData!, NSError!) -> Void)

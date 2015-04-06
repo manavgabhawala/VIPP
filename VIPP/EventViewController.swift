@@ -124,7 +124,6 @@ class EventViewController : UIViewController
 			requestController.modalTransitionStyle = .CoverVertical
 			presentViewController(requestController, animated: true, completion: nil)
 		}
-		
 //		let uberClient = "DJIZIgHZ1AwWkLERkkNns0t_7QCW_L7"
 //		if (UIApplication.sharedApplication().canOpenURL(NSURL(string: "uber://")!))
 //		{
