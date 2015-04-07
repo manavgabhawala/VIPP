@@ -86,7 +86,7 @@ class ProfilePictureCell: UIView
 		{
 			if friend.frame.contains(location) && !friend.friendExists
 			{
-				println(friend)
+				println(friendGroup?.members)
 			}
 		}
 	}

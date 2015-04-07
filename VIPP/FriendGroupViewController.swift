@@ -61,11 +61,37 @@ class FriendGroupViewController : UIViewController
 	}
 	@IBAction func addNewGroup(_: UIButton)
 	{
-		
-	}
-	func renameCurrentGroup()
-	{
-		
+		let alert = UIAlertController(title: "Create a New Friend Group", message: "Please enter the name for the new friend group you would like to create.", preferredStyle: .Alert)
+		alert.addTextFieldWithConfigurationHandler({(textField) in
+			textField.placeholder = "New Friend Group Name"
+			textField.keyboardAppearance = .Dark
+			textField.keyboardType = .Default
+			textField.autocapitalizationType = .Words
+			textField.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
+		})
+		alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+		let newGroupAction = UIAlertAction(title: "Create", style: .Default, handler: {(action) in
+			let newName = (alert.textFields!.first! as! UITextField).text
+			let cell = self.tableView.dequeueReusableCellWithIdentifier("groupCell") as! FriendGroupCell
+			cell.label.text = newName
+			self.groups.append(cell)
+			let object = PFObject(className: "FriendGroup")
+			object["member0"] = PFUser.currentUser()
+			object["name"] = newName
+			object.saveInBackgroundWithBlock({(result, error) in
+				if (result && error == nil)
+				{
+					self.friendGroups.append(FriendGroup(object: object))
+				}
+				else
+				{
+					//TODO: Show error
+					println(error)
+				}
+			})
+		})
+		alert.addAction(newGroupAction)
+		presentViewController(alert, animated: true, completion: nil)
 	}
 	
 	//MARK: - Parse Interaction
