@@ -4364,13 +4364,13 @@ Some other stuff</string>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PurplePattern" translatesAutoresizingMaskIntoConstraints="NO" id="Tau-h7-Ruw">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="265"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="keu-WB-Xmt" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="keu-WB-Xmt" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
                                         <rect key="frame" x="358" y="124" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="DPJ-Hw-8fh"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CdU-Ad-S7d" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="CdU-Ad-S7d" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
                                         <rect key="frame" x="358" y="64" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="IeT-1c-Oew"/>
@@ -4397,20 +4397,20 @@ Some other stuff</string>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EwY-8F-FDO" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="EwY-8F-FDO" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
                                         <rect key="frame" x="280" y="16" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="EwY-8F-FDO" secondAttribute="height" multiplier="1:1" id="6B6-Hs-3GE"/>
                                             <constraint firstAttribute="width" constant="40" id="vat-hk-puU"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OPL-fh-qry" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="OPL-fh-qry" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
                                         <rect key="frame" x="202" y="124" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="KLk-U9-Z4J"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-q4-mSL" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Add" translatesAutoresizingMaskIntoConstraints="NO" id="cJ1-q4-mSL" customClass="FriendImage" customModule="VIPP" customModuleProvider="target">
                                         <rect key="frame" x="202" y="64" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="sLQ-VY-q5d"/>
@@ -4486,6 +4486,7 @@ Some other stuff</string>
     </scenes>
     <resources>
         <image name="Accept" width="112" height="113"/>
+        <image name="Add" width="50" height="50"/>
         <image name="Attending" width="85" height="85"/>
         <image name="Background 0" width="640" height="960"/>
         <image name="Banner" width="1777" height="262"/>
